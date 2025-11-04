@@ -568,8 +568,8 @@
             <div class="schedule-header">
               <h4 class="schedule-title">CRONOGRAMA – 1ª CÂMARA</h4>
               <div class="schedule-subtitle">
-                <div><strong>DIAS: DOMINGOS</strong></div>
-                <div><strong>HORÁRIOS: 09H ÀS 10H30</strong></div>
+                <div><strong>DIAS: QUARTAS E SEXTAS</strong></div>
+                <div><strong>HORÁRIOS: 19H30 ÀS 21H</strong></div>
               </div>
             </div>
 
@@ -753,47 +753,44 @@
   ];
 
   // DATAS ATUALIZADAS CONFORME SOLICITADO
-  const FIRST_LESSON_DATE = new Date('2025-11-02T09:00:00'); // Primeira aula 02/11/2025
-  const LAST_LESSON_2025 = new Date('2025-12-21T09:00:00'); // Última aula de 2025
-  const FIRST_LESSON_2026 = new Date('2026-01-11T09:00:00'); // Primeira aula de 2026
+  // Aulas às quartas e sextas, começando em 19/11/2025
+  const scheduleDates = [
+    new Date('2025-11-19T19:30:00'), // 1 - qua
+    new Date('2025-11-21T19:30:00'), // 2 - sex
+    new Date('2025-11-26T19:30:00'), // 3 - qua
+    new Date('2025-11-28T19:30:00'), // 4 - sex
+    new Date('2025-12-03T19:30:00'), // 5 - qua
+    new Date('2025-12-05T19:30:00'), // 6 - sex
+    new Date('2025-12-10T19:30:00'), // 7 - qua
+    new Date('2025-12-12T19:30:00'), // 8 - sex
+    new Date('2025-12-17T19:30:00'), // 9 - qua
+    new Date('2025-12-19T19:30:00'), // 10 - sex
+    new Date('2026-01-07T19:30:00'), // 11 - qua
+    new Date('2026-01-09T19:30:00'), // 12 - sex
+    new Date('2026-01-14T19:30:00'), // 13 - qua
+    new Date('2026-01-16T19:30:00'), // 14 - sex
+    new Date('2026-01-21T19:30:00'), // 15 - qua
+    new Date('2026-01-23T19:30:00'), // 16 - sex
+    new Date('2026-01-28T19:30:00'), // 17 - qua
+    new Date('2026-01-30T19:30:00'), // 18 - sex
+    new Date('2026-02-04T19:30:00'), // 19 - qua
+    new Date('2026-02-06T19:30:00'), // 20 - sex
+    new Date('2026-02-11T19:30:00'), // 21 - qua
+    new Date('2026-02-13T19:30:00'), // 22 - sex
+    new Date('2026-02-18T19:30:00')  // 23 - qua
+  ];
 
   // Função para formatar data no formato brasileiro
   function formatDateForDisplay(date) {
-    const options = { day: '2-digit', month: '2-digit', year: 'numeric' };
+    const options = { weekday: 'short', day: '2-digit', month: '2-digit', year: 'numeric' };
     return date.toLocaleDateString('pt-BR', options);
-  }
-
-  // Função para calcular as datas das palestras COM RECESSO
-  function calculateScheduleDates() {
-    let currentDate = new Date(FIRST_LESSON_DATE); 
-    const scheduleDates = [];
-    let lessonCount = 0;
-
-    // Aulas de 2025 (até 21/12)
-    while (currentDate <= LAST_LESSON_2025 && lessonCount < 23) {
-      scheduleDates.push(new Date(currentDate));
-      currentDate.setDate(currentDate.getDate() + 7);
-      lessonCount++;
-    }
-
-    // Pular para 2026 (11/01)
-    currentDate = new Date(FIRST_LESSON_2026);
-
-    // Continuar as aulas de 2026
-    while (lessonCount < 23) {
-      scheduleDates.push(new Date(currentDate));
-      currentDate.setDate(currentDate.getDate() + 7);
-      lessonCount++;
-    }
-
-    return scheduleDates;
   }
 
   // Função para atualizar a barra de progresso
   function updateProgressBar() {
     const today = new Date();
-    const startDate = new Date(FIRST_LESSON_DATE);
-    const endDate = calculateScheduleDates()[22]; // Data da última aula
+    const startDate = new Date('2025-11-19T19:30:00');
+    const endDate = new Date('2026-02-18T19:30:00');
     
     // Calcular progresso baseado na data atual
     const totalDuration = endDate - startDate;
@@ -822,7 +819,6 @@
 
   // Função para renderizar o cronograma
   function renderSchedule() {
-    const dates = calculateScheduleDates();
     const basicContainer = document.getElementById('basicChamberDates');
     const advancedContainer = document.getElementById('advancedChamberDates');
 
@@ -839,7 +835,7 @@
           </div>
           <div class="schedule-description">${lessonDescriptions[lessonNumber]}</div>
           <div class="schedule-footer">
-            <div class="schedule-date">${formatDateForDisplay(dates[index])}</div>
+            <div class="schedule-date">${formatDateForDisplay(scheduleDates[index])}</div>
             <div class="material-buttons">
               ${lessonLinks[lessonNumber] ? 
                 `<a href="${lessonLinks[lessonNumber]}" target="_blank" class="btn-material">
@@ -873,7 +869,7 @@
           </div>
           <div class="schedule-description">${lessonDescriptions[lessonNumber]}</div>
           <div class="schedule-footer">
-            <div class="schedule-date">${formatDateForDisplay(dates[index + 16])}</div>
+            <div class="schedule-date">${formatDateForDisplay(scheduleDates[index + 16])}</div>
             <div class="material-buttons">
               <button class="btn-material" disabled>
                 <i class="fas fa-clock me-1"></i>PDF 1 em breve
