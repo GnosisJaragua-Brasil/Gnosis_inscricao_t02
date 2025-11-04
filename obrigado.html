@@ -142,6 +142,57 @@
       margin-right: 0.5rem;
     }
 
+    /* Botão do Cronograma com Imagem de Fundo */
+    .schedule-card {
+      background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                  url('img/b6d93b647f0b969f642dde5ff3da3c0b.jpg') center/cover no-repeat;
+      border-radius: 8px;
+      padding: 2rem;
+      text-align: center;
+      color: white;
+      min-height: 200px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border-left: 4px solid var(--color-primary);
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+
+    .schedule-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+    }
+
+    .schedule-card h6 {
+      color: white;
+      margin-bottom: 1rem;
+      font-weight: 600;
+      font-size: 1.1rem;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+    }
+
+    .btn-schedule {
+      background: linear-gradient(135deg, var(--color-primary), #5a32a8);
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .btn-schedule:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(111, 66, 193, 0.4);
+      color: white;
+    }
+
     .whatsapp-box {
       background-color: #25D366;
       color: #fff;
@@ -183,15 +234,55 @@
       transform: scale(1.05);
     }
 
-    /* Estilos do Modal */
+    /* Botão flutuante do WhatsApp */
+    .whatsapp-float {
+      position: fixed;
+      width: 60px;
+      height: 60px;
+      bottom: 40px;
+      right: 40px;
+      background-color: #25d366;
+      color: #FFF;
+      border-radius: 50px;
+      text-align: center;
+      font-size: 30px;
+      box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .whatsapp-float:hover {
+      background-color: #128c7e;
+      transform: scale(1.1);
+      color: #FFF;
+    }
+
+    /* Modal personalizado COM IMAGEM DE FUNDO */
     .modal-content {
       border-radius: 1rem;
       border: none;
       box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      overflow: hidden; /* Importante para a imagem de fundo */
     }
 
+    /* Estilo para o modal do WhatsApp com imagem de fundo */
+    #whatsappModal .modal-content {
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                  url('https://images.unsplash.com/photo-1611605698335-8b1569810432?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80') center/cover no-repeat;
+      color: white;
+    }
+
+    /* Alternativamente, você pode usar uma imagem local */
+    /* #whatsappModal .modal-content {
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                  url('img/fundo-whatsapp.jpg') center/cover no-repeat;
+    } */
+
     .modal-header {
-      background-color: var(--color-primary);
+      background-color: rgba(37, 211, 102, 0.9); /* Verde WhatsApp com transparência */
       color: white;
       border-bottom: none;
       border-radius: 1rem 1rem 0 0;
@@ -204,102 +295,38 @@
     }
 
     .modal-body {
-      padding: 1.5rem;
-      max-height: 70vh;
-      overflow-y: auto;
+      padding: 2rem;
     }
 
-    .schedule-section {
-      margin-bottom: 2.5rem;
-    }
-
-    .schedule-header {
-      text-align: center;
-      margin-bottom: 2rem;
-      padding-bottom: 1rem;
-      border-bottom: 2px solid var(--color-primary);
-    }
-
-    .schedule-title {
-      color: var(--color-primary);
-      font-weight: 700;
-      font-size: 1.5rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .schedule-subtitle {
-      color: var(--color-accent);
-      font-weight: 600;
-      font-size: 1.1rem;
-    }
-
-    .chamber-section {
-      margin-bottom: 2rem;
-    }
-
-    .chamber-title {
-      color: var(--color-primary);
-      font-weight: 600;
-      font-size: 1.3rem;
-      margin-bottom: 1rem;
-      padding-bottom: 0.5rem;
-      border-bottom: 1px solid #dee2e6;
-    }
-
-    .schedule-item {
-      background: #f8f9fa;
-      border-radius: 8px;
-      padding: 1rem;
-      margin-bottom: 0.75rem;
-      border-left: 4px solid var(--color-accent);
-      display: flex;
-      align-items: flex-start;
-    }
-
-    .schedule-number {
-      background: var(--color-primary);
-      color: white;
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      display: flex;
+    .whatsapp-link {
+      display: inline-flex;
       align-items: center;
       justify-content: center;
-      font-weight: 600;
-      font-size: 0.9rem;
-      margin-right: 1rem;
-      flex-shrink: 0;
-    }
-
-    .schedule-content {
-      flex: 1;
-    }
-
-    .schedule-topic {
-      color: #495057;
-      margin-bottom: 0.25rem;
-      font-weight: 500;
-    }
-
-    .schedule-date {
-      color: var(--color-accent);
-      font-size: 0.85rem;
-      font-weight: 500;
-    }
-
-    .btn-schedule {
-      background: linear-gradient(135deg, var(--color-primary), #5a32a8);
+      background-color: #25d366;
       color: white;
-      border: none;
       padding: 0.75rem 1.5rem;
-      border-radius: 8px;
+      border-radius: 50px;
+      text-decoration: none;
       font-weight: 500;
       transition: all 0.3s ease;
+      border: 2px solid white;
     }
 
-    .btn-schedule:hover {
+    .whatsapp-link:hover {
+      background-color: #128c7e;
+      color: white;
       transform: translateY(-2px);
-      box-shadow: 0 5px 15px rgba(111, 66, 193, 0.3);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+
+    /* Estilo para o texto dentro do modal com fundo escuro */
+    #whatsappModal .modal-body h4,
+    #whatsappModal .modal-body p {
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+    }
+
+    #whatsappModal .text-muted {
+      color: rgba(255,255,255,0.8) !important;
     }
 
     @media (max-width: 768px) {
@@ -308,11 +335,18 @@
       h2.subtitle { font-size: 1.1rem; }
       .check-icon { font-size: 2.5rem; }
       .info-grid { grid-template-columns: 1fr; }
-      .modal-body { max-height: 60vh; }
-      .schedule-item { flex-direction: column; }
-      .schedule-number { margin-bottom: 0.5rem; }
+      .whatsapp-float {
+        width: 50px;
+        height: 50px;
+        bottom: 20px;
+        right: 20px;
+        font-size: 24px;
+      }
+      .schedule-card {
+        min-height: 150px;
+        padding: 1.5rem;
+      }
     }
-
 
     .hero-section {
             background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('img/shutterstock_286782836.jpg');
@@ -402,15 +436,6 @@
       margin-bottom: 0.5rem;
     }
     
-    /* Melhor espaçamento no botão do cronograma */
-    .text-center.mb-4 {
-      margin-bottom: 2rem !important;
-    }
-    
-    .btn-schedule {
-      margin-bottom: 0.5rem;
-    }
-    
     /* Melhor espaçamento na caixa do WhatsApp */
     .whatsapp-box {
       margin-bottom: 2rem;
@@ -451,43 +476,6 @@
       gap: 1rem !important;
     }
     
-    /* Melhor espaçamento no modal */
-    .modal-body {
-      padding: 2rem;
-    }
-    
-    .schedule-section {
-      margin-bottom: 1.5rem;
-    }
-    
-    .schedule-header {
-      margin-bottom: 2.5rem;
-      padding-bottom: 1.5rem;
-    }
-    
-    .schedule-title {
-      margin-bottom: 0.75rem;
-    }
-    
-    .chamber-section {
-      margin-bottom: 2.5rem;
-    }
-    
-    .chamber-title {
-      margin-bottom: 1.25rem;
-      padding-bottom: 0.75rem;
-    }
-    
-    .schedule-item {
-      margin-bottom: 1rem;
-      padding: 1.25rem;
-    }
-    
-    .alert.mt-4 {
-      margin-top: 2rem !important;
-      padding: 1.25rem;
-    }
-    
     /* Melhor espaçamento na navegação */
     .navbar-nav .nav-item {
       margin-left: 0.75rem;
@@ -507,10 +495,36 @@
 </head>
 
 <body>
+  <!-- Botão flutuante do WhatsApp -->
+  <a href="#" class="whatsapp-float" data-bs-toggle="modal" data-bs-target="#whatsappModal">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <!-- Modal do WhatsApp COM IMAGEM DE FUNDO -->
+  <div class="modal fade" id="whatsappModal" tabindex="-1" aria-labelledby="whatsappModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="whatsappModalLabel">
+            <i class="fab fa-whatsapp me-2"></i>Grupo da Turma
+          </h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center">
+          <h4 class="mb-3">Entre no grupo da turma!</h4>
+          <p class="mb-4">Participe do grupo no WhatsApp para receber atualizações, materiais e interagir com outros participantes do curso.</p>
+          <a href="https://chat.whatsapp.com/ESu63KbGTpaKiqccqPSrM2" target="_blank" class="whatsapp-link mb-3">
+            <i class="fab fa-whatsapp me-2"></i> Entrar no Grupo
+          </a>
+          <p class="text-muted mt-3 small">Ao clicar, você será redirecionado para o WhatsApp</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
       <a class="navbar-brand" href="#">
-        <!-- Substitua o ícone pela sua imagem (ex: logo.png) -->
         <img src="img/cropped-logo-sol-7.webp" alt="Logo Gnosis" class="me-2">
         Gnosis Jaraguá do Sul
       </a>
@@ -521,9 +535,6 @@
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
             <a class="nav-link" href="https://gnosisbrasil.com/quem-somos/">Sobre</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="conograma.html">Temas</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="index.html">Inscrição</a>
@@ -565,27 +576,37 @@
                   <p><strong>Centro Comercial San Michelli</strong><br>
                   R. Guilherme Dancker, 161, Sala 15<br>
                   Centro, Jaraguá do Sul – SC</p>
-                </div>
+                </div>               
+                
                 
                 <div class="info-card">
-                  <h6><i class="fas fa-clock info-icon"></i>Duração das Aulas</h6>
-                  <p><strong>1h30min</strong> por encontro<br>
-                  <strong>Material:</strong> Caderno para anotações<br>
-                  <strong>Frequência:</strong> Semanal</p>
+    <h6><i class="fas fa-book info-icon"></i>Conteúdo do Curso</h6>
+    <p>
+        • Despertar da Consciência<br>
+        • Meditação e Relaxamento<br>
+        • Chakras e Mantras<br>
+        • Personalidade, Essência e Ego<br>
+        • Universo Interior<br>
+        • Leis Metafísicas<br>
+        • Biologia Esotérica<br>
+        • Karma e Dharma<br>
+        • Relações Humanas<br>
+        • Energias e Alquimia<br>
+        • Elementais da Natureza<br>
+        • Caminho Iniciático<br>
+        • Senda Probatória<br>
+        • Evolução e Involução <br>
+        e muito mais!
+    </p>
+</div>
+<!-- BOTÃO DO CRONOGRAMA COM IMAGEM DE FUNDO -->
+                <div class="schedule-card">
+                  <h6><i class="fas fa-calendar-check me-2"></i>Cronograma Completo</h6>
+                  <p class="mb-3 small">Veja todas as datas e temas do curso</p>
+                  <a href="cronograma.html" class="btn-schedule">
+                    <i class="fas fa-external-link-alt me-1"></i> Acessar Cronograma
+                  </a>
                 </div>
-                
-                <div class="info-card">
-                  <h6><i class="fas fa-book info-icon"></i>Conteúdo do Curso</h6>
-                  <p>Autoconhecimento prático<br>
-                  Técnicas de meditação<br>
-                  Desenvolvimento da Consciência<br>
-                  Regeneração da Máquina Humana<br>
-                  Alquimia Sexual - Kundalini
-                  Desenvolvimento dos Chakras<br>
-                  Estudo da psicologia gnóstica<br>
-                  Desenvolvimento interior</p>
-                </div>
-              </div>
               
               <div class="mt-3 p-3 bg-light rounded">
                 <h6 class="text-primary mb-2"><i class="fas fa-lightbulb info-icon"></i>Recomendações</h6>
@@ -596,28 +617,18 @@
               </div>
             </div>
 
-            <div class="text-center mb-4">
-              <button class="btn btn-schedule" data-bs-toggle="modal" data-bs-target="#scheduleModal">
-                <i class="fas fa-calendar-check me-2"></i> Ver Cronograma Completo do Curso
-              </button>
-            </div>
-
             <div class="whatsapp-box text-center">
               <h5><i class="fab fa-whatsapp me-2"></i>Entre no grupo da turma</h5>
               <p>
                 Receba lembretes, materiais exclusivos e comunicações importantes pelo WhatsApp.
                 <br>
-                <small class="text-white-50">Se estiver usando o **WhatsApp Business**, use o link abaixo que funcionar melhor:</small>
+                <small class="text-white-50">Participe do grupo para acompanhar todas as atualizações do curso.</small>
               </p>
-              <a href="whatsapp://chat/Kk7sd2uX9QEHFCKDiuxb2B" class="btn btn-lg mb-2">
-                <i class="fab fa-whatsapp me-2"></i> Entrar no Grupo (Opção App)
-              </a>
-              
-              <a href="https://chat.whatsapp.com/Kk7sd2uX9QEHFCKDiuxb2B" class="btn btn-lg btn-success mb-3" target="_blank">
-                <i class="fab fa-whatsapp me-2"></i> Entrar no Grupo (Opção Web)
+              <a href="https://chat.whatsapp.com/ESu63KbGTpaKiqccqPSrM2" class="btn btn-lg btn-success mb-3" target="_blank">
+                <i class="fab fa-whatsapp me-2"></i> Entrar no Grupo
               </a>
               <p class="mt-2 mb-0">
-                <small class="text-white-50">Se um link não abrir, tente o outro.</small>
+                <small class="text-white-50">Clique no botão acima para acessar o grupo</small>
               </p>
             </div>
             <div class="social-media mb-4">
@@ -638,54 +649,6 @@
     </div>
   </section>
 
-  <div class="modal fade" id="scheduleModal" tabindex="-1" aria-labelledby="scheduleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="scheduleModalLabel">
-            <i class="fas fa-calendar-alt me-2"></i>Cronograma - 1ª Câmara
-          </h5>
-          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <div class="schedule-section">
-            <div class="schedule-header">
-              <h4 class="schedule-title">CRONOGRAMA – 1ª CÂMARA</h4>
-              <div class="schedule-subtitle">
-                <div><strong>DIAS: Quartas e Sextas</strong></div>
-                <div><strong>HORÁRIOS: 19H30 ÀS 21H</strong></div>
-              </div>
-            </div>
-
-            <div class="chamber-section">
-              <h5 class="chamber-title">Câmara Básica</h5>
-              <div id="basicChamberDates">
-                </div>
-            </div>
-
-            <div class="chamber-section">
-              <h5 class="chamber-title">Câmara Avançada</h5>
-              <div id="advancedChamberDates">
-                </div>
-            </div>
-
-            <div class="alert alert-info mt-4">
-              <i class="fas fa-info-circle me-2"></i>
-              <strong>Observação:</strong> As datas podem sofrer ajustes conforme necessidades do grupo. 
-              Todas as alterações serão comunicadas com antecedência pelo grupo do WhatsApp.
-            </div>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-          <a href="whatsapp://chat/Kk7sd2uX9QEHFCKDiuxb2B" class="btn btn-success">
-            <i class="fab fa-whatsapp me-2"></i> Entrar no Grupo (Tentar App)
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <footer class="py-4 bg-dark text-white text-center">
     <div class="container">
       <div class="mb-3">
@@ -700,119 +663,5 @@
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
-  <script>
-    // Lista de feriados e datas festivas que devem ser puladas (2025-2026)
-    const holidays = [
-      '2025-11-02', // Primeira aula (não é feriado, mas é a data inicial)
-      '2025-11-15', // Proclamação da República
-      '2025-12-25', // Natal
-      '2026-01-01', // Ano Novo
-      '2026-02-16', // Carnaval
-      '2026-02-17', // Carnaval
-      '2026-04-03', // Sexta-feira Santa
-      '2026-04-21', // Tiradentes
-      '2026-05-01', // Dia do Trabalho
-    ];
-
-    // Conteúdo das palestras
-    const basicChamber = [
-      "O que é Gnosis",
-      "Personalidade, Essência e Ego",
-      "O Despertar da Consciência",
-      "O Eu Psicológico",
-      "Luz, Calor e Som",
-      "A Máquina Humana",
-      "O Mundo das Relações",
-      "O Caminho e a Vida",
-      "O Nível de Ser",
-      "O Decálogo",
-      "Educação Fundamental",
-      "A Árvore Genealógica das Religiões",
-      "Evolução, Involução e Revolução",
-      "O Raio da Morte",
-      "Reencarnação, Retorno e Recorrência",
-      "A Balança da Justiça"
-    ];
-
-    const advancedChamber = [
-      "Os Quatro Caminhos",
-      "O Diagrama Interno do Homem",
-      "Transformação da Energia",
-      "Os Elementais",
-      "Os Quatro Estados de Consciência",
-      "A Iniciação",
-      "Apresentação da 2ª Câmara"
-    ];
-
-    // Função para formatar data
-    function formatDate(date) {
-      const options = { day: '2-digit', month: '2-digit', year: 'numeric' };
-      return date.toLocaleDateString('pt-BR', options);
-    }
-
-    // Função para verificar se é feriado
-    function isHoliday(date) {
-      const dateString = date.toISOString().split('T')[0];
-      return holidays.includes(dateString);
-    }
-
-    // Função para calcular as datas das palestras
-    function calculateScheduleDates() {
-      let currentDate = new Date('2025-11-02'); // Data da primeira aula
-      const scheduleDates = [];
-
-      // Calcular datas para as 23 palestras
-      for (let i = 0; i < 23; i++) {
-        // Encontrar próximo domingo que não seja feriado
-        while (currentDate.getDay() !== 0 || isHoliday(currentDate)) {
-          currentDate.setDate(currentDate.getDate() + 1);
-        }
-        
-        scheduleDates.push(new Date(currentDate));
-        currentDate.setDate(currentDate.getDate() + 7); // Próxima semana
-      }
-
-      return scheduleDates;
-    }
-
-    // Função para renderizar o cronograma
-    function renderSchedule() {
-      const dates = calculateScheduleDates();
-      const basicContainer = document.getElementById('basicChamberDates');
-      const advancedContainer = document.getElementById('advancedChamberDates');
-
-      // Renderizar Câmara Básica (16 primeiras aulas)
-      basicChamber.forEach((topic, index) => {
-        const scheduleItem = document.createElement('div');
-        scheduleItem.className = 'schedule-item';
-        scheduleItem.innerHTML = `
-          <div class="schedule-number">${(index + 1).toString().padStart(2, '0')}</div>
-          <div class="schedule-content">
-            <div class="schedule-topic">${topic}</div>
-            <div class="schedule-date">${formatDate(dates[index])}</div>
-          </div>
-        `;
-        basicContainer.appendChild(scheduleItem);
-      });
-
-      // Renderizar Câmara Avançada (7 últimas aulas)
-      advancedChamber.forEach((topic, index) => {
-        const scheduleItem = document.createElement('div');
-        scheduleItem.className = 'schedule-item';
-        scheduleItem.innerHTML = `
-          <div class="schedule-number">${(index + 17).toString().padStart(2, '0')}</div>
-          <div class="schedule-content">
-            <div class="schedule-topic">${topic}</div>
-            <div class="schedule-date">${formatDate(dates[index + 16])}</div>
-          </div>
-        `;
-        advancedContainer.appendChild(scheduleItem);
-      });
-    }
-
-    // Executar quando a página carregar
-    document.addEventListener('DOMContentLoaded', renderSchedule);
-  </script>
 </body>
 </html>
