@@ -1,0 +1,14 @@
+/* Amarelo vibrante */
+.color-1 { color: #f7df03; } /* R.247 G.223 B.3 */
+
+/* Azul vibrante */
+.color-2 { color: #005bd2; } /* R.0 G.91 B.210 */
+
+/* Vermelho puro */
+.color-3 { color: #ff0000; } /* R.255 G.0 B.0 */
+
+/* Azul marinho escuro */
+.color-4 { color: #093456; } /* R.9 G.52 B.86 */
+
+/* Dourado/metálico */
+.color-5 { color: #cc9933; } /* R.255 G.0 B.0 com overlay CMYK */
