@@ -405,6 +405,116 @@
       margin-bottom: 0.5rem;
     }
 
+    /* --- TELINHA FLUTUANTE --- */
+    .floating-panel {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 320px;
+      background-color: rgba(9, 52, 86, 0.9); /* Cor escura com transparência */
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      z-index: 1000;
+      backdrop-filter: blur(5px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      animation: slideIn 0.5s ease-out;
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .floating-panel h5 {
+      color: var(--color-text-light);
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+    }
+
+    .floating-panel h5 i {
+      color: var(--color-accent);
+      margin-right: 8px;
+    }
+
+    .floating-panel p {
+      color: #fff;
+      font-size: 0.9rem;
+      margin-bottom: 15px;
+      line-height: 1.4;
+    }
+
+    .floating-panel .btn {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 1.2rem;
+      cursor: pointer;
+      opacity: 0.7;
+      transition: opacity 0.3s;
+    }
+
+    .close-btn:hover {
+      opacity: 1;
+    }
+
+    .question-text {
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--color-text-light);
+    }
+
+    .answer-options {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    .answer-option {
+      flex: 1;
+      padding: 8px 12px;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 6px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 0.85rem;
+    }
+
+    .answer-option:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .answer-option.selected {
+      background-color: var(--color-primary);
+      color: white;
+    }
+
+    @media (max-width: 576px) {
+      .floating-panel {
+        width: calc(100% - 40px);
+        right: 20px;
+        left: 20px;
+      }
+    }
+
     /* Melhorias para dispositivos móveis */
     @media (max-width: 768px) {
       .confirmation-card { 
@@ -467,6 +577,23 @@
 </head>
 
 <body>
+
+  <!-- Telinha Flutuante -->
+  <div id="floatingPanel" class="floating-panel">
+    <button class="close-btn" id="closePanel">
+      <i class="fas fa-times"></i>
+    </button>
+    <h5><i class="fas fa-exclamation-circle"></i> Não se esqueça!</h5>
+    <p class="question-text">Você já realizou sua inscrição no curso?</p>
+    <div class="answer-options">
+      <div class="answer-option" id="optionYes">Sim</div>
+      <div class="answer-option selected" id="optionNo">Ainda não</div>
+    </div>
+    <p>Garanta sua vaga no Curso de Autoconhecimento - Gnosis 1ª Câmara</p>
+    <a href="index.html" class="btn btn-gnosis">
+      <i class="fas fa-user-plus me-2"></i> Fazer Inscrição
+    </a>
+  </div>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
   <div class="container">
@@ -679,7 +806,7 @@
     6: "Os centros que governam nosso organismo: Intelectual, emocional, motor, instintivo e sexual, como utilizá-los de maneira sábia para uma melhor saúde e qualidade de vida.",
     7: "Reflexão sobre o ser humano e seus diversos mundos ou esferas de relacionamento, seja com a família, sociedade, com o planeta e consigo mesmo. Como o conhecimento de si mesmo nos ajuda a melhorar todo tipo de relações.",
     8: "Reflexões sobre a necessidade de se traçar metas e objetivos na vida, tanto materiais como espirituais.",
-    9: "A necessidade de conhecer a si mesmo, como base ou fundamento para uma mudança interior e individual.",
+    9: "Reflexões sobre a necessidade de conhecer a si mesmo, como base ou fundamento para uma mudança interior e individual.",
     10: "Níveis de interpretação das sagradas escrituras: Letra Viva e Letra Morta. O esoterismo dos 10 Mandamentos.",
     11: "As diferentes fases do desenvolvimento humano e como aproveitar ao máximo cada uma delas, extraindo saúde, sucesso e sabedoria. Mostra as bases da psicologia transformativa que começa por mudar a forma de pensar, de sentir e de atuar.",
     12: "Estudo comparativo sobre várias das grandes religiões e culturas que passaram sobre a terra, mostrando uma visão de seu objetivo: a Revolução da Consciência.",
@@ -892,6 +1019,42 @@
     
     // Atualizar a barra de progresso a cada minuto
     setInterval(updateProgressBar, 60000);
+
+    // Controle da telinha flutuante
+    const floatingPanel = document.getElementById('floatingPanel');
+    const closeButton = document.getElementById('closePanel');
+    const optionYes = document.getElementById('optionYes');
+    const optionNo = document.getElementById('optionNo');
+    
+    // Verificar se o usuário já fechou a telinha anteriormente
+    if (!localStorage.getItem('floatingPanelClosed')) {
+      floatingPanel.style.display = 'block';
+    } else {
+      floatingPanel.style.display = 'none';
+    }
+    
+    // Fechar a telinha quando o botão X for clicado
+    closeButton.addEventListener('click', function() {
+      floatingPanel.style.display = 'none';
+      // Salvar no localStorage que o usuário fechou a telinha
+      localStorage.setItem('floatingPanelClosed', 'true');
+    });
+    
+    // Controle das opções de resposta
+    optionYes.addEventListener('click', function() {
+      optionYes.classList.add('selected');
+      optionNo.classList.remove('selected');
+      // Se o usuário já se inscreveu, podemos fechar a telinha
+      setTimeout(() => {
+        floatingPanel.style.display = 'none';
+        localStorage.setItem('floatingPanelClosed', 'true');
+      }, 1500);
+    });
+    
+    optionNo.addEventListener('click', function() {
+      optionNo.classList.add('selected');
+      optionYes.classList.remove('selected');
+    });
   });
 </script>
 </body>
