@@ -6,11 +6,8 @@
   <title>Inscrição Confirmada – Gnosis Jaraguá do Sul</title>
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
-
   <link rel="icon" href="https://gnosisbrasil.com/wp-content/uploads/2020/07/cropped-logo-sol-7-32x32.webp" type="image/webp">
 
   <style>
@@ -111,6 +108,7 @@
       margin-bottom: 0.75rem;
     }
 
+    /* MELHORIA: Grid responsivo para manter elementos lado a lado */
     .info-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -124,6 +122,9 @@
       padding: 1rem;
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
       border-left: 4px solid var(--color-primary);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
     }
 
     .info-card h6 {
@@ -135,6 +136,7 @@
     .info-card p {
       margin-bottom: 0;
       font-size: 0.9rem;
+      flex-grow: 1;
     }
 
     .info-icon {
@@ -204,7 +206,7 @@
       font-weight: 500;
     }
     
-    .whatsapp-box a.btn-success { /* Estilo para o botão de fallback, se quiser diferenciá-lo */
+    .whatsapp-box a.btn-success {
       background-color: #128C7E; 
       color: #fff;
       margin-top: 10px;
@@ -265,7 +267,7 @@
       border-radius: 1rem;
       border: none;
       box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-      overflow: hidden; /* Importante para a imagem de fundo */
+      overflow: hidden;
     }
 
     /* Estilo para o modal do WhatsApp com imagem de fundo */
@@ -275,14 +277,8 @@
       color: white;
     }
 
-    /* Alternativamente, você pode usar uma imagem local */
-    /* #whatsappModal .modal-content {
-      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
-                  url('img/fundo-whatsapp.jpg') center/cover no-repeat;
-    } */
-
     .modal-header {
-      background-color: rgba(37, 211, 102, 0.9); /* Verde WhatsApp com transparência */
+      background-color: rgba(37, 211, 102, 0.9);
       color: white;
       border-bottom: none;
       border-radius: 1rem 1rem 0 0;
@@ -329,12 +325,65 @@
       color: rgba(255,255,255,0.8) !important;
     }
 
+    /* NOVOS ESTILOS PARA MELHORAR LAYOUT HORIZONTAL EM TELAS PEQUENAS */
+    
+    /* Layout horizontal para telas pequenas */
     @media (max-width: 768px) {
-      .confirmation-card { padding: 2rem; }
-      h1.title-main { font-size: 1.7rem; }
-      h2.subtitle { font-size: 1.1rem; }
-      .check-icon { font-size: 2.5rem; }
-      .info-grid { grid-template-columns: 1fr; }
+      .confirmation-card { 
+        padding: 1.5rem; 
+      }
+      
+      h1.title-main { 
+        font-size: 1.7rem; 
+      }
+      
+      h2.subtitle { 
+        font-size: 1.1rem; 
+      }
+      
+      .check-icon { 
+        font-size: 2.5rem; 
+      }
+      
+      /* MELHORIA: Grid com 2 colunas em telas pequenas */
+      .info-grid { 
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.75rem;
+      }
+      
+      /* MELHORIA: Ajuste do conteúdo para caber em duas colunas */
+      .info-card {
+        padding: 0.75rem;
+        font-size: 0.85rem;
+      }
+      
+      .info-card h6 {
+        font-size: 0.9rem;
+      }
+      
+      .info-card p {
+        font-size: 0.8rem;
+      }
+      
+      /* MELHORIA: Ajuste do cronograma para ocupar duas colunas */
+      .schedule-card {
+        grid-column: span 2;
+        min-height: 150px;
+        padding: 1.5rem;
+      }
+      
+      /* MELHORIA: Layout horizontal para as recomendações */
+      .bg-light.rounded {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.5rem;
+      }
+      
+      .bg-light.rounded p {
+        margin-bottom: 0;
+        font-size: 0.85rem;
+      }
+      
       .whatsapp-float {
         width: 50px;
         height: 50px;
@@ -342,40 +391,81 @@
         right: 20px;
         font-size: 24px;
       }
+      
+      /* MELHORIA: Botões em linha em telas pequenas */
+      .d-grid.gap-2.d-sm-flex {
+        display: flex !important;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.75rem !important;
+      }
+      
+      .d-grid.gap-2.d-sm-flex .btn {
+        flex: 1;
+        min-width: 140px;
+      }
+      
+      /* MELHORIA: Redes sociais em linha mais compacta */
+      .social-media.mb-4 .social-icon {
+        margin: 0 8px;
+        font-size: 1.3rem;
+      }
+    }
+    
+    /* Ajustes para telas muito pequenas (menos de 576px) */
+    @media (max-width: 576px) {
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+      
       .schedule-card {
-        min-height: 150px;
-        padding: 1.5rem;
+        grid-column: span 1;
+      }
+      
+      .bg-light.rounded {
+        grid-template-columns: 1fr;
+      }
+      
+      .d-grid.gap-2.d-sm-flex {
+        flex-direction: column;
+      }
+      
+      .d-grid.gap-2.d-sm-flex .btn {
+        width: 100%;
       }
     }
 
     .hero-section {
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('img/shutterstock_286782836.jpg');
-            background-size: cover;
-            color: white;
-            padding: 100px 0;
-            text-align: center;
-        }
-        .btn-whatsapp {
-            background-color: #25D366;
-            color: white;
-        }
-        .feature-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            color: #6f42c1;
-        }
-        .navbar-brand img {
-            height: 40px; /* Ajuste o tamanho da imagem conforme necessário */
-        }
-        .astral{
-            font-family: 'Amontillados', serif;
-            font-weight: normal !important;
-            font-size: clamp(2rem, 8vw, 10rem);
-        }
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('img/shutterstock_286782836.jpg');
+      background-size: cover;
+      color: white;
+      padding: 100px 0;
+      text-align: center;
+    }
+    
+    .btn-whatsapp {
+      background-color: #25D366;
+      color: white;
+    }
+    
+    .feature-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: #6f42c1;
+    }
+    
+    .navbar-brand img {
+      height: 40px;
+    }
+    
+    .astral{
+      font-family: 'Amontillados', serif;
+      font-weight: normal !important;
+      font-size: clamp(2rem, 8vw, 10rem);
+    }
 
     /* AJUSTES DE ESPAÇAMENTO - PÁGINA DE CONFIRMAÇÃO */
     
-    /* Melhor espaçamento no cabeçalho da confirmação */
     .check-icon {
       margin-bottom: 1.5rem;
     }
@@ -396,7 +486,6 @@
       margin-bottom: 2rem;
     }
     
-    /* Melhor espaçamento nas caixas de informação */
     .details-box {
       margin-bottom: 2rem;
     }
@@ -422,7 +511,6 @@
       line-height: 1.5;
     }
     
-    /* Melhor espaçamento na seção de recomendações */
     .bg-light.rounded {
       margin-top: 1.5rem;
       padding: 1.25rem !important;
@@ -436,7 +524,6 @@
       margin-bottom: 0.5rem;
     }
     
-    /* Melhor espaçamento na caixa do WhatsApp */
     .whatsapp-box {
       margin-bottom: 2rem;
       padding: 1.75rem;
@@ -458,7 +545,6 @@
       margin-top: 1rem !important;
     }
     
-    /* Melhor espaçamento nas redes sociais */
     .social-media.mb-4 {
       margin-bottom: 2rem !important;
     }
@@ -471,18 +557,15 @@
       margin: 0 12px;
     }
     
-    /* Melhor espaçamento nos botões finais */
     .d-grid.gap-2 {
       gap: 1rem !important;
     }
     
-    /* Melhor espaçamento na navegação */
     .navbar-nav .nav-item {
       margin-left: 0.75rem;
       margin-right: 0.75rem;
     }
     
-    /* Melhor espaçamento no rodapé */
     footer .container {
       padding-top: 1.5rem;
       padding-bottom: 1.5rem;
@@ -522,7 +605,7 @@
     </div>
   </div>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
       <a class="navbar-brand" href="#">
         <img src="img/cropped-logo-sol-7.webp" alt="Logo Gnosis" class="me-2">
@@ -546,7 +629,6 @@
       </div>
     </div>
   </nav>
-
 
   <section class="py-5 d-flex align-items-center" style="min-height: 100vh;">
     <div class="container">
@@ -578,28 +660,28 @@
                   Centro, Jaraguá do Sul – SC</p>
                 </div>               
                 
-                
                 <div class="info-card">
-    <h6><i class="fas fa-book info-icon"></i>Conteúdo do Curso</h6>
-    <p>
-        • Despertar da Consciência<br>
-        • Meditação e Relaxamento<br>
-        • Chakras e Mantras<br>
-        • Personalidade, Essência e Ego<br>
-        • Universo Interior<br>
-        • Leis Metafísicas<br>
-        • Biologia Esotérica<br>
-        • Karma e Dharma<br>
-        • Relações Humanas<br>
-        • Energias e Alquimia<br>
-        • Elementais da Natureza<br>
-        • Caminho Iniciático<br>
-        • Senda Probatória<br>
-        • Evolução e Involução <br>
-        e muito mais!
-    </p>
-</div>
-<!-- BOTÃO DO CRONOGRAMA COM IMAGEM DE FUNDO -->
+                  <h6><i class="fas fa-book info-icon"></i>Conteúdo do Curso</h6>
+                  <p>
+                    • Despertar da Consciência<br>
+                    • Meditação e Relaxamento<br>
+                    • Chakras e Mantras<br>
+                    • Personalidade, Essência e Ego<br>
+                    • Universo Interior<br>
+                    • Leis Metafísicas<br>
+                    • Biologia Esotérica<br>
+                    • Karma e Dharma<br>
+                    • Relações Humanas<br>
+                    • Energias e Alquimia<br>
+                    • Elementais da Natureza<br>
+                    • Caminho Iniciático<br>
+                    • Senda Probatória<br>
+                    • Evolução e Involução <br>
+                    e muito mais!
+                  </p>
+                </div>
+                
+                <!-- BOTÃO DO CRONOGRAMA COM IMAGEM DE FUNDO -->
                 <div class="schedule-card">
                   <h6><i class="fas fa-calendar-check me-2"></i>Cronograma Completo</h6>
                   <p class="mb-3 small">Veja todas as datas e temas do curso</p>
@@ -607,6 +689,7 @@
                     <i class="fas fa-external-link-alt me-1"></i> Acessar Cronograma
                   </a>
                 </div>
+              </div>
               
               <div class="mt-3 p-3 bg-light rounded">
                 <h6 class="text-primary mb-2"><i class="fas fa-lightbulb info-icon"></i>Recomendações</h6>
@@ -631,6 +714,7 @@
                 <small class="text-white-50">Clique no botão acima para acessar o grupo</small>
               </p>
             </div>
+            
             <div class="social-media mb-4">
               <h5 class="text-primary mb-3">Siga a Gnosis Brasil</h5>
               <a href="https://www.facebook.com/gnosisbrasil/" target="_blank" class="social-icon"><i class="fab fa-facebook"></i></a>
