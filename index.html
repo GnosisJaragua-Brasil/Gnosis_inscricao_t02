@@ -250,10 +250,93 @@
       content: " *";
       color: #dc3545;
     }
+
+    /* --- TELINHA FLUTUANTE --- */
+    .floating-panel {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 300px;
+      background-color: rgba(9, 52, 86, 0.85); /* Cor escura com transparência */
+      border-radius: 10px;
+      padding: 15px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      z-index: 1000;
+      backdrop-filter: blur(5px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      animation: slideIn 0.5s ease-out;
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .floating-panel h5 {
+      color: var(--color-text-light);
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+
+    .floating-panel p {
+      color: #fff;
+      font-size: 0.9rem;
+      margin-bottom: 15px;
+      line-height: 1.4;
+    }
+
+    .floating-panel .btn {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 1.2rem;
+      cursor: pointer;
+      opacity: 0.7;
+      transition: opacity 0.3s;
+    }
+
+    .close-btn:hover {
+      opacity: 1;
+    }
+
+    @media (max-width: 576px) {
+      .floating-panel {
+        width: calc(100% - 40px);
+        right: 20px;
+        left: 20px;
+      }
+    }
   </style>
 </head>
 
 <body>
+  <!-- Telinha Flutuante -->
+  <div id="floatingPanel" class="floating-panel">
+    <button class="close-btn" id="closePanel">
+      <i class="fas fa-times"></i>
+    </button>
+    <h5>📅 Cronograma do Curso</h5>
+    <p>Confira as datas e horários das próximas aulas para organizar sua agenda.</p>
+    <a href="cronograma_t02.html" class="btn btn-gnosis-primary">
+      <i class="fas fa-calendar-alt me-2"></i> Ver Cronograma
+    </a>
+  </div>
+
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
       <a class="navbar-brand" href="#">
@@ -417,5 +500,27 @@ Equipe Gnosis Jaraguá do Sul">
 
   <!-- Bootstrap Bundle JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Script para controlar a telinha flutuante -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const floatingPanel = document.getElementById('floatingPanel');
+      const closeButton = document.getElementById('closePanel');
+      
+      // Verificar se o usuário já fechou a telinha anteriormente
+      if (!localStorage.getItem('floatingPanelClosed')) {
+        floatingPanel.style.display = 'block';
+      } else {
+        floatingPanel.style.display = 'none';
+      }
+      
+      // Fechar a telinha quando o botão X for clicado
+      closeButton.addEventListener('click', function() {
+        floatingPanel.style.display = 'none';
+        // Salvar no localStorage que o usuário fechou a telinha
+        localStorage.setItem('floatingPanelClosed', 'true');
+      });
+    });
+  </script>
 </body>
 </html>
