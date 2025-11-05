@@ -257,7 +257,7 @@
       bottom: 20px;
       right: 20px;
       width: 300px;
-      background-color: rgba(9, 52, 86, 0.85); /* Cor escura com transparência */
+      background-color: rgba(9, 52, 86, 0.95); /* Menos transparência */
       border-radius: 10px;
       padding: 15px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
@@ -265,6 +265,7 @@
       backdrop-filter: blur(5px);
       border: 1px solid rgba(255, 255, 255, 0.1);
       animation: slideIn 0.5s ease-out;
+      display: none; /* Inicialmente escondida */
     }
 
     @keyframes slideIn {
@@ -314,11 +315,13 @@
       opacity: 1;
     }
 
+    /* Mobile específico */
     @media (max-width: 576px) {
       .floating-panel {
         width: calc(100% - 40px);
         right: 20px;
         left: 20px;
+        bottom: 70px; /* Acima da barra de navegação */
       }
     }
   </style>
@@ -503,28 +506,48 @@ Equipe Gnosis Jaraguá do Sul">
 
   <!-- Script para controlar a telinha flutuante com tempo de expiração -->
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const floatingPanel = document.getElementById('floatingPanel');
-      const closeButton = document.getElementById('closePanel');
-      const storageKey = 'floatingPanelClosed';
-      const oneDay = 24 * 60 * 60 * 5; // 1 dia em milissegundos
-      
-      const lastClosed = localStorage.getItem(storageKey);
-      
-      // Mostrar se nunca foi fechado ou se passou mais de 1 dia
-      if (!lastClosed || (Date.now() - parseInt(lastClosed)) > oneDay) {
-          floatingPanel.style.display = 'block';
-      } else {
-          floatingPanel.style.display = 'none';
-      }
-      
-      // Fechar a telinha quando o botão X for clicado
-      closeButton.addEventListener('click', function() {
-          floatingPanel.style.display = 'none';
-          // Salva o timestamp atual
-          localStorage.setItem(storageKey, Date.now().toString());
-      });
-    });
+    function initFloatingPanel() {
+        const floatingPanel = document.getElementById('floatingPanel');
+        const closeButton = document.getElementById('closePanel');
+        const storageKey = 'floatingPanelClosed';
+        const fiveSeconds = 5000; // 5 segundos
+        
+        console.log('Iniciando telinha flutuante...'); // Para debug
+        
+        let lastClosed = null;
+        try {
+            lastClosed = localStorage.getItem(storageKey);
+            console.log('Último fechamento:', lastClosed);
+        } catch (e) {
+            console.log('localStorage não disponível');
+        }
+        
+        // Sempre mostrar por padrão se não conseguir verificar
+        if (lastClosed === null || (Date.now() - parseInt(lastClosed)) > fiveSeconds) {
+            floatingPanel.style.display = 'block';
+            console.log('Mostrando telinha');
+        } else {
+            floatingPanel.style.display = 'none';
+            console.log('Escondendo telinha');
+        }
+        
+        closeButton.addEventListener('click', function() {
+            floatingPanel.style.display = 'none';
+            try {
+                localStorage.setItem(storageKey, Date.now().toString());
+                console.log('Telinha fechada e salva');
+            } catch (e) {
+                console.log('Erro ao salvar');
+            }
+        });
+    }
+    
+    // Executar quando o DOM estiver pronto
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initFloatingPanel);
+    } else {
+        initFloatingPanel();
+    }
   </script>
 </body>
 </html>
