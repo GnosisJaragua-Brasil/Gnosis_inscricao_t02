@@ -256,149 +256,87 @@
       color: #dc3545;
     }
 
-    /* --- TELINHA FLUTUANTE ELEGANTE --- */
+    /* --- TELINHA FLUTUANTE MOBILE OTIMIZADA --- */
     .floating-panel {
       position: fixed;
       bottom: 20px;
       right: 20px;
-      width: 320px;
-      background: linear-gradient(135deg, #093456 0%, #0a3d63 100%);
-      border-radius: 16px;
+      width: 300px;
+      background-color: #093456; /* Cor sólida no mobile */
+      border-radius: 12px;
       padding: 20px;
-      box-shadow: 
-        0 10px 40px rgba(0, 0, 0, 0.3),
-        0 0 0 1px rgba(255, 255, 255, 0.1);
-      z-index: 10000;
-      border: 1px solid rgba(204, 153, 51, 0.3);
-      opacity: 0;
-      transform: translateY(30px) scale(0.95);
-      transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+      z-index: 10000; /* Z-index muito alto para mobile */
+      border: 2px solid var(--color-text-light);
+      animation: slideInMobile 0.6s ease-out;
+      display: none;
     }
 
-    .floating-panel.show {
-      opacity: 1;
-      transform: translateY(0) scale(1);
-    }
-
-    /* Efeito de brilho sutil */
-    .floating-panel::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 1px;
-      background: linear-gradient(90deg, 
-        transparent 0%, 
-        rgba(204, 153, 51, 0.4) 50%, 
-        transparent 100%);
-      border-radius: 16px 16px 0 0;
+    /* Animação específica para mobile */
+    @keyframes slideInMobile {
+      from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
     }
 
     .floating-panel h5 {
       color: var(--color-text-light);
-      font-size: 1.15rem;
-      margin-bottom: 12px;
+      font-size: 1.1rem;
+      margin-bottom: 10px;
       font-weight: 600;
-      text-align: center;
     }
 
     .floating-panel p {
-      color: #e8f4f8;
-      font-size: 0.92rem;
-      margin-bottom: 18px;
-      line-height: 1.5;
-      text-align: center;
-      opacity: 0.9;
+      color: #fff;
+      font-size: 0.9rem;
+      margin-bottom: 15px;
+      line-height: 1.4;
     }
 
     .floating-panel .btn {
       width: 100%;
-      margin-bottom: 8px;
-      border-radius: 10px;
-      padding: 10px 16px;
-      font-weight: 500;
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .floating-panel .btn::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, 
-        transparent, 
-        rgba(255, 255, 255, 0.2), 
-        transparent);
-      transition: left 0.6s;
-    }
-
-    .floating-panel .btn:hover::before {
-      left: 100%;
+      margin-bottom: 10px;
     }
 
     .close-btn {
       position: absolute;
-      top: 12px;
-      right: 12px;
-      background: rgba(255, 255, 255, 0.1);
+      top: 10px;
+      right: 10px;
+      background: none;
       border: none;
       color: #fff;
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.9rem;
+      font-size: 1.2rem;
       cursor: pointer;
       opacity: 0.7;
-      transition: all 0.3s ease;
-      backdrop-filter: blur(5px);
+      transition: opacity 0.3s;
+      z-index: 10001;
     }
 
     .close-btn:hover {
       opacity: 1;
-      background: rgba(255, 255, 255, 0.2);
-      transform: rotate(90deg);
     }
 
-    /* Mobile específico */
+    /* Mobile específico - mais agressivo */
     @media (max-width: 768px) {
       .floating-panel {
-        width: 90vw;
+        width: 85vw;
         left: 50%;
         right: auto;
-        transform: translateX(-50%) translateY(30px) scale(0.95);
-        bottom: 90px;
-        margin: 0;
+        transform: translateX(-50%);
+        bottom: 80px;
+        background-color: #093456;
+        border: 2px solid var(--color-text-light);
       }
-      
-      .floating-panel.show {
-        transform: translateX(-50%) translateY(0) scale(1);
-      }
-    }
-
-    /* Efeito de flutuação sutil */
-    @keyframes float {
-      0%, 100% { transform: translateY(0) scale(1); }
-      50% { transform: translateY(-5px) scale(1.02); }
-    }
-
-    .floating-panel.show:hover {
-      animation: float 3s ease-in-out infinite;
     }
 
     /* Forçar display se JS falhar */
     .no-js .floating-panel {
       display: block !important;
-      opacity: 1 !important;
-      transform: none !important;
     }
   </style>
 </head>
@@ -409,8 +347,6 @@
     <style>
       .floating-panel {
         display: block !important;
-        opacity: 1 !important;
-        transform: none !important;
       }
     </style>
   </noscript>
@@ -586,10 +522,11 @@ Equipe Gnosis Jaraguá do Sul">
   <!-- Bootstrap Bundle JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-  <!-- Script com Animação Elegante -->
+  <!-- Script Mobile Otimizado -->
   <script>
+    // Versão ultra-simplificada e robusta para mobile
     function showFloatingPanel() {
-        console.log('Mobile: Iniciando telinha com animação...');
+        console.log('Mobile: Tentando mostrar telinha...');
         const panel = document.getElementById('floatingPanel');
         const closeBtn = document.getElementById('closePanel');
         
@@ -598,40 +535,29 @@ Equipe Gnosis Jaraguá do Sul">
             return;
         }
         
-        // Verificação de tempo
+        // No mobile, mostra sempre (com verificação de tempo)
         try {
             const lastClosed = localStorage.getItem('floatingPanelClosed');
             const fiveSeconds = 5000; // 5 segundos
             
             if (!lastClosed || (Date.now() - parseInt(lastClosed)) > fiveSeconds) {
-                // Mostrar com animação suave
-                setTimeout(() => {
-                    panel.classList.add('show');
-                    console.log('Mobile: Telinha exibida com animação');
-                }, 300); // Pequeno delay para suavizar
+                panel.style.display = 'block';
+                console.log('Mobile: Telinha exibida com sucesso');
             } else {
                 panel.style.display = 'none';
                 console.log('Mobile: Telinha escondida (ainda não expirou)');
             }
         } catch (e) {
-            // Fallback com animação
-            setTimeout(() => {
-                panel.classList.add('show');
-                console.log('Mobile: Telinha exibida (fallback com animação)');
-            }, 300);
+            // Se der erro, mostra de qualquer forma
+            panel.style.display = 'block';
+            console.log('Mobile: Telinha exibida (fallback)');
         }
         
         // Configurar botão de fechar
         if (closeBtn) {
             closeBtn.onclick = function() {
-                panel.classList.remove('show');
+                panel.style.display = 'none';
                 console.log('Mobile: Telinha fechada pelo usuário');
-                
-                // Esperar a animação terminar antes de esconder
-                setTimeout(() => {
-                    panel.style.display = 'none';
-                }, 500);
-                
                 try {
                     localStorage.setItem('floatingPanelClosed', Date.now().toString());
                 } catch(e) {
@@ -641,15 +567,26 @@ Equipe Gnosis Jaraguá do Sul">
         }
     }
 
-    // Inicialização suave
-    document.addEventListener('DOMContentLoaded', function() {
-        setTimeout(showFloatingPanel, 800); // Delay para carregamento da página
-    });
+    // Múltiplas formas de inicializar para mobile
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', showFloatingPanel);
+    } else {
+        showFloatingPanel();
+    }
     
     window.addEventListener('load', showFloatingPanel);
     
-    // Fallback final
-    setTimeout(showFloatingPanel, 1500);
+    // Fallback final - força exibição após 2 segundos
+    setTimeout(function() {
+        const panel = document.getElementById('floatingPanel');
+        if (panel && panel.style.display === 'none') {
+            console.log('Mobile: Fallback - forçando exibição');
+            panel.style.display = 'block';
+        }
+    }, 2000);
+
+    // Fallback extra para casos extremos
+    setTimeout(showFloatingPanel, 500);
   </script>
 </body>
 </html>
