@@ -501,24 +501,28 @@ Equipe Gnosis Jaraguá do Sul">
   <!-- Bootstrap Bundle JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-  <!-- Script para controlar a telinha flutuante -->
+  <!-- Script para controlar a telinha flutuante com tempo de expiração -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       const floatingPanel = document.getElementById('floatingPanel');
       const closeButton = document.getElementById('closePanel');
+      const storageKey = 'floatingPanelClosed';
+      const oneDay = 24 * 60 * 60 * 5; // 1 dia em milissegundos
       
-      // Verificar se o usuário já fechou a telinha anteriormente
-      if (!localStorage.getItem('floatingPanelClosed')) {
-        floatingPanel.style.display = 'block';
+      const lastClosed = localStorage.getItem(storageKey);
+      
+      // Mostrar se nunca foi fechado ou se passou mais de 1 dia
+      if (!lastClosed || (Date.now() - parseInt(lastClosed)) > oneDay) {
+          floatingPanel.style.display = 'block';
       } else {
-        floatingPanel.style.display = 'none';
+          floatingPanel.style.display = 'none';
       }
       
       // Fechar a telinha quando o botão X for clicado
       closeButton.addEventListener('click', function() {
-        floatingPanel.style.display = 'none';
-        // Salvar no localStorage que o usuário fechou a telinha
-        localStorage.setItem('floatingPanelClosed', 'true');
+          floatingPanel.style.display = 'none';
+          // Salva o timestamp atual
+          localStorage.setItem(storageKey, Date.now().toString());
       });
     });
   </script>
