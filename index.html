@@ -17,11 +17,6 @@
   <!-- Favicon -->
   <link rel="icon" href="https://gnosisbrasil.com/wp-content/uploads/2020/07/cropped-logo-sol-7-32x32.webp" type="image/webp">
 
-  <!-- Detectar JS -->
-  <script>
-    document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/, 'js-enabled');
-  </script>
-
   <!-- Estilos personalizados -->
   <style>
     :root {
@@ -256,31 +251,30 @@
       color: #dc3545;
     }
 
-    /* --- TELINHA FLUTUANTE MOBILE OTIMIZADA --- */
+    /* --- TELINHA FLUTUANTE --- */
     .floating-panel {
       position: fixed;
       bottom: 20px;
       right: 20px;
       width: 300px;
-      background-color: #093456; /* Cor sólida no mobile */
-      border-radius: 12px;
-      padding: 20px;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
-      z-index: 10000; /* Z-index muito alto para mobile */
-      border: 2px solid var(--color-text-light);
-      animation: slideInMobile 0.6s ease-out;
-      display: none;
+      background-color: rgba(9, 52, 86, 0.85); /* Cor escura com transparência */
+      border-radius: 10px;
+      padding: 15px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      z-index: 1000;
+      backdrop-filter: blur(5px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      animation: slideIn 0.5s ease-out;
     }
 
-    /* Animação específica para mobile */
-    @keyframes slideInMobile {
+    @keyframes slideIn {
       from {
         opacity: 0;
-        transform: translateY(30px) scale(0.95);
+        transform: translateY(20px);
       }
       to {
         opacity: 1;
-        transform: translateY(0) scale(1);
+        transform: translateY(0);
       }
     }
 
@@ -314,43 +308,52 @@
       cursor: pointer;
       opacity: 0.7;
       transition: opacity 0.3s;
-      z-index: 10001;
     }
 
     .close-btn:hover {
       opacity: 1;
     }
 
-    /* Mobile específico - mais agressivo */
-    @media (max-width: 768px) {
+    @media (max-width: 576px) {
       .floating-panel {
-        width: 85vw;
-        left: 50%;
-        right: auto;
-        transform: translateX(-50%);
-        bottom: 80px;
-        background-color: #093456;
-        border: 2px solid var(--color-text-light);
+        width: calc(100% - 40px);
+        right: 20px;
+        left: 20px;
       }
     }
 
-    /* Forçar display se JS falhar */
-    .no-js .floating-panel {
-      display: block !important;
+
+
+    /* No seu CSS, adicione: */
+.floating-panel {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 300px;
+    background-color: rgba(9, 52, 86, 0.95); /* Menos transparência no mobile */
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    animation: slideIn 0.5s ease-out;
+    display: none; /* Inicialmente escondida */
+}
+
+/* Mobile específico */
+@media (max-width: 576px) {
+    .floating-panel {
+        width: calc(100% - 40px);
+        right: 20px;
+        left: 20px;
+        bottom: 70px; /* Acima da barra de navegação */
     }
+}
   </style>
 </head>
 
-<body class="js-enabled">
-  <!-- Fallback para quando JS está desabilitado -->
-  <noscript>
-    <style>
-      .floating-panel {
-        display: block !important;
-      }
-    </style>
-  </noscript>
-
+<body>
   <!-- Telinha Flutuante -->
   <div id="floatingPanel" class="floating-panel">
     <button class="close-btn" id="closePanel">
@@ -383,6 +386,11 @@
           <li class="nav-item">
             <a class="nav-link" href="index.html">Inscrição</a>
           </li>
+          <!--
+          <li class="nav-item">
+            <a class="nav-link" href="presenca.html">Presença</a>
+          </li>
+        -->
         </ul>
       </div>
     </div>
@@ -522,71 +530,31 @@ Equipe Gnosis Jaraguá do Sul">
   <!-- Bootstrap Bundle JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-  <!-- Script Mobile Otimizado -->
+  <!-- Script para controlar a telinha flutuante com tempo de expiração -->
   <script>
-    // Versão ultra-simplificada e robusta para mobile
-    function showFloatingPanel() {
-        console.log('Mobile: Tentando mostrar telinha...');
-        const panel = document.getElementById('floatingPanel');
-        const closeBtn = document.getElementById('closePanel');
-        
-        if (!panel) {
-            console.log('Mobile: Telinha não encontrada');
-            return;
-        }
-        
-        // No mobile, mostra sempre (com verificação de tempo)
-        try {
-            const lastClosed = localStorage.getItem('floatingPanelClosed');
-            const fiveSeconds = 5000; // 5 segundos
-            
-            if (!lastClosed || (Date.now() - parseInt(lastClosed)) > fiveSeconds) {
-                panel.style.display = 'block';
-                console.log('Mobile: Telinha exibida com sucesso');
-            } else {
-                panel.style.display = 'none';
-                console.log('Mobile: Telinha escondida (ainda não expirou)');
-            }
-        } catch (e) {
-            // Se der erro, mostra de qualquer forma
-            panel.style.display = 'block';
-            console.log('Mobile: Telinha exibida (fallback)');
-        }
-        
-        // Configurar botão de fechar
-        if (closeBtn) {
-            closeBtn.onclick = function() {
-                panel.style.display = 'none';
-                console.log('Mobile: Telinha fechada pelo usuário');
-                try {
-                    localStorage.setItem('floatingPanelClosed', Date.now().toString());
-                } catch(e) {
-                    console.log('Mobile: Não foi possível salvar no localStorage');
-                }
-            };
-        }
-    }
-
-    // Múltiplas formas de inicializar para mobile
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', showFloatingPanel);
-    } else {
-        showFloatingPanel();
-    }
+    document.addEventListener('DOMContentLoaded', function() {
+      const floatingPanel = document.getElementById('floatingPanel');
+      const closeButton = document.getElementById('closePanel');
+      const storageKey = 'floatingPanelClosed';
+      const oneDay = 24 * 60 * 60 * 5; // 1 dia em milissegundos
+      
+      const lastClosed = localStorage.getItem(storageKey);
+      
+      // Mostrar se nunca foi fechado ou se passou mais de 1 dia
+      if (!lastClosed || (Date.now() - parseInt(lastClosed)) > oneDay) {
+          floatingPanel.style.display = 'block';
+      } else {
+          floatingPanel.style.display = 'none';
+      }
+      
+      // Fechar a telinha quando o botão X for clicado
+      closeButton.addEventListener('click', function() {
+          floatingPanel.style.display = 'none';
+          // Salva o timestamp atual
+          localStorage.setItem(storageKey, Date.now().toString());
+      });
+    });
     
-    window.addEventListener('load', showFloatingPanel);
-    
-    // Fallback final - força exibição após 2 segundos
-    setTimeout(function() {
-        const panel = document.getElementById('floatingPanel');
-        if (panel && panel.style.display === 'none') {
-            console.log('Mobile: Fallback - forçando exibição');
-            panel.style.display = 'block';
-        }
-    }, 2000);
-
-    // Fallback extra para casos extremos
-    setTimeout(showFloatingPanel, 500);
   </script>
 </body>
 </html>
