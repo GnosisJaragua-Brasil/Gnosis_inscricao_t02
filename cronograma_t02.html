@@ -409,11 +409,11 @@
     .floating-social-container {
       position: fixed;
       bottom: 30px;
-      right: 30px; /* ← MUDADO PARA DIREITA */
+      right: 30px;
       z-index: 1000;
       display: flex;
       flex-direction: column;
-      align-items: flex-end; /* ← MUDADO PARA FLEX-END */
+      align-items: flex-end;
     }
 
     .floating-toggle-btn {
@@ -630,13 +630,13 @@
       /* CORREÇÃO PARA A TELA FLUTUANTE EM DISPOSITIVOS MÓVEIS */
       .floating-social-container {
         bottom: 15px;
-        right: 15px; /* ← MUDADO PARA DIREITA */
+        right: 15px;
       }
       
       .social-panel {
         width: calc(100vw - 30px);
         max-width: 320px;
-        right: 0; /* ← MUDADO PARA RIGHT */
+        right: 0;
       }
       
       .social-icons-grid {
@@ -767,7 +767,7 @@
 
           <div class="info-section">
             <h3>CARACTERÍSTICAS DO CURSO</h3>
-            <p>O curso é sem fins lucrativos, o que significa que não possui custos financeiros. Entretanto, para poder permanecer na turma, há necessidade de assiduidade e pontualidade. Para melhor aproveitamento do conteúdo, o número máximo de faltas é 4, portanto busque se organizar para não perder os temas. Possui três divisões: Câmara Pública (tema de abertura, introdutório e motivacional), Câmara Básica (temas 01 ao 16) e Câmara Avançada (temas 17 ao 23).</p>
+            <p>O curso é <strong>sem fins lucrativos, </strong>o que significa que não possui custos financeiros. Entretanto, para poder permanecer na turma, há necessidade de assiduidade e pontualidade. Para melhor aproveitamento do conteúdo, o número máximo de faltas é 4, portanto busque se organizar para não perder os temas. Possui três divisões: Câmara Pública (tema de abertura, introdutório e motivacional), Câmara Básica (temas 01 ao 16) e Câmara Avançada (temas 17 ao 23).</p>
           </div>
 
           <div class="info-section">
@@ -804,6 +804,7 @@
               <div class="schedule-subtitle">
                 <div><strong>DIAS: QUARTAS E SEXTAS</strong></div>
                 <div><strong>HORÁRIOS: 19H30 ÀS 21H</strong></div>
+                <div><strong>INÍCIO: 26/11/2025</strong></div>
               </div>
             </div>
 
@@ -829,19 +830,7 @@
           </div>
         </div>
 
-        <div class="confirmation-card text-center">
-          <div class="social-media mb-4">
-            <h5 class="text-primary mb-3">Siga a Gnosis Brasil</h5>
-            <a href="https://www.facebook.com/gnosisbrasil/" target="_blank" class="social-icon"><i class="fab fa-facebook"></i></a>
-            <a href="https://www.youtube.com/gnosisbrasilcanal" target="_blank" class="social-icon"><i class="fab fa-youtube"></i></a>
-            <a href="https://www.instagram.com/gnosisbrasil" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
-          </div>
-
-          <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-            <a href="https://gnosisbrasil.com" class="btn btn-gnosis btn-lg px-4"><i class="fas fa-globe me-2"></i> Visite nosso Site</a>
-            <a href="index.html" class="btn btn-light btn-lg px-4"><i class="fas fa-home me-2"></i> Voltar ao Início</a>
-          </div>
-        </div>
+        
       </div>
     </div>
   </div>
@@ -1026,19 +1015,19 @@
     "Apresentação da 2ª Câmara"
   ];
 
-  // DATAS ATUALIZADAS CONFORME SOLICITADO
-  // Aulas às quartas e sextas, começando em 19/11/2025
+  // DATAS ATUALIZADAS - INÍCIO EM 26/11/2025
+  // Aulas às quartas e sextas, começando em 26/11/2025
   const scheduleDates = [
-    new Date('2025-11-19T19:30:00'), // 1 - qua
-    new Date('2025-11-21T19:30:00'), // 2 - sex
-    new Date('2025-11-26T19:30:00'), // 3 - qua
-    new Date('2025-11-28T19:30:00'), // 4 - sex
-    new Date('2025-12-03T19:30:00'), // 5 - qua
-    new Date('2025-12-05T19:30:00'), // 6 - sex
-    new Date('2025-12-10T19:30:00'), // 7 - qua
-    new Date('2025-12-12T19:30:00'), // 8 - sex
-    new Date('2025-12-17T19:30:00'), // 9 - qua
-    new Date('2025-12-19T19:30:00'), // 10 - sex
+    new Date('2025-11-26T19:30:00'), // 1 - qua
+    new Date('2025-11-28T19:30:00'), // 2 - sex
+    new Date('2025-12-03T19:30:00'), // 3 - qua
+    new Date('2025-12-05T19:30:00'), // 4 - sex
+    new Date('2025-12-10T19:30:00'), // 5 - qua
+    new Date('2025-12-12T19:30:00'), // 6 - sex
+    new Date('2025-12-17T19:30:00'), // 7 - qua
+    new Date('2025-12-19T19:30:00'), // 8 - sex
+    new Date('2025-12-26T19:30:00'), // 9 - sex (Natal - ajuste)
+    new Date('2025-12-31T19:30:00'), // 10 - qua (Ano Novo - ajuste)
     new Date('2026-01-07T19:30:00'), // 11 - qua
     new Date('2026-01-09T19:30:00'), // 12 - sex
     new Date('2026-01-14T19:30:00'), // 13 - qua
@@ -1063,7 +1052,7 @@
   // Função para atualizar a barra de progresso
   function updateProgressBar() {
     const today = new Date();
-    const startDate = new Date('2025-11-19T19:30:00');
+    const startDate = new Date('2025-11-26T19:30:00'); // ATUALIZADO
     const endDate = new Date('2026-02-18T19:30:00');
     
     // Calcular progresso baseado na data atual
