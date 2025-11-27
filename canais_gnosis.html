@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gnosis Jaraguá do Sul - Links Oficiais</title>
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Ícones Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+    <style>
+        :root {
+            --primary-color: #0d6efd;
+            --secondary-color: #6610f2;
+            --accent-color: #198754;
+            --text-color: #333;
+            --light-bg: #f8f9fa;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f5f5f5 0%, #e9ecef 100%);
+            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text-color);
+            padding: 20px 0;
+        }
+
+        .container-links {
+            max-width: 520px;
+            margin: auto;
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        .logo-container {
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .logo {
+            width: 150px;
+            margin-bottom: 10px;
+            filter: drop-shadow(0 3px 6px rgba(0,0,0,0.1));
+        }
+
+        h1 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #333;
+            position: relative;
+            display: inline-block;
+        }
+        
+        h1::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            margin: 10px auto;
+            border-radius: 2px;
+        }
+
+        .sub {
+            font-size: 1rem;
+            margin-bottom: 25px;
+            color: #666;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .card-link {
+            background: white;
+            border-radius: 14px;
+            padding: 18px 20px;
+            margin: 12px 0;
+            text-decoration: none;
+            color: #222;
+            font-size: 1.1rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+            transition: transform .15s ease, box-shadow .15s ease;
+            border: none;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .card-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.12);
+            color: #222;
+        }
+        
+        .card-link:hover::before {
+            transform: scaleX(1);
+        }
+
+        .card-icon {
+            font-size: 1.4rem;
+            margin-right: 15px;
+            width: 30px;
+            text-align: center;
+        }
+        
+        .card-text {
+            flex: 1;
+            text-align: left;
+        }
+        
+        .card-arrow {
+            color: #999;
+            transition: transform 0.3s ease;
+        }
+        
+        .card-link:hover .card-arrow {
+            transform: translateX(5px);
+            color: var(--primary-color);
+        }
+
+        footer {
+            margin-top: 40px;
+            font-size: 0.85rem;
+            color: #777;
+            line-height: 1.5;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+        
+        /* Cores específicas para cada tipo de link */
+        .card-link.whatsapp {
+            border-left: 4px solid #25d366;
+        }
+        
+        .card-link.youtube {
+            border-left: 4px solid #ff0000;
+        }
+        
+        .card-link.facebook {
+            border-left: 4px solid #1877f2;
+        }
+        
+        .card-link.instagram {
+            border-left: 4px solid #e4405f;
+        }
+        
+        .card-link.website {
+            border-left: 4px solid var(--primary-color);
+        }
+        
+        .card-link.courses {
+            border-left: 4px solid var(--accent-color);
+        }
+        
+        .card-link.events {
+            border-left: 4px solid #ff6b35;
+        }
+        
+        .card-link.contact {
+            border-left: 4px solid #6f42c1;
+        }
+        
+        /* Botão flutuante para compartilhar */
+        .floating-share {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            width: 60px;
+            height: 60px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+            transition: all 0.3s;
+            z-index: 999;
+            border: none;
+        }
+
+        .floating-share:hover {
+            transform: scale(1.1);
+            background: var(--secondary-color);
+        }
+        
+        /* Destaque para o grupo do WhatsApp */
+        .whatsapp-highlight {
+            position: relative;
+            overflow: visible;
+        }
+        
+        .whatsapp-highlight::after {
+            content: 'Entrar no Grupo';
+            position: absolute;
+            top: -8px;
+            right: 15px;
+            background: #25d366;
+            color: white;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: bold;
+        }
+        
+        /* Responsividade */
+        @media (max-width: 576px) {
+            .container-links {
+                padding: 20px 15px;
+            }
+            
+            .logo {
+                width: 130px;
+            }
+            
+            h1 {
+                font-size: 1.4rem;
+            }
+            
+            .card-link {
+                padding: 16px 18px;
+                font-size: 1rem;
+            }
+            
+            .card-icon {
+                font-size: 1.2rem;
+                margin-right: 12px;
+            }
+            
+            .floating-share {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+                bottom: 20px;
+                right: 20px;
+            }
+            
+            .whatsapp-highlight::after {
+                font-size: 0.6rem;
+                padding: 2px 8px;
+            }
+        }
+        
+        /* Animação de entrada dos cards */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .card-link {
+            animation: fadeInUp 0.5s ease forwards;
+            opacity: 0;
+        }
+        
+        .card-link:nth-child(1) { animation-delay: 0.1s; }
+        .card-link:nth-child(2) { animation-delay: 0.2s; }
+        .card-link:nth-child(3) { animation-delay: 0.3s; }
+        .card-link:nth-child(4) { animation-delay: 0.4s; }
+        .card-link:nth-child(5) { animation-delay: 0.5s; }
+        .card-link:nth-child(6) { animation-delay: 0.6s; }
+        .card-link:nth-child(7) { animation-delay: 0.7s; }
+        .card-link:nth-child(8) { animation-delay: 0.8s; }
+    </style>
+</head>
+
+<body>
+
+    <div class="container-links">
+        
+        <!-- Logo -->
+        <div class="logo-container">
+            <img src="https://gnosisbrasil.com/wp-content/uploads/2021/03/cropped-logo-gnosis-brasil-site.png" 
+                 class="logo" 
+                 alt="Logo Gnosis Brasil"
+                 onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"150\" height=\"80\" viewBox=\"0 0 150 80\"><rect width=\"150\" height=\"80\" fill=\"%23f8f9fa\" rx=\"10\"/><text x=\"50%\" y=\"50%\" dominant-baseline=\"middle\" text-anchor=\"middle\" font-family=\"Arial\" font-size=\"14\" fill=\"%230d6efd\">GNOSIS BRASIL</text></svg>'">
+        </div>
+
+        <h1>Gnosis Brasil – Jaraguá do Sul</h1>
+        <p class="sub">Acesse nossos canais, grupos e redes oficiais para conteúdos, eventos e estudos gnósticos</p>
+
+        <!-- Links principais -->
+        <a href="https://gnosisbrasil.com" target="_blank" class="card-link website">
+            <div class="card-icon">
+                <i class="fas fa-globe"></i>
+            </div>
+            <div class="card-text">
+                Site Oficial
+            </div>
+            <div class="card-arrow">
+                <i class="fas fa-chevron-right"></i>
+            </div>
+        </a>
+
+        <a href="https://api.whatsapp.com/send?phone=5547999999999&text=Olá! Gostaria de participar do grupo Gnosis Jaraguá do Sul" 
+           target="_blank" 
+           class="card-link whatsapp whatsapp-highlight">
+            <div class="card-icon">
+                <i class="fab fa-whatsapp"></i>
+            </div>
+            <div class="card-text">
+                Grupo de WhatsApp – Jaraguá do Sul
+            </div>
+            <div class="card-arrow">
+                <i class="fas fa-chevron-right"></i>
+            </div>
+        </a>
+
+        <a href="https://youtube.com/gnosisbrasilcanal" target="_blank" class="card-link youtube">
+            <div class="card-icon">
+                <i class="fab fa-youtube"></i>
+            </div>
+            <div class="card-text">
+                Canal no YouTube
+            </div>
+            <div class="card-arrow">
+                <i class="fas fa-chevron-right"></i>
+            </div>
+        </a>
+
+        <a href="https://facebook.com/gnosisbrasil" target="_blank" class="card-link facebook">
+            <div class="card-icon">
+                <i class="fab fa-facebook"></i>
+            </div>
+            <div class="card-text">
+                Página no Facebook
+            </div>
+            <div class="card-arrow">
+                <i class="fas fa-chevron-right"></i>
+            </div>
+        </a>
+
+        <a href="https://instagram.com/gnosis_jaragua" target="_blank" class="card-link instagram">
+            <div class="card-icon">
+                <i class="fab fa-instagram"></i>
+            </div>
+            <div class="card-text">
+                Instagram Jaraguá do Sul
+            </div>
+            <div class="card-arrow">
+                <i class="fas fa-chevron-right"></i>
+            </div>
+        </a>
+
+        <a href="https://gnosisbrasil.com/cursos" target="_blank" class="card-link courses">
+            <div class="card-icon">
+                <i class="fas fa-graduation-cap"></i>
+            </div>
+            <div class="card-text">
+                Cursos & Programação
+            </div>
+            <div class="card-arrow">
+                <i class="fas fa-chevron-right"></i>
+            </div>
+        </a>
+
+        <a href="https://gnosisbrasil.com/eventos" target="_blank" class="card-link events">
+            <div class="card-icon">
+                <i class="fas fa-calendar-alt"></i>
+            </div>
+            <div class="card-text">
+                Eventos & Palestras
+            </div>
+            <div class="card-arrow">
+                <i class="fas fa-chevron-right"></i>
+            </div>
+        </a>
+
+        <a href="https://gnosisbrasil.com/contato" target="_blank" class="card-link contact">
+            <div class="card-icon">
+                <i class="fas fa-envelope"></i>
+            </div>
+            <div class="card-text">
+                Contato / Fale Conosco
+            </div>
+            <div class="card-arrow">
+                <i class="fas fa-chevron-right"></i>
+            </div>
+        </a>
+
+        <footer>
+            <strong>Instituto Gnosis Brasil – Jaraguá do Sul</strong><br>
+            Rua Gustavo Hagedorn, 636 – Nova Brasília<br>
+            <small>&copy; 2025 - Todos os direitos reservados</small>
+        </footer>
+    </div>
+
+    <!-- Botão flutuante para compartilhar -->
+    <button class="floating-share" onclick="sharePage()" aria-label="Compartilhar página">
+        <i class="fas fa-share-alt"></i>
+    </button>
+
+    <script>
+        // Função para compartilhar a página
+        function sharePage() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Gnosis Jaraguá do Sul - Links Oficiais',
+                    text: 'Acesse os canais oficiais da Gnosis em Jaraguá do Sul',
+                    url: window.location.href
+                })
+                .then(() => console.log('Conteúdo compartilhado com sucesso'))
+                .catch((error) => console.log('Erro ao compartilhar:', error));
+            } else {
+                // Fallback para copiar URL
+                navigator.clipboard.writeText(window.location.href)
+                    .then(() => alert('Link copiado para a área de transferência!'))
+                    .catch(err => console.error('Erro ao copiar link:', err));
+            }
+        }
+        
+        // Adiciona efeito de confirmação ao clicar nos links
+        document.querySelectorAll('.card-link').forEach(link => {
+            link.addEventListener('click', function() {
+                this.style.transform = 'scale(0.98)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 150);
+            });
+        });
+        
+        // Detectar dispositivo para otimizar o link do WhatsApp
+        function detectDevice() {
+            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+            const whatsappLink = document.querySelector('.card-link.whatsapp');
+            
+            if (isMobile) {
+                // Link para abrir diretamente no WhatsApp
+                whatsappLink.href = "https://api.whatsapp.com/send?phone=5547999999999&text=Olá! Gostaria de participar do grupo Gnosis Jaraguá do Sul";
+            } else {
+                // Link para web WhatsApp
+                whatsappLink.href = "https://web.whatsapp.com/send?phone=5547999999999&text=Olá! Gostaria de participar do grupo Gnosis Jaraguá do Sul";
+            }
+        }
+        
+        // Executar detecção de dispositivo quando a página carregar
+        window.addEventListener('load', detectDevice);
+    </script>
+</body>
+</html>
