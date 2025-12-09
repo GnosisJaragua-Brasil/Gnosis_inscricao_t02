@@ -17,6 +17,7 @@
       --color-text-light: #ffffff;
       --color-accent: #448ea0;
       --color-success: #198754;
+      --color-warning: #ffc107;
       --font-base: 'Inter', sans-serif;
       --font-heading: 'Poppins', sans-serif;
     }
@@ -204,6 +205,11 @@
       transition: all 0.3s ease;
       display: flex;
       align-items: flex-start;
+    }
+
+    .schedule-item.recess-highlight {
+      border-left: 4px solid var(--color-warning) !important;
+      background: linear-gradient(to right, #fff8e1, #f8f9fa) !important;
     }
 
     .schedule-item:hover {
@@ -403,6 +409,29 @@
 
     .info-section li {
       margin-bottom: 0.5rem;
+    }
+
+    /* Badges informativos */
+    .recess-badge {
+      background-color: var(--color-warning);
+      color: #212529;
+      padding: 3px 10px;
+      border-radius: 12px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin-left: 10px;
+      display: inline-block;
+    }
+
+    .return-badge {
+      background-color: var(--color-success);
+      color: white;
+      padding: 3px 10px;
+      border-radius: 12px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin-left: 10px;
+      display: inline-block;
     }
 
     /* ===== ESTILOS MELHORADOS PARA A TELA FLUTUANTE ===== */
@@ -805,6 +834,7 @@
                 <div><strong>DIAS: QUARTAS E SEXTAS</strong></div>
                 <div><strong>HORÁRIOS: 19H30 ÀS 21H</strong></div>
                 <div><strong>INÍCIO: 26/11/2025</strong></div>
+                <div><strong>RECESSO: 20/12/2025 a 06/01/2026</strong></div>
               </div>
             </div>
 
@@ -825,6 +855,7 @@
             <div class="alert alert-info mt-4">
               <i class="fas fa-info-circle me-2"></i>
               <strong>Observação:</strong> As datas podem sofrer ajustes conforme necessidades do grupo. 
+              <strong>Recesso de fim de ano entre 20/12/2025 e 06/01/2026.</strong>
               Todas as alterações serão comunicadas com antecedência.
             </div>
           </div>
@@ -932,7 +963,7 @@
   };
 
   // Descrições das aulas
- const lessonDescriptions = {
+  const lessonDescriptions = {
     1: "Apresenta uma visão geral sobre as origens, bases e objetivos da Gnosis como conhecimento universal.",
     2: "Mostra os 3 principais componentes da psicologia humana, suas características e como trabalhá-los à nosso favor.",
     3: "Estuda a consciência e inconsciência, causas do adormecimento da consciência no ser humano e como despertá-la.",
@@ -956,7 +987,7 @@
     21: "Mostra os diversos estados psicológicos do ser humano (adormecimento profundo, conceitos e crenças, recordação de si e consciência desperta).",
     22: "Ensina a importância de se iniciar verdadeiramente uma transformação interior, baseada no autoconhecimento e no trabalho psicológico individual sobre si mesmo. Busca que cada um desenvolva a filosofia, que faz ver a life como uma escola, onde independente das circunstâncias, sempre se tem algo a aprender. A Iniciação é a Gnosis aplicada à vida.",
     23: "Explica o funcionamento da 2ª Câmara."
-};
+  };
 
   // Imagens para cada aula
   const lessonImages = {
@@ -1017,6 +1048,8 @@
 
   // DATAS ATUALIZADAS - INÍCIO EM 26/11/2025
   // Aulas às quartas e sextas, começando em 26/11/2025
+  // Última aula antes do recesso: 19/12/2025
+  // Retorno após recesso: 07/01/2026
   const scheduleDates = [
     new Date('2025-11-26T19:30:00'), // 1 - qua
     new Date('2025-11-28T19:30:00'), // 2 - sex
@@ -1025,22 +1058,23 @@
     new Date('2025-12-10T19:30:00'), // 5 - qua
     new Date('2025-12-12T19:30:00'), // 6 - sex
     new Date('2025-12-17T19:30:00'), // 7 - qua
-    new Date('2025-12-19T19:30:00'), // 8 - sex
-    new Date('2025-12-26T19:30:00'), // 9 - sex (Natal - ajuste)
-    new Date('2025-12-31T19:30:00'), // 10 - qua (Ano Novo - ajuste)
-    new Date('2026-01-07T19:30:00'), // 11 - qua
-    new Date('2026-01-09T19:30:00'), // 12 - sex
-    new Date('2026-01-14T19:30:00'), // 13 - qua
-    new Date('2026-01-16T19:30:00'), // 14 - sex
-    new Date('2026-01-21T19:30:00'), // 15 - qua
-    new Date('2026-01-23T19:30:00'), // 16 - sex
-    new Date('2026-01-28T19:30:00'), // 17 - qua
-    new Date('2026-01-30T19:30:00'), // 18 - sex
-    new Date('2026-02-04T19:30:00'), // 19 - qua
-    new Date('2026-02-06T19:30:00'), // 20 - sex
-    new Date('2026-02-11T19:30:00'), // 21 - qua
-    new Date('2026-02-13T19:30:00'), // 22 - sex
-    new Date('2026-02-18T19:30:00')  // 23 - qua
+    new Date('2025-12-19T19:30:00'), // 8 - sex (ÚLTIMA ANTES DO RECESSO)
+    // RECESSO DE FIM DE ANO
+    new Date('2026-01-07T19:30:00'), // 9 - qua (RETORNO APÓS RECESSO)
+    new Date('2026-01-09T19:30:00'), // 10 - sex
+    new Date('2026-01-14T19:30:00'), // 11 - qua
+    new Date('2026-01-16T19:30:00'), // 12 - sex
+    new Date('2026-01-21T19:30:00'), // 13 - qua
+    new Date('2026-01-23T19:30:00'), // 14 - sex
+    new Date('2026-01-28T19:30:00'), // 15 - qua
+    new Date('2026-01-30T19:30:00'), // 16 - sex
+    new Date('2026-02-04T19:30:00'), // 17 - qua
+    new Date('2026-02-06T19:30:00'), // 18 - sex
+    new Date('2026-02-11T19:30:00'), // 19 - qua
+    new Date('2026-02-13T19:30:00'), // 20 - sex
+    new Date('2026-02-18T19:30:00'), // 21 - qua
+    new Date('2026-02-20T19:30:00'), // 22 - sex
+    new Date('2026-02-25T19:30:00')  // 23 - qua
   ];
 
   // Função para formatar data no formato brasileiro
@@ -1053,7 +1087,7 @@
   function updateProgressBar() {
     const today = new Date();
     const startDate = new Date('2025-11-26T19:30:00'); // ATUALIZADO
-    const endDate = new Date('2026-02-18T19:30:00');
+    const endDate = new Date('2026-02-25T19:30:00'); // ATUALIZADO
     
     // Calcular progresso baseado na data atual
     const totalDuration = endDate - startDate;
@@ -1090,11 +1124,21 @@
       const lessonNumber = index + 1;
       const scheduleItem = document.createElement('div');
       scheduleItem.className = 'schedule-item';
+      
+      // Destacar a última aula antes do recesso (aula 8)
+      if (lessonNumber === 8) {
+        scheduleItem.classList.add('recess-highlight');
+      }
+      
       scheduleItem.innerHTML = `
         <img src="${lessonImages[lessonNumber]}" alt="${topic}" class="schedule-image">
         <div class="schedule-content">
           <div class="schedule-header-row">
-            <div class="schedule-topic">${topic}</div>
+            <div class="schedule-topic">
+              ${topic}
+              ${lessonNumber === 8 ? '<span class="recess-badge">Última antes do recesso</span>' : ''}
+              ${lessonNumber === 9 ? '<span class="return-badge">Retorno após recesso</span>' : ''}
+            </div>
           </div>
           <div class="schedule-description">${lessonDescriptions[lessonNumber]}</div>
           <div class="schedule-footer">
