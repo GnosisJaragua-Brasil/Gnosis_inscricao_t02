@@ -3,372 +3,499 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cronograma Completo – Gnosis Jaraguá do Sul</title>
+  <title>Gnosis Social - Cronograma Interativo</title>
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="icon" href="https://gnosisbrasil.com/wp-content/uploads/2020/07/cropped-logo-sol-7-32x32.webp" type="image/webp">
 
   <style>
     :root {
-      --color-primary: #005bd2;
-      --color-dark-bg: #1e3a8a;
-      --color-text-light: #ffffff;
-      --color-accent: #448ea0;
-      --color-success: #198754;
-      --color-warning: #ffc107;
-      --font-base: 'Inter', sans-serif;
-      --font-heading: 'Poppins', sans-serif;
+      --color-primary: #4361ee;
+      --color-secondary: #3a0ca3;
+      --color-accent: #4cc9f0;
+      --color-success: #06d6a0;
+      --color-warning: #ffd166;
+      --color-danger: #ef476f;
+      --color-dark: #1a1a2e;
+      --color-light: #f8f9fa;
+      --color-gray: #6c757d;
+      --color-card-bg: #ffffff;
+      --color-sidebar-bg: #f5f7ff;
+      --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.08);
+      --shadow-hover: 0 8px 30px rgba(0, 0, 0, 0.12);
+      --radius-lg: 16px;
+      --radius-md: 12px;
+      --radius-sm: 8px;
     }
 
     body {
-      font-family: var(--font-base);
-      background-color: var(--color-dark-bg);
-      color: var(--color-text-light);
-      line-height: 1.6;
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #f5f7ff 0%, #eef1ff 100%);
+      color: #333;
+      min-height: 100vh;
+      padding-bottom: 2rem;
     }
 
-    /* Card central */
-    .confirmation-card {
-      background-color: #fff;
-      border-radius: 1rem;
-      color: #212529;
-      padding: 2.5rem;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-      text-align: center;
-      animation: fadeIn 1s ease-in-out;
-      margin: 2rem 0;
+    /* Header estilizado */
+    .main-header {
+      background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+      color: white;
+      padding: 1.5rem 0;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(10px);
     }
 
-    /* Animação fade-in */
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    h1.title-main {
-      font-family: var(--font-heading);
-      font-size: 2rem;
-      text-transform: uppercase;
-      color: var(--color-primary);
-      margin-bottom: 0.5rem;
-    }
-
-    h2.subtitle {
-      font-family: var(--font-base);
-      font-size: 1.00rem;
-      color: var(--color-success);
-      margin-bottom: 1rem;
-      border-style: solid;
-      border-radius: 7px;
-      padding: 2px;
-      border-color: rgba(0, 64, 106, 0.094);
-      display: inline-block;
-      padding: 8px 16px;
-    }
-
-    .divider {
-      width: 80px;
-      height: 3px;
-      background-color: var(--color-primary);
-      margin: 0 auto 1rem auto;
-      border-radius: 3px;
-    }
-
-    .lead {
-      font-size: 1rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .details-box {
-      padding: 1.5rem;
-      border-radius: 0.75rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .details-box {
-      background-color: #f8f9fa;
-      text-align: left;
-      color: #212529;
-    }
-
-    .details-box h5 {
-      color: var(--color-primary);
-      margin-bottom: 0.75rem;
-    }
-
-    .info-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1rem;
-      margin-top: 1rem;
-    }
-
-    .info-card {
-      background: white;
-      border-radius: 8px;
-      padding: 1rem;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      border-left: 4px solid var(--color-primary);
-      transition: transform 0.3s ease;
-    }
-
-    .info-card:hover {
-      transform: translateY(-5px);
-    }
-
-    .info-card h6 {
-      color: var(--color-primary);
-      margin-bottom: 0.5rem;
-      font-weight: 600;
-    }
-
-    .info-card p {
-      margin-bottom: 0;
-      font-size: 0.9rem;
-    }
-
-    .info-icon {
-      color: var(--color-primary);
-      margin-right: 0.5rem;
-    }
-
-    .social-icon {
-      font-size: 1.5rem;
-      margin: 0 10px;
-      color: var(--color-primary);
-      transition: all 0.3s ease;
-    }
-
-    .social-icon:hover {
-      transform: translateY(-3px);
-      color: #5a32a8;
-    }
-
-    .btn-gnosis {
-      background-color: var(--color-primary);
-      color: #fff;
-      border: none;
-      transition: all 0.3s ease;
-    }
-
-    .btn-gnosis:hover {
-      background-color: #323aa8;
-      transform: scale(1.05);
-    }
-
-    /* Estilos para o cronograma */
-    .schedule-section {
-      margin: 3rem 0;
-    }
-
-    .schedule-header {
-      text-align: center;
-      margin-bottom: 2rem;
-      padding-bottom: 1rem;
-      border-bottom: 2px solid var(--color-primary);
-    }
-
-    .schedule-title {
-      color: var(--color-primary);
-      font-weight: 700;
-      font-size: 1.5rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .schedule-subtitle {
-      color: var(--color-accent);
-      font-weight: 600;
-      font-size: 1.1rem;
-    }
-
-    .chamber-section {
-      margin-bottom: 3rem;
-    }
-
-    .chamber-title {
-      color: var(--color-primary);
-      font-weight: 600;
-      font-size: 1.3rem;
-      margin-bottom: 1.5rem;
-      padding-bottom: 0.5rem;
-      border-bottom: 1px solid #dee2e6;
-    }
-
-    .schedule-item {
-      background: #f8f9fa;
-      border-radius: 8px;
-      padding: 1.5rem;
-      margin-bottom: 1.5rem;
-      border-left: 4px solid var(--color-accent);
-      transition: all 0.3s ease;
+    .header-content {
       display: flex;
-      align-items: flex-start;
-    }
-
-    .schedule-item.recess-highlight {
-      border-left: 4px solid var(--color-warning) !important;
-      background: linear-gradient(to right, #fff8e1, #f8f9fa) !important;
-    }
-
-    .schedule-item:hover {
-      transform: translateX(5px);
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    }
-
-    .schedule-image {
-      width: 125px;
-      height: 160px;
-      border-radius: 8px;
-      object-fit: cover;
-      margin-right: 1.5rem;
-      flex-shrink: 0;
-      border: 2px solid var(--color-primary);
-    }
-
-    .schedule-content {
-      flex: 1;
-    }
-
-    .schedule-header-row {
-      display: flex;
+      align-items: center;
       justify-content: space-between;
-      align-items: flex-start;
+    }
+
+    .logo-section {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .logo {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: white;
+      padding: 5px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .site-title {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 1.8rem;
+      margin: 0;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .site-subtitle {
+      font-size: 0.9rem;
+      opacity: 0.9;
+      margin: 0;
+    }
+
+    .user-actions {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .notification-bell {
+      position: relative;
+      color: white;
+      font-size: 1.3rem;
+      cursor: pointer;
+    }
+
+    .notification-dot {
+      position: absolute;
+      top: -5px;
+      right: -5px;
+      width: 10px;
+      height: 10px;
+      background: var(--color-danger);
+      border-radius: 50%;
+      border: 2px solid var(--color-secondary);
+    }
+
+    /* Layout principal - similar a rede social */
+    .main-container {
+      display: grid;
+      grid-template-columns: 280px 1fr 320px;
+      gap: 1.5rem;
+      max-width: 1400px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+
+    /* Sidebar esquerda - Perfil e menu */
+    .sidebar-left {
+      position: sticky;
+      top: 100px;
+      height: fit-content;
+    }
+
+    .profile-card {
+      background: var(--color-card-bg);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      box-shadow: var(--shadow-card);
+      text-align: center;
+      margin-bottom: 1.5rem;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .profile-avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      margin: 0 auto 1rem;
+      border: 4px solid var(--color-primary);
+      padding: 3px;
+      background: white;
+    }
+
+    .profile-name {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 1.2rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .profile-role {
+      color: var(--color-gray);
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    .profile-stats {
+      display: flex;
+      justify-content: space-around;
+      margin: 1rem 0;
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+
+    .stat-value {
+      font-weight: 700;
+      font-size: 1.3rem;
+      color: var(--color-primary);
+    }
+
+    .stat-label {
+      font-size: 0.8rem;
+      color: var(--color-gray);
+    }
+
+    .sidebar-menu {
+      background: var(--color-card-bg);
+      border-radius: var(--radius-lg);
+      padding: 1rem;
+      box-shadow: var(--shadow-card);
+      border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .menu-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.85rem 1rem;
+      border-radius: var(--radius-sm);
+      color: #555;
+      text-decoration: none;
+      transition: all 0.3s ease;
       margin-bottom: 0.5rem;
     }
 
-    .schedule-topic {
-      color: #495057;
-      margin-bottom: 0;
-      font-weight: 600;
-      font-size: 1.1rem;
-      flex: 1;
+    .menu-item:hover, .menu-item.active {
+      background: rgba(67, 97, 238, 0.1);
+      color: var(--color-primary);
+      transform: translateX(5px);
     }
 
-    .schedule-description {
-      color: #6c757d;
-      margin-bottom: 1rem;
-      line-height: 1.5;
-      font-size: 0.95rem;
-      text-align: left;
+    .menu-item i {
+      width: 20px;
+      text-align: center;
     }
 
-    .schedule-footer {
+    /* Conteúdo central - Feed principal */
+    .main-feed {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .welcome-card {
+      background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+      color: white;
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      box-shadow: var(--shadow-card);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .welcome-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.1) 1%, transparent 1%);
+      background-size: 20px 20px;
+      opacity: 0.3;
+    }
+
+    .welcome-title {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .welcome-text {
+      opacity: 0.9;
+      position: relative;
+      z-index: 1;
+    }
+
+    .progress-card {
+      background: var(--color-card-bg);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      box-shadow: var(--shadow-card);
+      border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .progress-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-top: 1rem;
-      padding-top: 1rem;
-      border-top: 1px solid #dee2e6;
+      margin-bottom: 1rem;
     }
 
-    .schedule-date {
-      color: var(--color-accent);
-      font-size: 0.9rem;
+    .progress-title {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 1.2rem;
+      color: var(--color-dark);
+    }
+
+    .progress-percent {
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: var(--color-primary);
+    }
+
+    .progress-bar-container {
+      height: 10px;
+      background: rgba(67, 97, 238, 0.1);
+      border-radius: 10px;
+      overflow: hidden;
+      margin: 1.5rem 0;
+    }
+
+    .progress-bar {
+      height: 100%;
+      background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+      border-radius: 10px;
+      transition: width 1s ease;
+    }
+
+    .progress-dates {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      color: var(--color-gray);
+    }
+
+    /* Cards de aula estilo post de rede social */
+    .lesson-card {
+      background: var(--color-card-bg);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      box-shadow: var(--shadow-card);
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease;
+      margin-bottom: 1.5rem;
+    }
+
+    .lesson-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .lesson-card.recess {
+      border-left: 5px solid var(--color-warning);
+    }
+
+    .lesson-card.return {
+      border-left: 5px solid var(--color-success);
+    }
+
+    .lesson-header {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 1.25rem;
+    }
+
+    .lesson-avatar {
+      width: 60px;
+      height: 60px;
+      border-radius: var(--radius-md);
+      object-fit: cover;
+      margin-right: 1rem;
+      border: 3px solid white;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .lesson-info {
+      flex: 1;
+    }
+
+    .lesson-title {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 1.3rem;
+      color: var(--color-dark);
+      margin-bottom: 0.25rem;
+    }
+
+    .lesson-meta {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-size: 0.85rem;
+      color: var(--color-gray);
+    }
+
+    .lesson-date {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .lesson-tag {
+      background: rgba(67, 97, 238, 0.1);
+      color: var(--color-primary);
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
       font-weight: 500;
     }
 
-    .btn-material {
-      background-color: var(--color-primary);
-      color: white;
-      border: none;
-      border-radius: 6px;
-      padding: 0.5rem 1rem;
+    .lesson-description {
+      color: #555;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+      padding: 1rem;
+      background: rgba(0, 0, 0, 0.02);
+      border-radius: var(--radius-sm);
+    }
+
+    .lesson-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid rgba(0, 0, 0, 0.05);
+      padding-top: 1.25rem;
+    }
+
+    .action-buttons {
+      display: flex;
+      gap: 0.75rem;
+    }
+
+    .btn-action {
       display: flex;
       align-items: center;
-      justify-content: center;
-      transition: all 0.3s ease;
-      font-size: 0.9rem;
-      text-decoration: none;
-      margin-right: 0.5rem;
-    }
-
-    .btn-material:hover {
-      background-color: var(--color-accent);
-      transform: scale(1.05);
-      color: white;
-    }
-
-    .btn-material-secondary {
-      background-color: var(--color-accent);
-      color: white;
-      border: none;
-      border-radius: 6px;
-      padding: 0.5rem 1rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.3s ease;
-      font-size: 0.9rem;
-      text-decoration: none;
-    }
-
-    .btn-material-secondary:hover {
-      background-color: var(--color-primary);
-      transform: scale(1.05);
-      color: white;
-    }
-
-    .btn-material:disabled, .btn-material-secondary:disabled {
-      background-color: #6c757d;
-      cursor: not-allowed;
-      transform: none;
-    }
-
-    .material-buttons {
-      display: flex;
       gap: 0.5rem;
+      padding: 0.6rem 1.2rem;
+      border-radius: var(--radius-sm);
+      font-weight: 500;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      border: none;
     }
 
-    /* Nova seção para vídeos */
-    .video-section {
+    .btn-primary-action {
+      background: var(--color-primary);
+      color: white;
+    }
+
+    .btn-primary-action:hover {
+      background: var(--color-secondary);
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary-action {
+      background: rgba(67, 97, 238, 0.1);
+      color: var(--color-primary);
+    }
+
+    .btn-secondary-action:hover {
+      background: rgba(67, 97, 238, 0.2);
+      transform: translateY(-2px);
+    }
+
+    .btn-disabled {
+      background: rgba(108, 117, 125, 0.1);
+      color: var(--color-gray);
+      cursor: not-allowed;
+    }
+
+    .btn-disabled:hover {
+      transform: none;
+      background: rgba(108, 117, 125, 0.1);
+    }
+
+    /* Seção de vídeos estilo stories */
+    .videos-section {
       margin-top: 1.5rem;
       padding-top: 1.5rem;
-      border-top: 1px solid #e9ecef;
+      border-top: 1px solid rgba(0, 0, 0, 0.05);
     }
 
-    .video-title {
-      color: var(--color-primary);
-      font-weight: 600;
-      font-size: 1rem;
-      margin-bottom: 1rem;
+    .section-title {
       display: flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.75rem;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+      color: var(--color-dark);
     }
 
-    .video-container {
-      display: flex;
-      flex-direction: column;
+    .section-title i {
+      color: var(--color-danger);
+    }
+
+    .video-stories {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 1rem;
     }
 
-    .video-item {
+    .video-story {
       background: white;
-      border-radius: 8px;
-      padding: 1rem;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      border-left: 4px solid #ff0000;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      transition: all 0.3s ease;
     }
 
-    .video-item-title {
-      color: #212529;
-      font-weight: 600;
-      font-size: 0.95rem;
-      margin-bottom: 0.5rem;
+    .video-story:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
     }
 
-    .video-wrapper {
+    .video-preview {
       position: relative;
       width: 100%;
-      padding-bottom: 56.25%; /* Proporção 16:9 */
-      height: 0;
+      padding-bottom: 60%; /* Vídeos mais quadrados */
       overflow: hidden;
-      border-radius: 6px;
     }
 
-    .video-wrapper iframe {
+    .video-preview iframe {
       position: absolute;
       top: 0;
       left: 0;
@@ -377,1075 +504,885 @@
       border: none;
     }
 
-    .video-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-top: 0.5rem;
+    .video-info {
+      padding: 1rem;
     }
 
-    .video-link {
-      background-color: #f8f9fa;
-      border: 1px solid #dee2e6;
-      border-radius: 4px;
-      padding: 0.25rem 0.5rem;
-      font-size: 0.8rem;
-      color: #495057;
-      text-decoration: none;
-      transition: all 0.3s ease;
-    }
-
-    .video-link:hover {
-      background-color: var(--color-primary);
-      color: white;
-      border-color: var(--color-primary);
-    }
-
-    .hero-section {
-      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://gnosisbrasil.com/wp-content/uploads/2020/07/gnosis-brasil-banner.jpg');
-      background-size: cover;
-      color: white;
-      padding: 100px 0;
-      text-align: center;
-    }
-
-    .btn-whatsapp {
-      background-color: #25D366;
-      color: white;
-    }
-
-    .feature-icon {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-      color: #6f42c1;
-    }
-
-    .navbar-brand img {
-      height: 40px;
-    }
-
-    .astral {
-      font-family: 'Amontillados', serif;
-      font-weight: normal !important;
-      font-size: clamp(2rem, 8vw, 10rem);
-    }
-
-    /* Estilos para a barra de progresso */
-    .progress-container {
-      margin: 2rem 0;
-    }
-
-    .progress-label {
-      display: flex;
-      justify-content: space-between;
+    .video-title-small {
+      font-weight: 500;
+      font-size: 0.95rem;
       margin-bottom: 0.5rem;
+      color: var(--color-dark);
     }
 
-    .progress {
-      height: 10px;
-      border-radius: 5px;
+    /* Sidebar direita - Eventos e comunidades */
+    .sidebar-right {
+      position: sticky;
+      top: 100px;
+      height: fit-content;
     }
 
-    /* Layout horizontal para informações importantes */
-    .horizontal-info {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      margin-top: 1rem;
-    }
-
-    .horizontal-info .info-card {
-      flex: 1;
-      min-width: 200px;
-    }
-
-    /* Estilos para seções informativas */
-    .info-section {
-      margin: 2rem 0;
+    .events-card {
+      background: var(--color-card-bg);
+      border-radius: var(--radius-lg);
       padding: 1.5rem;
-      background-color: #f8f9fa;
-      border-radius: 0.75rem;
-      text-align: left;
+      box-shadow: var(--shadow-card);
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      margin-bottom: 1.5rem;
     }
 
-    .info-section h3 {
-      color: var(--color-primary);
-      font-size: 1.3rem;
-      margin-bottom: 1rem;
-      border-bottom: 2px solid var(--color-primary);
-      padding-bottom: 0.5rem;
-    }
-
-    .info-section p {
-      color: #495057;
-      margin-bottom: 1rem;
-      line-height: 1.6;
-    }
-
-    .info-section ul {
-      padding-left: 1.5rem;
-      color: #495057;
-    }
-
-    .info-section li {
-      margin-bottom: 0.5rem;
-    }
-
-    /* Badges informativos */
-    .recess-badge {
-      background-color: var(--color-warning);
-      color: #212529;
-      padding: 3px 10px;
-      border-radius: 12px;
-      font-size: 0.75rem;
+    .events-title {
+      font-family: 'Poppins', sans-serif;
       font-weight: 600;
-      margin-left: 10px;
-      display: inline-block;
-    }
-
-    .return-badge {
-      background-color: var(--color-success);
-      color: white;
-      padding: 3px 10px;
-      border-radius: 12px;
-      font-size: 0.75rem;
-      font-weight: 600;
-      margin-left: 10px;
-      display: inline-block;
-    }
-
-    /* ===== ESTILOS MELHORADOS PARA A TELA FLUTUANTE ===== */
-    .floating-social-container {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      z-index: 1000;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-    }
-
-    .floating-toggle-btn {
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
-      color: white;
-      border: none;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      position: relative;
-      z-index: 10;
-    }
-
-    .floating-toggle-btn:hover {
-      transform: scale(1.1);
-      box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4);
-    }
-
-    .floating-toggle-btn i {
-      font-size: 1.5rem;
-      transition: transform 0.4s ease;
-    }
-
-    .floating-toggle-btn.active i {
-      transform: rotate(135deg);
-    }
-
-    .social-panel {
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(10px);
-      border-radius: 20px;
-      padding: 20px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-      margin-bottom: 15px;
-      transform: translateY(20px);
-      opacity: 0;
-      visibility: hidden;
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      width: 300px;
-      max-height: 0;
-      overflow: hidden;
-    }
-
-    .social-panel.active {
-      transform: translateY(0);
-      opacity: 1;
-      visibility: visible;
-      max-height: 500px;
-    }
-
-    .social-panel-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 15px;
-      padding-bottom: 10px;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    }
-
-    .social-panel-title {
-      font-weight: 600;
-      color: var(--color-primary);
-      font-size: 1.1rem;
-    }
-
-    .social-panel-close {
-      background: none;
-      border: none;
-      color: #6c757d;
       font-size: 1.2rem;
-      cursor: pointer;
-      transition: color 0.3s ease;
+      margin-bottom: 1.25rem;
+      color: var(--color-dark);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
     }
 
-    .social-panel-close:hover {
+    .event-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem;
+      border-radius: var(--radius-sm);
+      margin-bottom: 0.75rem;
+      background: rgba(0, 0, 0, 0.02);
+      transition: all 0.3s ease;
+    }
+
+    .event-item:hover {
+      background: rgba(67, 97, 238, 0.1);
+      transform: translateX(5px);
+    }
+
+    .event-date {
+      text-align: center;
+      min-width: 50px;
+    }
+
+    .event-day {
+      font-weight: 700;
+      font-size: 1.3rem;
       color: var(--color-primary);
     }
 
-    .social-icons-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
+    .event-month {
+      font-size: 0.8rem;
+      color: var(--color-gray);
     }
 
-    .social-icon-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-decoration: none;
-      color: #495057;
-      padding: 12px 8px;
-      border-radius: 12px;
-      transition: all 0.3s ease;
-      background: rgba(255, 255, 255, 0.7);
+    .event-details {
+      flex: 1;
+    }
+
+    .event-name {
+      font-weight: 500;
+      margin-bottom: 0.25rem;
+    }
+
+    .event-time {
+      font-size: 0.85rem;
+      color: var(--color-gray);
+    }
+
+    .communities-card {
+      background: var(--color-card-bg);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      box-shadow: var(--shadow-card);
       border: 1px solid rgba(0, 0, 0, 0.05);
     }
 
-    .social-icon-item:hover {
-      background: white;
-      transform: translateY(-3px);
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    .community-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.85rem;
+      border-radius: var(--radius-sm);
+      margin-bottom: 0.75rem;
+      text-decoration: none;
+      color: #555;
+      transition: all 0.3s ease;
+    }
+
+    .community-item:hover {
+      background: rgba(67, 97, 238, 0.1);
       color: var(--color-primary);
     }
 
-    .social-icon-item i {
-      font-size: 1.8rem;
-      margin-bottom: 8px;
-      transition: transform 0.3s ease;
-    }
-
-    .social-icon-item:hover i {
-      transform: scale(1.2);
-    }
-
-    .social-icon-item.facebook:hover i {
-      color: #3b5998;
-    }
-
-    .social-icon-item.instagram:hover i {
-      color: #e1306c;
-    }
-
-    .social-icon-item.youtube:hover i {
-      color: #ff0000;
-    }
-
-    .social-icon-item.website:hover i {
-      color: var(--color-primary);
-    }
-
-    .social-icon-label {
-      font-size: 0.8rem;
-      text-align: center;
-      font-weight: 500;
-    }
-
-    /* Indicador de notificação */
-    .notification-badge {
-      position: absolute;
-      top: -5px;
-      right: -5px;
-      background: #ff4757;
-      color: white;
+    .community-icon {
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
-      width: 20px;
-      height: 20px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.7rem;
-      font-weight: bold;
-      animation: pulse 2s infinite;
+      color: white;
+      font-size: 1.2rem;
     }
 
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.1); }
-      100% { transform: scale(1); }
+    .facebook-bg { background: #3b5998; }
+    .instagram-bg { background: #e1306c; }
+    .youtube-bg { background: #ff0000; }
+    .website-bg { background: var(--color-primary); }
+
+    .community-name {
+      font-weight: 500;
+      flex: 1;
     }
 
-    /* Melhorias para dispositivos móveis */
-    @media (max-width: 768px) {
-      .confirmation-card { 
-        padding: 1.5rem; 
-        margin: 1rem 0;
+    .community-members {
+      font-size: 0.8rem;
+      color: var(--color-gray);
+    }
+
+    /* Modal para vídeos */
+    .video-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.85);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .video-modal.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .video-modal-content {
+      width: 90%;
+      max-width: 900px;
+      background: white;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      transform: scale(0.9);
+      transition: transform 0.3s ease;
+    }
+
+    .video-modal.active .video-modal-content {
+      transform: scale(1);
+    }
+
+    .modal-video-container {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%;
+    }
+
+    .modal-video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: rgba(0, 0, 0, 0.7);
+      color: white;
+      border: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      cursor: pointer;
+      z-index: 10;
+      transition: all 0.3s ease;
+    }
+
+    .modal-close:hover {
+      background: rgba(0, 0, 0, 0.9);
+      transform: rotate(90deg);
+    }
+
+    /* Responsividade */
+    @media (max-width: 1200px) {
+      .main-container {
+        grid-template-columns: 250px 1fr;
       }
-      h1.title-main { 
-        font-size: 1.7rem; 
+      .sidebar-right {
+        display: none;
       }
-      h2.subtitle { 
-        font-size: 1.1rem; 
-      }
-      .info-grid { 
-        grid-template-columns: 1fr; 
-      }
-      .schedule-item { 
-        flex-direction: column; 
-      }
-      .schedule-image {
-        width: 100%;
-        height: 325px;
-        margin-right: 0;
-        margin-bottom: 1rem;
-      }
-      .schedule-header-row {
-        flex-direction: column;
-      }
-      .schedule-footer {
-        flex-direction: column;
-        align-items: flex-start;
+    }
+
+    @media (max-width: 992px) {
+      .main-container {
+        grid-template-columns: 1fr;
         gap: 1rem;
       }
-      .navbar-brand {
-        font-size: 0.9rem;
+      .sidebar-left {
+        position: static;
       }
-      .horizontal-info .info-card {
-        min-width: 100%;
-      }
-      .material-buttons {
+      .header-content {
         flex-direction: column;
-        width: 100%;
-      }
-      .btn-material, .btn-material-secondary {
-        width: 100%;
-        margin-right: 0;
-      }
-      .video-wrapper {
-        padding-bottom: 56.25%; /* Manter proporção 16:9 */
-      }
-      .video-links {
-        flex-direction: column;
-      }
-      .video-link {
-        width: 100%;
+        gap: 1rem;
         text-align: center;
       }
-      
-      /* CORREÇÃO PARA A TELA FLUTUANTE EM DISPOSITIVOS MÓVEIS */
-      .floating-social-container {
-        bottom: 15px;
-        right: 15px;
+      .logo-section {
+        flex-direction: column;
+        gap: 0.5rem;
       }
-      
-      .social-panel {
-        width: calc(100vw - 30px);
-        max-width: 320px;
-        right: 0;
+    }
+
+    @media (max-width: 768px) {
+      .lesson-header {
+        flex-direction: column;
+        text-align: center;
       }
-      
-      .social-icons-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
+      .lesson-avatar {
+        margin: 0 auto 1rem;
       }
-      
-      .social-icon-item {
-        padding: 10px 5px;
-        min-height: 80px;
+      .lesson-meta {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      .action-buttons {
+        flex-direction: column;
+        width: 100%;
+      }
+      .btn-action {
+        width: 100%;
         justify-content: center;
       }
-      
-      .social-icon-label {
-        font-size: 0.75rem;
-        line-height: 1.2;
-      }
-    }
-
-    /* Ajustes para telas muito pequenas (menos de 400px) */
-    @media (max-width: 400px) {
-      .social-panel {
-        width: calc(100vw - 20px);
-        padding: 15px;
-      }
-      
-      .social-icons-grid {
+      .video-stories {
         grid-template-columns: 1fr;
-        gap: 8px;
       }
-      
-      .social-icon-item {
-        flex-direction: row;
-        justify-content: flex-start;
-        padding: 10px 15px;
-        min-height: auto;
-      }
-      
-      .social-icon-item i {
-        margin-bottom: 0;
-        margin-right: 10px;
-        font-size: 1.5rem;
-      }
-      
-      .social-icon-label {
-        font-size: 0.8rem;
-        text-align: left;
+      .profile-stats {
+        flex-direction: column;
+        gap: 1rem;
       }
     }
 
-    /* Melhorias para impressão */
-    @media print {
-      .navbar, .btn-material, .btn-material-secondary, .social-media, footer, .floating-social-container {
-        display: none !important;
+    /* Animações */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
       }
-      .confirmation-card {
-        box-shadow: none;
-        border: 1px solid #ddd;
+      to {
+        opacity: 1;
+        transform: translateY(0);
       }
+    }
+
+    .animate-card {
+      animation: fadeInUp 0.5s ease forwards;
+    }
+
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.2s; }
+    .delay-3 { animation-delay: 0.3s; }
+    .delay-4 { animation-delay: 0.4s; }
+
+    /* Scrollbar personalizada */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: rgba(0, 0, 0, 0.05);
+      border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--color-primary);
+      border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--color-secondary);
     }
   </style>
 </head>
 
 <body>
-
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
-  <div class="container">
-    <a class="navbar-brand" href="index.html">
-      <img src="img/cropped-logo-sol-7.webp" alt="Logo Gnosis" class="me-2">
-      Gnosis Jaraguá do Sul
-    </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="https://gnosisbrasil.com/quem-somos/">Sobre</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" href="cronograma.html">Cronograma</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="index.html">Inscrição</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="presenca.html">Presença</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
-
-<section class="py-5">
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-lg-10">
-        <div class="confirmation-card">
-          <div class="mb-4">
-            <img src="img/2343637.png" alt="Logo Gnosis" style="height: 80px;">
-          </div>
-          <h1 class="title-main">Cronograma Completo</h1>
-          <div class="divider"></div>
-          <h2 class="subtitle">Curso Gnosis | 1ª Câmara | T02/2025</h2>
-          
-          <!-- Barra de progresso do curso -->
-          <div class="progress-container">
-            <div class="progress-label">
-              <span>Progresso do Curso</span>
-              <span id="progress-percentage">0%</span>
-            </div>
-            <div class="progress">
-              <div id="course-progress" class="progress-bar bg-success" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-          </div>
-          
-          <!-- Seções informativas reorganizadas -->
-          <div class="info-section">
-            <h3>CURSO DE GNOSIS – 1ª CÂMARA</h3>
-            <p>Criado a fim de transmitir uma mensagem transformadora da vida prática e destinada a qualquer pessoa, o Curso de Gnosis (Autoconhecimento) é um verdadeiro chamado à consciência da humanidade. Também denominado de 1ª Câmara, consiste em 23 aulas teóricas e práticas introdutórias ao autêntico autoconhecimento.</p>
-            <a target="_blank" href="https://gnosisbrasil.com/quem-somos/" class="btn btn-outline-primary">Ler portifólio completo</a>
-          </div>
-
-          <div class="info-section">
-            <h3>OBJETIVOS</h3>
-            <p>O curso tem como objetivo principal proporcionar aos participantes uma compreensão profunda de si mesmos, através do estudo e prática dos ensinamentos gnósticos, permitindo uma transformação positiva em suas vidas.</p>
-          </div>
-
-          <div class="info-section">
-            <h3>CARACTERÍSTICAS DO CURSO</h3>
-            <p>O curso é <strong>sem fins lucrativos, </strong>o que significa que não possui custos financeiros. Entretanto, para poder permanecer na turma, há necessidade de assiduidade e pontualidade. Para melhor aproveitamento do conteúdo, o número máximo de faltas é 4, portanto busque se organizar para não perder os temas. Possui três divisões: Câmara Pública (tema de abertura, introdutório e motivacional), Câmara Básica (temas 01 ao 16) e Câmara Avançada (temas 17 ao 23).</p>
-          </div>
-
-          <div class="info-section">
-            <h3>MATERIAL DIDÁTICO</h3>
-            <p>Cada conferência possui um resumo dos principais tópicos que será enviado por e-mail. Também haverá a opção de adquiri-lo impresso no próprio local do curso.</p>
-          </div>
-
-          <div class="info-section">
-            <h3>2ª CÂMARA</h3>
-            <p>Ao finalizar esta etapa, o aluno terá a oportunidade de continuar nestes estudos e fazer parte da 2ª Câmara, que corresponde ao aprofundamento na prática da Gnosis.</p>
-          </div>
-
-          <div class="info-section">
-            <h3>LIVROS SUGERIDOS</h3>
-            <p>Para uma maior compreensão dos ensinamentos gnósticos, sugerimos o estudo dos livros abaixo, todos de autoria de Samael Aun Weor: Tratado de Psicologia Revolucionária, Matrimônio Perfeito, A Grande Rebelião, O Mistério do Áureo Florescer, As Três Montanhas, Educação Fundamental. Todos estão disponíveis para download em www.gnosisbrasil.com/livrosgnosticos</p>
-            <a target="_blank" href="https://gnosisbrasil.com/livros/" class="btn btn-outline-primary">Biblioteca Virtual</a>
-          </div>
-
-          <div class="info-section">
-            <h3>RECOMENDAÇÕES</h3>
-            <ul>
-              <li>Leve um caderno para realizar suas próprias anotações.</li>
-              <li>Busque chegar no horário para não perder práticas e conteúdo do tema.</li>
-              <li>As reposições poderão ser feitas em outras turmas ou horários alternativos. Verifique com o instrutor.</li>
-            </ul>
+  <!-- Header -->
+  <header class="main-header">
+    <div class="container">
+      <div class="header-content">
+        <div class="logo-section">
+          <img src="https://gnosisbrasil.com/wp-content/uploads/2020/07/cropped-logo-sol-7-32x32.webp" alt="Logo Gnosis" class="logo">
+          <div>
+            <h1 class="site-title">Gnosis Social</h1>
+            <p class="site-subtitle">Comunidade de Autoconhecimento</p>
           </div>
         </div>
-
-        <!-- Cronograma exibido diretamente na página -->
-        <div class="confirmation-card">
-          <div class="schedule-section">
-            <div class="schedule-header">
-              <h4 class="schedule-title">CRONOGRAMA – 1ª CÂMARA</h4>
-              <div class="schedule-subtitle">
-                <div><strong>DIAS: QUARTAS E SEXTAS</strong></div>
-                <div><strong>HORÁRIOS: 19H30 ÀS 21H</strong></div>
-                <div><strong>INÍCIO: 26/11/2025</strong></div>
-                <div><strong>RECESSO: 20/12/2025 a 06/01/2026</strong></div>
-              </div>
-            </div>
-
-            <div class="chamber-section">
-              <h5 class="chamber-title">Câmara Básica | 16 Lições</h5>
-              <div id="basicChamberDates">
-                <!-- Conteúdo gerado dinamicamente -->
-              </div>
-            </div>
-
-            <div class="chamber-section">
-              <h5 class="chamber-title">Câmara Avançada | 07 Lições</h5>
-              <div id="advancedChamberDates">
-                <!-- Conteúdo gerado dinamicamente -->
-              </div>
-            </div>
-
-            <div class="alert alert-info mt-4">
-              <i class="fas fa-info-circle me-2"></i>
-              <strong>Observação:</strong> As datas podem sofrer ajustes conforme necessidades do grupo. 
-              <strong>Recesso de fim de ano entre 20/12/2025 e 06/01/2026.</strong>
-              Todas as alterações serão comunicadas com antecedência.
-            </div>
+        <div class="user-actions">
+          <div class="notification-bell">
+            <i class="fas fa-bell"></i>
+            <span class="notification-dot"></span>
           </div>
+          <button class="btn-action btn-primary-action">
+            <i class="fas fa-user-circle"></i>
+            Meu Perfil
+          </button>
         </div>
-
-        
       </div>
     </div>
-  </div>
-</section>
+  </header>
 
-<footer class="py-4 bg-dark text-white text-center">
-  <div class="container">
-    <div class="mb-3">
-      <img src="img/cropped-logo-sol-7.webp" alt="Logo Gnosis" style="height: 60px;">
-    </div>
-    <p>&copy; 2025 Gnosis Brasil. Todos os direitos reservados.</p>
-    <p class="mb-0">
-      <a href="https://gnosisbrasil.com/politica-de-privacidade/" class="text-white text-decoration-none me-3">Política de Privacidade</a>
-      <a href="https://gnosisbrasil.com/termos-de-uso/" class="text-white text-decoration-none">Termos de Uso</a>
-    </p>
-  </div>
-</footer>
+  <!-- Main Container -->
+  <div class="container main-container">
+    <!-- Sidebar Esquerda -->
+    <aside class="sidebar-left">
+      <div class="profile-card animate-card">
+        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Avatar" class="profile-avatar">
+        <h3 class="profile-name">Carlos Silva</h3>
+        <p class="profile-role">Aluno • 1ª Câmara</p>
+        
+        <div class="profile-stats">
+          <div class="stat-item">
+            <div class="stat-value">16</div>
+            <div class="stat-label">Aulas</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value">87%</div>
+            <div class="stat-label">Presença</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value">23</div>
+            <div class="stat-label">Dias</div>
+          </div>
+        </div>
 
-<!-- Tela Flutuante Melhorada - NO LADO DIREITO -->
-<div class="floating-social-container">
-  <div class="social-panel" id="socialPanel">
-    <div class="social-panel-header">
-      <div class="social-panel-title">Nossas Redes Sociais</div>
-      <button class="social-panel-close" id="socialPanelClose">
+        <button class="btn-action btn-primary-action" style="width: 100%;">
+          <i class="fas fa-chart-line"></i>
+          Ver Progresso
+        </button>
+      </div>
+
+      <nav class="sidebar-menu animate-card delay-1">
+        <a href="#" class="menu-item active">
+          <i class="fas fa-home"></i>
+          <span>Feed Principal</span>
+        </a>
+        <a href="#" class="menu-item">
+          <i class="fas fa-calendar-alt"></i>
+          <span>Cronograma</span>
+        </a>
+        <a href="#" class="menu-item">
+          <i class="fas fa-book"></i>
+          <span>Material Didático</span>
+        </a>
+        <a href="#" class="menu-item">
+          <i class="fas fa-video"></i>
+          <span>Aulas em Vídeo</span>
+        </a>
+        <a href="#" class="menu-item">
+          <i class="fas fa-users"></i>
+          <span>Comunidade</span>
+        </a>
+        <a href="#" class="menu-item">
+          <i class="fas fa-question-circle"></i>
+          <span>Ajuda e Suporte</span>
+        </a>
+        <a href="#" class="menu-item">
+          <i class="fas fa-cog"></i>
+          <span>Configurações</span>
+        </a>
+      </nav>
+    </aside>
+
+    <!-- Conteúdo Principal -->
+    <main class="main-feed">
+      <!-- Card de Boas-vindas -->
+      <div class="welcome-card animate-card">
+        <h2 class="welcome-title">👋 Bem-vindo ao Curso de Gnosis!</h2>
+        <p class="welcome-text">Sua jornada de autoconhecimento começa aqui. Acompanhe as aulas, interaja com a comunidade e descubra seu potencial interior.</p>
+      </div>
+
+      <!-- Card de Progresso -->
+      <div class="progress-card animate-card delay-1">
+        <div class="progress-header">
+          <h3 class="progress-title">📊 Seu Progresso no Curso</h3>
+          <div class="progress-percent" id="progress-percentage">0%</div>
+        </div>
+        <div class="progress-bar-container">
+          <div class="progress-bar" id="course-progress" style="width: 0%"></div>
+        </div>
+        <div class="progress-dates">
+          <span>Início: 26/11/2025</span>
+          <span>Previsão: 25/02/2026</span>
+        </div>
+      </div>
+
+      <!-- Aulas serão inseridas aqui -->
+      <div id="basicChamberDates"></div>
+      <div id="advancedChamberDates"></div>
+    </main>
+
+    <!-- Sidebar Direita -->
+    <aside class="sidebar-right">
+      <div class="events-card animate-card delay-2">
+        <h3 class="events-title"><i class="fas fa-calendar-star"></i> Próximos Eventos</h3>
+        
+        <div class="event-item">
+          <div class="event-date">
+            <div class="event-day">26</div>
+            <div class="event-month">NOV</div>
+          </div>
+          <div class="event-details">
+            <div class="event-name">Aula 1: O que é Gnosis</div>
+            <div class="event-time">19:30 - 21:00</div>
+          </div>
+        </div>
+
+        <div class="event-item">
+          <div class="event-date">
+            <div class="event-day">28</div>
+            <div class="event-month">NOV</div>
+          </div>
+          <div class="event-details">
+            <div class="event-name">Aula 2: Personalidade e Essência</div>
+            <div class="event-time">19:30 - 21:00</div>
+          </div>
+        </div>
+
+        <div class="event-item">
+          <div class="event-date">
+            <div class="event-day">19</div>
+            <div class="event-month">DEZ</div>
+          </div>
+          <div class="event-details">
+            <div class="event-name">Última aula antes do recesso</div>
+            <div class="event-time">19:30 - 21:00</div>
+          </div>
+        </div>
+
+        <button class="btn-action btn-secondary-action" style="width: 100%; margin-top: 1rem;">
+          <i class="fas fa-calendar-plus"></i>
+          Ver Calendário Completo
+        </button>
+      </div>
+
+      <div class="communities-card animate-card delay-3">
+        <h3 class="events-title"><i class="fas fa-users"></i> Nossas Comunidades</h3>
+        
+        <a href="https://www.facebook.com/gnosisbrasil/" target="_blank" class="community-item">
+          <div class="community-icon facebook-bg">
+            <i class="fab fa-facebook-f"></i>
+          </div>
+          <div class="community-name">Facebook Oficial</div>
+          <div class="community-members">5.2K</div>
+        </a>
+
+        <a href="https://www.instagram.com/gnosisbrasil" target="_blank" class="community-item">
+          <div class="community-icon instagram-bg">
+            <i class="fab fa-instagram"></i>
+          </div>
+          <div class="community-name">Instagram Nacional</div>
+          <div class="community-members">3.8K</div>
+        </a>
+
+        <a href="https://www.youtube.com/gnosisbrasilcanal" target="_blank" class="community-item">
+          <div class="community-icon youtube-bg">
+            <i class="fab fa-youtube"></i>
+          </div>
+          <div class="community-name">YouTube Gnosis</div>
+          <div class="community-members">12K</div>
+        </a>
+
+        <a href="https://gnosisbrasil.com" target="_blank" class="community-item">
+          <div class="community-icon website-bg">
+            <i class="fas fa-globe"></i>
+          </div>
+          <div class="community-name">Site Oficial</div>
+          <div class="community-members">—</div>
+        </a>
+
+        <button class="btn-action btn-secondary-action" style="width: 100%; margin-top: 1rem;">
+          <i class="fas fa-plus-circle"></i>
+          Explorar Mais Comunidades
+        </button>
+      </div>
+    </aside>
+  </div>
+
+  <!-- Modal para Vídeos -->
+  <div class="video-modal" id="videoModal">
+    <div class="video-modal-content">
+      <button class="modal-close" id="modalClose">
         <i class="fas fa-times"></i>
       </button>
-    </div>
-    <div class="social-icons-grid">
-      <a href="https://www.facebook.com/gnosisbrasil/" target="_blank" class="social-icon-item facebook">
-        <i class="fab fa-facebook"></i>
-        <span class="social-icon-label">Facebook</span>
-      </a>
-      <a href="https://www.instagram.com/gnosisbrasil" target="_blank" class="social-icon-item instagram">
-        <i class="fab fa-instagram"></i>
-        <span class="social-icon-label">Instagram Nacional</span>
-      </a>
-      <a href="https://www.instagram.com/gnosis_jaragua?igsh=czhrbGV4b2toMGZ2" target="_blank" class="social-icon-item instagram">
-        <i class="fab fa-instagram"></i>
-        <span class="social-icon-label">Instagram Jaraguá</span>
-      </a>
-      <a href="https://www.youtube.com/gnosisbrasilcanal" target="_blank" class="social-icon-item youtube">
-        <i class="fab fa-youtube"></i>
-        <span class="social-icon-label">YouTube</span>
-      </a>
-      <a href="https://gnosisbrasil.com" target="_blank" class="social-icon-item website">
-        <i class="fas fa-globe"></i>
-        <span class="social-icon-label">Página Nacional</span>
-      </a>
+      <div class="modal-video-container" id="modalVideoContainer">
+        <!-- Vídeo será inserido aqui -->
+      </div>
     </div>
   </div>
-  
-  <button class="floating-toggle-btn" id="floatingToggleBtn">
-    <i class="fas fa-share-alt"></i>
-    <span class="notification-badge">5</span>
-  </button>
-</div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-<script>
-  // Links das aulas
-  const lessonLinks = {
-    1: "https://drive.google.com/file/d/1CE-69pxxZUmYurqp6-C7KplNfW9ewtXP/view?usp=drive_link",
-    2: "https://drive.google.com/file/d/1CJ8LfneXsEO9tXS4wocR8JcyDUAI_E7B/view?usp=drive_link",
-    3: "https://drive.google.com/file/d/1CJKMYjjFpIe4VXnU_jlJ1M2ZcA2TMI1f/view?usp=drive_link",
-    4: "https://drive.google.com/file/d/1CNH8lLVGkjri4ie0e-ha2qcupCD3DUy8/view?usp=drive_link",
-    5: "https://drive.google.com/file/d/1BrFB6brt1TLfBarYJptK1K9cE65xzRzR/view?usp=drive_link",
-    6: "https://drive.google.com/file/d/1BuDdQFoUPgOZFFf86l2CpB6XbbvqudVa/view?usp=drive_link",
-    7: "",
-    8: "",
-    9: "",
-    10: "",
-    11: "",
-    12: "",
-    13: "",
-    14: "",
-    15: "",
-    16: ""
-  };
+  <script>
+    // Dados do curso
+    const courseData = {
+      lessons: [
+        {
+          id: 1,
+          title: "O que é Gnosis",
+          description: "Apresenta uma visão geral sobre as origens, bases e objetivos da Gnosis como conhecimento universal.",
+          date: "26/11/2025",
+          tag: "Câmara Básica",
+          image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+          pdf1: "https://drive.google.com/file/d/1CE-69pxxZUmYurqp6-C7KplNfW9ewtXP/view?usp=drive_link",
+          pdf2: "https://drive.google.com/file/d/0ByuJiBLnCPXgX3R0SW15bGJUS1E/view?usp=drive_link&resourcekey=0-G43iiHrkTm22Lox8mPh49g",
+          videos: [
+            { title: "Introdução à Gnosis", url: "https://www.youtube.com/embed/tgbNymZ7vqY" },
+            { title: "Os Pilares do Autoconhecimento", url: "https://www.youtube.com/embed/tgbNymZ7vqY" }
+          ],
+          type: "normal"
+        },
+        {
+          id: 2,
+          title: "Personalidade, Essência e Ego",
+          description: "Mostra os 3 principais componentes da psicologia humana, suas características e como trabalhá-los à nosso favor.",
+          date: "28/11/2025",
+          tag: "Câmara Básica",
+          image: "https://images.unsplash.com/photo-1552058544-f2b08422138a?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+          pdf1: "https://drive.google.com/file/d/1CJ8LfneXsEO9tXS4wocR8JcyDUAI_E7B/view?usp=drive_link",
+          pdf2: "https://drive.google.com/file/d/12jpkWf6m2ST069drWA86rpSrSO8f5Yuc/view?usp=drive_link",
+          videos: [
+            { title: "Entendendo o Ego", url: "https://www.youtube.com/embed/tgbNymZ7vqY" }
+          ],
+          type: "normal"
+        },
+        {
+          id: 3,
+          title: "O Despertar da Consciência",
+          description: "Estuda a consciência e inconsciência, causas do adormecimento da consciência no ser humano e como despertá-la.",
+          date: "03/12/2025",
+          tag: "Câmara Básica",
+          image: "https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+          pdf1: "https://drive.google.com/file/d/1CJKMYjjFpIe4VXnU_jlJ1M2ZcA2TMI1f/view?usp=drive_link",
+          pdf2: "https://drive.google.com/file/d/0ByuJiBLnCPXgWWVlT3VNQm5kcVk/view?usp=drive_link&resourcekey=0-QjgW41nYsWeecFXhIAGCvA",
+          videos: [
+            { title: "Exercícios de Atenção", url: "https://www.youtube.com/embed/tgbNymZ7vqY" }
+          ],
+          type: "normal"
+        },
+        {
+          id: 8,
+          title: "O Caminho e a Vida",
+          description: "Reflexões sobre a necessidade de se traçar metas e objetivos na vida, tanto materiais como espirituais.",
+          date: "19/12/2025",
+          tag: "Câmara Básica",
+          image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+          pdf1: "",
+          pdf2: "",
+          videos: [
+            { title: "Encontrando seu Propósito", url: "https://www.youtube.com/embed/tgbNymZ7vqY" }
+          ],
+          type: "recess"
+        },
+        {
+          id: 9,
+          title: "O Nível de Ser",
+          description: "Reflexões sobre a necessidade de conhecer a si mesmo, como base ou fundamento para uma mudança interior e individual.",
+          date: "07/01/2026",
+          tag: "Câmara Básica",
+          image: "https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+          pdf1: "",
+          pdf2: "",
+          videos: [
+            { title: "Autoavaliação Pessoal", url: "https://www.youtube.com/embed/tgbNymZ7vqY" }
+          ],
+          type: "return"
+        }
+      ],
+      advancedLessons: [
+        {
+          id: 17,
+          title: "Os Quatro Caminhos",
+          description: "Reflexões sobre a busca do homem pelo equilíbrio interior, através dessa jornada que busca o domínio do corpo físico, das emoções e da mente.",
+          date: "04/02/2026",
+          tag: "Câmara Avançada",
+          image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+          pdf1: "",
+          pdf2: "",
+          videos: [
+            { title: "Caminhos Espirituais", url: "https://www.youtube.com/embed/tgbNymZ7vqY" }
+          ],
+          type: "normal"
+        },
+        {
+          id: 22,
+          title: "A Iniciação",
+          description: "Ensina a importância de se iniciar verdadeiramente uma transformação interior, baseada no autoconhecimento e no trabalho psicológico individual sobre si mesmo.",
+          date: "20/02/2026",
+          tag: "Câmara Avançada",
+          image: "https://images.unsplash.com/photo-1516245834210-8e0b8b86d3b7?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+          pdf1: "",
+          pdf2: "",
+          videos: [
+            { title: "Primeiros Passos", url: "https://www.youtube.com/embed/tgbNymZ7vqY" }
+          ],
+          type: "normal"
+        }
+      ]
+    };
 
-  // Links para o segundo PDF de cada aula
-  const lessonLinksSecondary = {
-    1: "https://drive.google.com/file/d/0ByuJiBLnCPXgX3R0SW15bGJUS1E/view?usp=drive_link&resourcekey=0-G43iiHrkTm22Lox8mPh49g",
-    2: "https://drive.google.com/file/d/12jpkWf6m2ST069drWA86rpSrSO8f5Yuc/view?usp=drive_link",
-    3: "https://drive.google.com/file/d/0ByuJiBLnCPXgWWVlT3VNQm5kcVk/view?usp=drive_link&resourcekey=0-QjgW41nYsWeecFXhIAGCvA",
-    4: "https://drive.google.com/file/d/0ByuJiBLnCPXgUlMtcmtCZHdmNTg/view?usp=drive_link&resourcekey=0-8yYpe218jPZhG-buH6lFDA",
-    5: "https://drive.google.com/file/d/0ByuJiBLnCPXgSm9OZlZMSlMzYTA/view?usp=drive_link&resourcekey=0-pXLDZW9_tRWPrlsBiWD-rQ",
-    6: "https://drive.google.com/file/d/0ByuJiBLnCPXgeVdTblJKUFZkNW8/view?usp=drive_link&resourcekey=0-Sgq7TQ5NEqI1k4J0vDfrrA",
-    7: "",
-    8: "",
-    9: "",
-    10: "",
-    11: "",
-    12: "",
-    13: "",
-    14: "",
-    15: "",
-    16: ""
-  };
-
-  // Links de vídeos do YouTube para cada aula
-  const lessonVideos = {
-    1: [
-      { title: "O que é Gnosis - Introdução", url: "https://www.youtube.com/embed/VIDEO_ID_1?autoplay=1&mute=1" },
-      { title: "Autoconhecimento na prática", url: "https://www.youtube.com/embed/VIDEO_ID_2?autoplay=1&mute=1" }
-    ],
-    2: [
-      { title: "Personalidade, Essência e Ego", url: "https://www.youtube.com/embed/VIDEO_ID_3?autoplay=1&mute=1" },
-      { title: "Trabalhando a Psicologia", url: "https://www.youtube.com/embed/VIDEO_ID_4?autoplay=1&mute=1" }
-    ],
-    3: [
-      { title: "Despertar da Consciência", url: "https://www.youtube.com/embed/VIDEO_ID_5?autoplay=1&mute=1" },
-      { title: "Práticas de Atenção", url: "https://www.youtube.com/embed/VIDEO_ID_6?autoplay=1&mute=1" }
-    ],
-    4: [
-      { title: "O Eu Psicológico", url: "https://www.youtube.com/embed/VIDEO_ID_7?autoplay=1&mute=1" },
-      { title: "Auto-observação", url: "https://www.youtube.com/embed/VIDEO_ID_8?autoplay=1&mute=1" }
-    ],
-    5: [
-      { title: "Luz, Calor e Som", url: "https://www.youtube.com/embed/VIDEO_ID_9?autoplay=1&mute=1" },
-      { title: "Princípios Universais", url: "https://www.youtube.com/embed/VIDEO_ID_10?autoplay=1&mute=1" }
-    ],
-    6: [
-      { title: "A Máquina Humana", url: "https://www.youtube.com/embed/VIDEO_ID_11?autoplay=1&mute=1" },
-      { title: "Centros de Energia", url: "https://www.youtube.com/embed/VIDEO_ID_12?autoplay=1&mute=1" }
-    ],
-    // Adicione mais vídeos conforme necessário
-    7: [],
-    8: [],
-    9: [],
-    10: [],
-    11: [],
-    12: [],
-    13: [],
-    14: [],
-    15: [],
-    16: [],
-    17: [],
-    18: [],
-    19: [],
-    20: [],
-    21: [],
-    22: [],
-    23: []
-  };
-
-  // Descrições das aulas
-  const lessonDescriptions = {
-    1: "Apresenta uma visão geral sobre as origens, bases e objetivos da Gnosis como conhecimento universal.",
-    2: "Mostra os 3 principais componentes da psicologia humana, suas características e como trabalhá-los à nosso favor.",
-    3: "Estuda a consciência e inconsciência, causas do adormecimento da consciência no ser humano e como despertá-la.",
-    4: "Estudo sobre o ego, sua origem, formas de expressão e suas ramificações na mente, emoções, atitudes e na psique humana.",
-    5: "As influências físicas e metafísicas desses três princípios universais, principalmente o som, dentro e fora do homem.",
-    6: "Os centros que governam nosso organismo: Intelectual, emocional, motor, instintivo e sexual, como utilizá-los de maneira sábia para uma melhor saúde e qualidade de vida.",
-    7: "Reflexão sobre o ser humano e seus diversos mundos ou esferas de relacionamento, seja com a família, sociedade, com o planeta e consigo mesmo. Como o conhecimento de si mesmo nos ajuda a melhorar todo tipo de relações.",
-    8: "Reflexões sobre a necessidade de se traçar metas e objetivos na vida, tanto materiais como espirituais.",
-    9: "Reflexões sobre a necessidade de conhecer a si mesmo, como base ou fundamento para uma mudança interior e individual.",
-    10: "Níveis de interpretação das sagradas escrituras: Letra Viva e Letra Morta. O esoterismo dos 10 Mandamentos.",
-    11: "As diferentes fases do desenvolvimento humano e como aproveitar ao máximo cada uma delas, extraindo saúde, sucesso e sabedoria. Mostra as bases da psicologia transformativa que começa por mudar a forma de pensar, de sentir e de atuar.",
-    12: "Estudo comparativo sobre várias das grandes religiões e culturas que passaram sobre a terra, mostrando uma visão de seu objetivo: a Revolução da Consciência.",
-    13: "Estudo metafísico destas duas leis da natureza e a necessidade de uma revolução psicológica para chegarmos a uma verdadeira liberdade.",
-    14: "Estudo cultural, científico e metafísico sobre os processos post-mortem, baseados no Livro dos Mortos dos Egípcios e dos Tibetanos.",
-    15: "Estudo científico e metafísico sobre essas 3 leis da Natureza.",
-    16: "Reflexões sobre questões como destino, Karma (castigo) e Dharma (recompensa).",
-    17: "Reflexões sobre a busca do homem pelo equilíbrio interior, através dessa jornada que busca o domínio do corpo físico, das emoções e da mente.",
-    18: "A estrutura física e interna do ser humano, dimensões ou corpos: físico, vital, astral ou emocional, mental, vontade, consciência e íntimo.",
-    19: "Tema sobre Alquimia, a Ciência das transmutações. Ensina os fundamentos da transmutação sexual, canalizando sabia e positivamente os diversos tipos de energia fabricados pelo nosso organismo para uma melhor saúde, vitalidade e para nosso desenvolvimento físico, anímico e espiritual.",
-    20: "Busca da saúde e da harmonia física, mental, emocional e psicológica através da integração com os elementos da Natureza (Fogo, Ar, Água e Terra).",
-    21: "Mostra os diversos estados psicológicos do ser humano (adormecimento profundo, conceitos e crenças, recordação de si e consciência desperta).",
-    22: "Ensina a importância de se iniciar verdadeiramente uma transformação interior, baseada no autoconhecimento e no trabalho psicológico individual sobre si mesmo. Busca que cada um desenvolva a filosofia, que faz ver a life como uma escola, onde independente das circunstâncias, sempre se tem algo a aprender. A Iniciação é a Gnosis aplicada à vida.",
-    23: "Explica o funcionamento da 2ª Câmara."
-  };
-
-  // Imagens para cada aula
-  const lessonImages = {
-    1: "img/Curso de Gnosis 04.jpg",
-    2: "img/Personalidade, Essência e Ego 03.jpg",
-    3: "img/O Despertar da Consciência 02.jpg",
-    4: "img/O Eu Psicológico 02.jpg",
-    5: "img/05. Luz, Calor e Som.jpg",
-    6: "img/shutterstock_1336371356.jpg",
-    7: "img/licao07.jpg",
-    8: "img/licao8.jpg",
-    9: "img/1f6dabc7e410fd988a3764d04f50aa8f.jpg",
-    10: "img/moises_michelangelo 01.jpg",
-    11: "img/eea26514a339878a92c6b7f1cd789608.jpg",
-    12: "img/jesus cristo.jpg",
-    13: "img/Representação budista da Roda do Samsara.jpg",
-    14: "img/karma-saude.jpg",
-    15: "img/retorno.jpg",
-    16: "img/libra_Johfra.jpg",
-    17: "img/faquir.jpg",
-    18: "img/Post para Instagram Limites Saudáveis.jpg",
-    19: "img/transmutacao.jpg",
-    20: "img/196d8450312a3d74f29b654b60efaed5.jpg",
-    21: "img/81ef50d66f9651d2112bb379e942fbda.jpg",
-    22: "img/Post paraj Instagram Limites Saudáveis.jpg",
-    23: "img/Post para Instagrammn Limites Saudáveis.jpg"
-  };
-
-  // Conteúdo das palestras
-  const basicChamber = [
-    "O que é Gnosis",
-    "Personalidade, Essência e Ego",
-    "O Despertar da Consciência",
-    "O Eu Psicológico",
-    "Luz, Calor e Som",
-    "A Máquina Humana",
-    "O Mundo das Relações",
-    "O Caminho e a Vida",
-    "O Nível de Ser",
-    "O Decálogo",
-    "Educação Fundamental",
-    "A Árvore Genealógica das Religiões",
-    "Evolução, Involução e Revolução",
-    "O Raio da Morte",
-    "Reencarnação, Retorno e Recorrência",
-    "A Balança da Justiça"
-  ];
-
-  const advancedChamber = [
-    "Os Quatro Caminhos",
-    "O Diagrama Interno do Homem",
-    "Transformação da Energia",
-    "Os Elementais",
-    "Os Quatro Estados de Consciência",
-    "A Iniciação",
-    "Apresentação da 2ª Câmara"
-  ];
-
-  // DATAS ATUALIZADAS - INÍCIO EM 26/11/2025
-  const scheduleDates = [
-    new Date('2025-11-26T19:30:00'), // 1 - qua
-    new Date('2025-11-28T19:30:00'), // 2 - sex
-    new Date('2025-12-03T19:30:00'), // 3 - qua
-    new Date('2025-12-05T19:30:00'), // 4 - sex
-    new Date('2025-12-10T19:30:00'), // 5 - qua
-    new Date('2025-12-12T19:30:00'), // 6 - sex
-    new Date('2025-12-17T19:30:00'), // 7 - qua
-    new Date('2025-12-19T19:30:00'), // 8 - sex (ÚLTIMA ANTES DO RECESSO)
-    // RECESSO DE FIM DE ANO
-    new Date('2026-01-07T19:30:00'), // 9 - qua (RETORNO APÓS RECESSO)
-    new Date('2026-01-09T19:30:00'), // 10 - sex
-    new Date('2026-01-14T19:30:00'), // 11 - qua
-    new Date('2026-01-16T19:30:00'), // 12 - sex
-    new Date('2026-01-21T19:30:00'), // 13 - qua
-    new Date('2026-01-23T19:30:00'), // 14 - sex
-    new Date('2026-01-28T19:30:00'), // 15 - qua
-    new Date('2026-01-30T19:30:00'), // 16 - sex
-    new Date('2026-02-04T19:30:00'), // 17 - qua
-    new Date('2026-02-06T19:30:00'), // 18 - sex
-    new Date('2026-02-11T19:30:00'), // 19 - qua
-    new Date('2026-02-13T19:30:00'), // 20 - sex
-    new Date('2026-02-18T19:30:00'), // 21 - qua
-    new Date('2026-02-20T19:30:00'), // 22 - sex
-    new Date('2026-02-25T19:30:00')  // 23 - qua
-  ];
-
-  // Função para formatar data no formato brasileiro
-  function formatDateForDisplay(date) {
-    const options = { weekday: 'short', day: '2-digit', month: '2-digit', year: 'numeric' };
-    return date.toLocaleDateString('pt-BR', options);
-  }
-
-  // Função para gerar HTML dos vídeos
-  function generateVideoHTML(videos) {
-    if (!videos || videos.length === 0) {
-      return '';
+    // Função para formatar data
+    function formatDate(dateStr) {
+      const [day, month, year] = dateStr.split('/');
+      const months = ['JAN', 'FEV', 'MAR', 'ABR', 'MAI', 'JUN', 'JUL', 'AGO', 'SET', 'OUT', 'NOV', 'DEZ'];
+      return {
+        day: parseInt(day),
+        month: months[parseInt(month) - 1]
+      };
     }
 
-    let videoHTML = `
-      <div class="video-section">
-        <div class="video-title">
-          <i class="fab fa-youtube" style="color: #ff0000;"></i>
-          Vídeos Relacionados
-        </div>
-        <div class="video-container">
-    `;
-
-    videos.forEach((video, index) => {
-      videoHTML += `
-        <div class="video-item">
-          <div class="video-item-title">${video.title}</div>
-          <div class="video-wrapper">
-            <iframe width="100%" height="100%" src="${video.url}" 
-              title="YouTube video player" frameborder="0" 
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-              allowfullscreen>
-            </iframe>
+    // Função para criar card de aula
+    function createLessonCard(lesson, index) {
+      const formattedDate = formatDate(lesson.date);
+      const delayClass = `delay-${(index % 4) + 1}`;
+      
+      return `
+        <div class="lesson-card animate-card ${delayClass} ${lesson.type === 'recess' ? 'recess' : ''} ${lesson.type === 'return' ? 'return' : ''}">
+          <div class="lesson-header">
+            <img src="${lesson.image}" alt="${lesson.title}" class="lesson-avatar">
+            <div class="lesson-info">
+              <h3 class="lesson-title">${lesson.title}</h3>
+              <div class="lesson-meta">
+                <div class="lesson-date">
+                  <i class="far fa-calendar"></i>
+                  <span>${lesson.date}</span>
+                </div>
+                <span class="lesson-tag">${lesson.tag}</span>
+                ${lesson.type === 'recess' ? '<span class="lesson-tag" style="background: rgba(255, 209, 102, 0.2); color: #b88b00;">Última antes do recesso</span>' : ''}
+                ${lesson.type === 'return' ? '<span class="lesson-tag" style="background: rgba(6, 214, 160, 0.2); color: #0a8754;">Retorno após recesso</span>' : ''}
+              </div>
+            </div>
+          </div>
+          
+          <p class="lesson-description">${lesson.description}</p>
+          
+          ${lesson.videos && lesson.videos.length > 0 ? `
+            <div class="videos-section">
+              <h4 class="section-title">
+                <i class="fab fa-youtube"></i>
+                Vídeos Relacionados
+              </h4>
+              <div class="video-stories">
+                ${lesson.videos.map(video => `
+                  <div class="video-story" onclick="openVideoModal('${video.url}', '${video.title}')">
+                    <div class="video-preview">
+                      <iframe src="${video.url}?rel=0&controls=0&showinfo=0" 
+                        title="${video.title}" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                      </iframe>
+                    </div>
+                    <div class="video-info">
+                      <div class="video-title-small">${video.title}</div>
+                    </div>
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+          ` : ''}
+          
+          <div class="lesson-actions">
+            <div class="action-buttons">
+              ${lesson.pdf1 ? `
+                <a href="${lesson.pdf1}" target="_blank" class="btn-action btn-primary-action">
+                  <i class="fas fa-file-pdf"></i>
+                  Baixar Material
+                </a>
+              ` : `
+                <button class="btn-action btn-disabled" disabled>
+                  <i class="fas fa-clock"></i>
+                  Em Breve
+                </button>
+              `}
+              
+              ${lesson.pdf2 ? `
+                <a href="${lesson.pdf2}" target="_blank" class="btn-action btn-secondary-action">
+                  <i class="fas fa-book"></i>
+                  Material Complementar
+                </a>
+              ` : lesson.pdf1 ? `
+                <button class="btn-action btn-disabled" disabled>
+                  <i class="fas fa-clock"></i>
+                  Em Breve
+                </button>
+              ` : ''}
+            </div>
+            
+            <button class="btn-action btn-secondary-action" onclick="markAsCompleted(${lesson.id})">
+              <i class="far fa-check-circle"></i>
+              Marcar como concluída
+            </button>
           </div>
         </div>
       `;
-    });
-
-    videoHTML += `
-        </div>
-      </div>
-    `;
-
-    return videoHTML;
-  }
-
-  // Função para atualizar a barra de progresso
-  function updateProgressBar() {
-    const today = new Date();
-    const startDate = new Date('2025-11-26T19:30:00');
-    const endDate = new Date('2026-02-25T19:30:00');
-    
-    // Calcular progresso baseado na data atual
-    const totalDuration = endDate - startDate;
-    const elapsed = today - startDate;
-    
-    let progressPercentage = Math.min(Math.max((elapsed / totalDuration) * 100, 0), 100);
-    
-    // Se o curso ainda não começou
-    if (today < startDate) {
-      progressPercentage = 0;
     }
-    
-    // Se o curso já terminou
-    if (today > endDate) {
-      progressPercentage = 100;
-    }
-    
-    // Atualizar a barra de progresso
-    const progressBar = document.getElementById('course-progress');
-    const progressPercentageText = document.getElementById('progress-percentage');
-    
-    progressBar.style.width = `${progressPercentage}%`;
-    progressBar.setAttribute('aria-valuenow', progressPercentage);
-    progressPercentageText.textContent = `${Math.round(progressPercentage)}%`;
-  }
 
-  // Função para renderizar o cronograma
-  function renderSchedule() {
-    const basicContainer = document.getElementById('basicChamberDates');
-    const advancedContainer = document.getElementById('advancedChamberDates');
-
-    // Renderizar Câmara Básica (16 primeiras aulas)
-    basicChamber.forEach((topic, index) => {
-      const lessonNumber = index + 1;
-      const scheduleItem = document.createElement('div');
-      scheduleItem.className = 'schedule-item';
+    // Função para renderizar as aulas
+    function renderLessons() {
+      const basicContainer = document.getElementById('basicChamberDates');
+      const advancedContainer = document.getElementById('advancedChamberDates');
       
-      // Destacar a última aula antes do recesso (aula 8)
-      if (lessonNumber === 8) {
-        scheduleItem.classList.add('recess-highlight');
-      }
-      
-      scheduleItem.innerHTML = `
-        <img src="${lessonImages[lessonNumber]}" alt="${topic}" class="schedule-image">
-        <div class="schedule-content">
-          <div class="schedule-header-row">
-            <div class="schedule-topic">
-              ${topic}
-              ${lessonNumber === 8 ? '<span class="recess-badge">Última antes do recesso</span>' : ''}
-              ${lessonNumber === 9 ? '<span class="return-badge">Retorno após recesso</span>' : ''}
-            </div>
-          </div>
-          <div class="schedule-description">${lessonDescriptions[lessonNumber]}</div>
-          <div class="schedule-footer">
-            <div class="schedule-date">${formatDateForDisplay(scheduleDates[index])}</div>
-            <div class="material-buttons">
-              ${lessonLinks[lessonNumber] ? 
-                `<a href="${lessonLinks[lessonNumber]}" target="_blank" class="btn-material">
-                  <i class="fas fa-file-pdf me-1"></i>PDF 1
-                </a>` : 
-                '<button class="btn-material" disabled><i class="fas fa-clock me-1"></i>PDF 1 em breve</button>'
-              }
-              ${lessonLinksSecondary[lessonNumber] ? 
-                `<a href="${lessonLinksSecondary[lessonNumber]}" target="_blank" class="btn-material-secondary">
-                  <i class="fas fa-file-pdf me-1"></i>PDF 2
-                </a>` : 
-                '<button class="btn-material-secondary" disabled><i class="fas fa-clock me-1"></i>PDF 2 em breve</button>'
-              }
-            </div>
-          </div>
-          ${generateVideoHTML(lessonVideos[lessonNumber])}
+      // Adicionar título para Câmara Básica
+      basicContainer.innerHTML = `
+        <div class="section-title" style="margin: 2rem 0 1rem 0;">
+          <i class="fas fa-graduation-cap"></i>
+          <h3>Câmara Básica • 16 Lições</h3>
         </div>
       `;
-      basicContainer.appendChild(scheduleItem);
-    });
-
-    // Renderizar Câmara Avançada (7 últimas aulas)
-    advancedChamber.forEach((topic, index) => {
-      const lessonNumber = index + 17;
-      const scheduleItem = document.createElement('div');
-      scheduleItem.className = 'schedule-item';
-      scheduleItem.innerHTML = `
-        <img src="${lessonImages[lessonNumber]}" alt="${topic}" class="schedule-image">
-        <div class="schedule-content">
-          <div class="schedule-header-row">
-            <div class="schedule-topic">${topic}</div>
-          </div>
-          <div class="schedule-description">${lessonDescriptions[lessonNumber]}</div>
-          <div class="schedule-footer">
-            <div class="schedule-date">${formatDateForDisplay(scheduleDates[index + 16])}</div>
-            <div class="material-buttons">
-              <button class="btn-material" disabled>
-                <i class="fas fa-clock me-1"></i>PDF 1 em breve
-              </button>
-              <button class="btn-material-secondary" disabled>
-                <i class="fas fa-clock me-1"></i>PDF 2 em breve
-              </button>
-            </div>
-          </div>
-          ${generateVideoHTML(lessonVideos[lessonNumber])}
-        </div>
-      `;
-      advancedContainer.appendChild(scheduleItem);
-    });
-  }
-
-  // Função para controlar a tela flutuante melhorada
-  function initFloatingPanel() {
-    const floatingToggleBtn = document.getElementById('floatingToggleBtn');
-    const socialPanel = document.getElementById('socialPanel');
-    const socialPanelClose = document.getElementById('socialPanelClose');
-    let isPanelOpen = false;
-    
-    // Abrir/fechar ao clicar no botão flutuante
-    floatingToggleBtn.addEventListener('click', function(e) {
-      e.stopPropagation();
-      togglePanel();
-    });
-    
-    // Fechar ao clicar no botão X
-    socialPanelClose.addEventListener('click', function(e) {
-      e.stopPropagation();
-      closePanel();
-    });
-    
-    // Fechar ao clicar fora do painel
-    document.addEventListener('click', function(e) {
-      if (isPanelOpen && !socialPanel.contains(e.target) && !floatingToggleBtn.contains(e.target)) {
-        closePanel();
-      }
-    });
-    
-    // Fechar ao pressionar a tecla Escape
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape' && isPanelOpen) {
-        closePanel();
-      }
-    });
-    
-    function togglePanel() {
-      if (isPanelOpen) {
-        closePanel();
-      } else {
-        openPanel();
-      }
-    }
-    
-    function openPanel() {
-      socialPanel.classList.add('active');
-      floatingToggleBtn.classList.add('active');
-      isPanelOpen = true;
       
-      // Remover badge de notificação após abrir
-      const badge = document.querySelector('.notification-badge');
-      if (badge) {
-        badge.style.display = 'none';
-      }
-    }
-    
-    function closePanel() {
-      socialPanel.classList.remove('active');
-      floatingToggleBtn.classList.remove('active');
-      isPanelOpen = false;
-    }
-    
-    // Efeito de hover nos ícones sociais
-    const socialIcons = document.querySelectorAll('.social-icon-item');
-    socialIcons.forEach(icon => {
-      icon.addEventListener('mouseenter', function() {
-        this.style.transform = 'translateY(-5px)';
+      // Renderizar aulas básicas
+      courseData.lessons.forEach((lesson, index) => {
+        basicContainer.innerHTML += createLessonCard(lesson, index);
       });
       
-      icon.addEventListener('mouseleave', function() {
-        this.style.transform = 'translateY(0)';
+      // Adicionar título para Câmara Avançada
+      advancedContainer.innerHTML = `
+        <div class="section-title" style="margin: 2rem 0 1rem 0;">
+          <i class="fas fa-rocket"></i>
+          <h3>Câmara Avançada • 7 Lições</h3>
+        </div>
+      `;
+      
+      // Renderizar aulas avançadas
+      courseData.advancedLessons.forEach((lesson, index) => {
+        advancedContainer.innerHTML += createLessonCard(lesson, index + courseData.lessons.length);
+      });
+    }
+
+    // Função para atualizar progresso
+    function updateProgress() {
+      const today = new Date();
+      const startDate = new Date('2025-11-26');
+      const endDate = new Date('2026-02-25');
+      
+      const totalDays = (endDate - startDate) / (1000 * 60 * 60 * 24);
+      const daysPassed = (today - startDate) / (1000 * 60 * 60 * 24);
+      
+      let progress = Math.min(Math.max((daysPassed / totalDays) * 100, 0), 100);
+      
+      if (today < startDate) progress = 0;
+      if (today > endDate) progress = 100;
+      
+      const progressBar = document.getElementById('course-progress');
+      const progressPercent = document.getElementById('progress-percentage');
+      
+      progressBar.style.width = `${progress}%`;
+      progressPercent.textContent = `${Math.round(progress)}%`;
+    }
+
+    // Modal de vídeo
+    const videoModal = document.getElementById('videoModal');
+    const modalClose = document.getElementById('modalClose');
+    const modalVideoContainer = document.getElementById('modalVideoContainer');
+
+    function openVideoModal(videoUrl, title) {
+      modalVideoContainer.innerHTML = `
+        <iframe src="${videoUrl}?autoplay=1" 
+          title="${title}" 
+          frameborder="0" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+          allowfullscreen>
+        </iframe>
+      `;
+      videoModal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeVideoModal() {
+      videoModal.classList.remove('active');
+      modalVideoContainer.innerHTML = '';
+      document.body.style.overflow = 'auto';
+    }
+
+    // Event listeners para modal
+    modalClose.addEventListener('click', closeVideoModal);
+    videoModal.addEventListener('click', (e) => {
+      if (e.target === videoModal) closeVideoModal();
+    });
+
+    // Função para marcar aula como concluída
+    function markAsCompleted(lessonId) {
+      const btn = event.target.closest('.btn-action');
+      if (btn) {
+        btn.innerHTML = '<i class="fas fa-check"></i> Concluída!';
+        btn.classList.remove('btn-secondary-action');
+        btn.classList.add('btn-primary-action');
+        btn.disabled = true;
+        
+        // Mostrar notificação
+        showNotification(`Aula ${lessonId} marcada como concluída!`);
+      }
+    }
+
+    // Notificação
+    function showNotification(message) {
+      const notification = document.createElement('div');
+      notification.style.cssText = `
+        position: fixed;
+        top: 100px;
+        right: 20px;
+        background: var(--color-success);
+        color: white;
+        padding: 1rem 1.5rem;
+        border-radius: var(--radius-md);
+        box-shadow: var(--shadow-card);
+        z-index: 1000;
+        animation: fadeInUp 0.3s ease;
+      `;
+      notification.textContent = message;
+      document.body.appendChild(notification);
+      
+      setTimeout(() => {
+        notification.remove();
+      }, 3000);
+    }
+
+    // Inicializar quando a página carregar
+    document.addEventListener('DOMContentLoaded', () => {
+      renderLessons();
+      updateProgress();
+      
+      // Atualizar progresso a cada minuto
+      setInterval(updateProgress, 60000);
+      
+      // Animar cards quando entrarem na viewport
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      };
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+          }
+        });
+      }, observerOptions);
+      
+      document.querySelectorAll('.animate-card').forEach(card => {
+        observer.observe(card);
       });
     });
-  }
-
-  // Executar quando a página carregar
-  document.addEventListener('DOMContentLoaded', function() {
-    renderSchedule();
-    updateProgressBar();
-    initFloatingPanel();
-    
-    // Atualizar a barra de progresso a cada minuto
-    setInterval(updateProgressBar, 60000);
-  });
-</script>
+  </script>
 </body>
 </html>
