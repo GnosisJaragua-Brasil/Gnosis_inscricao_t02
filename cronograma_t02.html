@@ -1187,32 +1187,38 @@
     });
 
     // Renderizar Câmara Avançada (7 últimas aulas)
-    advancedChamber.forEach((topic, index) => {
-      const lessonNumber = index + 17;
-      const scheduleItem = document.createElement('div');
-      scheduleItem.className = 'schedule-item';
-      scheduleItem.innerHTML = `
-        <img src="${lessonImages[lessonNumber]}" alt="${topic}" class="schedule-image">
-        <div class="schedule-content">
-          <div class="schedule-header-row">
-            <div class="schedule-topic">${topic}</div>
-          </div>
-          <div class="schedule-description">${lessonDescriptions[lessonNumber]}</div>
-          <div class="schedule-footer">
-            <div class="schedule-date">${formatDateForDisplay(scheduleDates[index + 16])}</div>
-            <div class="material-buttons">
-              <button class="btn-material" disabled>
-                <i class="fas fa-clock me-1"></i>PDF 1 em breve
-              </button>
-              <button class="btn-material-secondary" disabled>
-                <i class="fas fa-clock me-1"></i>PDF 2 em breve
-              </button>
-            </div>
-          </div>
+advancedChamber.forEach((topic, index) => {
+  const lessonNumber = index + 17;
+  const scheduleItem = document.createElement('div');
+  scheduleItem.className = 'schedule-item';
+  scheduleItem.innerHTML = `
+    <img src="${lessonImages[lessonNumber]}" alt="${topic}" class="schedule-image">
+    <div class="schedule-content">
+      <div class="schedule-header-row">
+        <div class="schedule-topic">${topic}</div>
+      </div>
+      <div class="schedule-description">${lessonDescriptions[lessonNumber]}</div>
+      <div class="schedule-footer">
+        <div class="schedule-date">${formatDateForDisplay(scheduleDates[index + 16])}</div>
+        <div class="material-buttons">
+          ${lessonLinks[lessonNumber] ? 
+            `<a href="${lessonLinks[lessonNumber]}" target="_blank" class="btn-material">
+              <i class="fas fa-file-pdf me-1"></i>PDF 1
+            </a>` : 
+            '<button class="btn-material" disabled><i class="fas fa-clock me-1"></i>PDF 1 em breve</button>'
+          }
+          ${lessonLinksSecondary[lessonNumber] ? 
+            `<a href="${lessonLinksSecondary[lessonNumber]}" target="_blank" class="btn-material-secondary">
+              <i class="fas fa-file-pdf me-1"></i>PDF 2
+            </a>` : 
+            '<button class="btn-material-secondary" disabled><i class="fas fa-clock me-1"></i>PDF 2 em breve</button>'
+          }
         </div>
-      `;
-      advancedContainer.appendChild(scheduleItem);
-    });
+      </div>
+    </div>
+  `;
+  advancedContainer.appendChild(scheduleItem);
+});
   }
 
   // Função para controlar a tela flutuante melhorada
