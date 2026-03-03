@@ -11,7 +11,7 @@
   <link rel="icon" href="https://gnosisbrasil.com/wp-content/uploads/2020/07/cropped-logo-sol-7-32x32.webp" type="image/webp">
 
   <style>
-    /* SEUS ESTILOS EXISTENTES PERMANECEM AQUI */
+    /* --- SEUS ESTILOS CSS PERMANECEM IGUAIS --- */
     :root {
       --color-primary: #005bd2;
       --color-dark-bg: #1e3a8a;
@@ -30,38 +30,7 @@
       line-height: 1.6;
     }
 
-    /* CORREÇÃO DA NAVBAR */
-    .navbar {
-      padding: 0.5rem 1rem;
-    }
-
-    .navbar-brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 1.1rem;
-      font-weight: 600;
-    }
-
-    .navbar-brand img {
-      height: 40px;
-      width: auto;
-      border-radius: 50%;
-      background-color: white;
-      padding: 2px;
-    }
-
-    /* Ajuste para mobile */
-    @media (max-width: 768px) {
-      .navbar-brand {
-        font-size: 0.9rem;
-      }
-      
-      .navbar-brand img {
-        height: 35px;
-      }
-    }
-
+    /* Card central */
     .confirmation-card {
       background-color: #fff;
       border-radius: 1rem;
@@ -73,6 +42,7 @@
       margin: 2rem 0;
     }
 
+    /* Animação fade-in */
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
@@ -93,6 +63,7 @@
       margin-bottom: 1rem;
       border-style: solid;
       border-radius: 7px;
+      padding: 2px;
       border-color: rgba(0, 64, 106, 0.094);
       display: inline-block;
       padding: 8px 16px;
@@ -106,143 +77,89 @@
       border-radius: 3px;
     }
 
-    /* ===== ESTILOS PARA A BARRA DE BUSCA ===== */
-    .search-container {
-      margin: 2rem 0;
-      position: relative;
-    }
-
-    .search-input {
-      width: 100%;
-      padding: 1rem 1rem 1rem 3rem;
-      border: 2px solid #e0e0e0;
-      border-radius: 50px;
+    .lead {
       font-size: 1rem;
-      transition: all 0.3s ease;
-      background-color: white;
+      margin-bottom: 1.5rem;
     }
 
-    .search-input:focus {
-      outline: none;
-      border-color: var(--color-primary);
-      box-shadow: 0 0 0 3px rgba(0, 91, 210, 0.1);
-    }
-
-    .search-icon {
-      position: absolute;
-      left: 1rem;
-      top: 50%;
-      transform: translateY(-50%);
-      color: #999;
-      font-size: 1.2rem;
-    }
-
-    .search-clear-btn {
-      position: absolute;
-      right: 1rem;
-      top: 50%;
-      transform: translateY(-50%);
-      background: none;
-      border: none;
-      color: #999;
-      cursor: pointer;
-      font-size: 1.2rem;
-      display: none;
-      transition: color 0.3s ease;
-    }
-
-    .search-clear-btn:hover {
-      color: var(--color-primary);
-    }
-
-    .search-clear-btn.visible {
-      display: block;
-    }
-
-    .search-stats {
-      text-align: left;
-      margin-top: 0.5rem;
-      margin-left: 1rem;
-      font-size: 0.9rem;
-      color: #666;
-    }
-
-    .no-results {
-      text-align: center;
-      padding: 3rem;
-      background: #f8f9fa;
-      border-radius: 1rem;
-      color: #666;
-    }
-
-    .no-results i {
-      font-size: 3rem;
-      color: var(--color-primary);
-      margin-bottom: 1rem;
-    }
-
-    /* Badge de número da lição */
-    .lesson-number-badge {
-      background-color: var(--color-primary);
-      color: white;
-      padding: 3px 10px;
-      border-radius: 20px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      margin-right: 10px;
-      display: inline-block;
-    }
-
-    /* Animação para resultados da busca */
-    .schedule-item {
-      transition: all 0.3s ease;
-    }
-
-    .schedule-item.search-match {
-      animation: pulseHighlight 2s ease;
-      border-left-width: 6px;
-    }
-
-    @keyframes pulseHighlight {
-      0% { background-color: #f8f9fa; }
-      30% { background-color: #e8f4ff; }
-      100% { background-color: #f8f9fa; }
-    }
-
-    /* Barra de progresso */
-    .progress-container {
-      margin: 2rem 0;
-    }
-
-    .progress-label {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 0.5rem;
-    }
-
-    .progress {
-      height: 10px;
-      border-radius: 5px;
-    }
-
-    /* Estilos para seções informativas */
-    .info-section {
-      margin: 2rem 0;
+    .details-box {
       padding: 1.5rem;
-      background-color: #f8f9fa;
       border-radius: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .details-box {
+      background-color: #f8f9fa;
       text-align: left;
+      color: #212529;
     }
 
-    .info-section h3 {
+    .details-box h5 {
       color: var(--color-primary);
-      font-size: 1.3rem;
-      margin-bottom: 1rem;
-      border-bottom: 2px solid var(--color-primary);
-      padding-bottom: 0.5rem;
+      margin-bottom: 0.75rem;
     }
 
-    /* Estilos do cronograma */
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .info-card {
+      background: white;
+      border-radius: 8px;
+      padding: 1rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      border-left: 4px solid var(--color-primary);
+      transition: transform 0.3s ease;
+    }
+
+    .info-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .info-card h6 {
+      color: var(--color-primary);
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    .info-card p {
+      margin-bottom: 0;
+      font-size: 0.9rem;
+    }
+
+    .info-icon {
+      color: var(--color-primary);
+      margin-right: 0.5rem;
+    }
+
+    .social-icon {
+      font-size: 1.5rem;
+      margin: 0 10px;
+      color: var(--color-primary);
+      transition: all 0.3s ease;
+    }
+
+    .social-icon:hover {
+      transform: translateY(-3px);
+      color: #5a32a8;
+    }
+
+    .btn-gnosis {
+      background-color: var(--color-primary);
+      color: #fff;
+      border: none;
+      transition: all 0.3s ease;
+    }
+
+    .btn-gnosis:hover {
+      background-color: #323aa8;
+      transform: scale(1.05);
+    }
+
+    /* Estilos para o cronograma */
     .schedule-section {
       margin: 3rem 0;
     }
@@ -405,6 +322,97 @@
       gap: 0.5rem;
     }
 
+    .hero-section {
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://gnosisbrasil.com/wp-content/uploads/2020/07/gnosis-brasil-banner.jpg');
+      background-size: cover;
+      color: white;
+      padding: 100px 0;
+      text-align: center;
+    }
+
+    .btn-whatsapp {
+      background-color: #25D366;
+      color: white;
+    }
+
+    .feature-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: #6f42c1;
+    }
+
+    .navbar-brand img {
+      height: 40px;
+    }
+
+    .astral {
+      font-family: 'Amontillados', serif;
+      font-weight: normal !important;
+      font-size: clamp(2rem, 8vw, 10rem);
+    }
+
+    /* Estilos para a barra de progresso */
+    .progress-container {
+      margin: 2rem 0;
+    }
+
+    .progress-label {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+    }
+
+    .progress {
+      height: 10px;
+      border-radius: 5px;
+    }
+
+    /* Layout horizontal para informações importantes */
+    .horizontal-info {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .horizontal-info .info-card {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    /* Estilos para seções informativas */
+    .info-section {
+      margin: 2rem 0;
+      padding: 1.5rem;
+      background-color: #f8f9fa;
+      border-radius: 0.75rem;
+      text-align: left;
+    }
+
+    .info-section h3 {
+      color: var(--color-primary);
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      border-bottom: 2px solid var(--color-primary);
+      padding-bottom: 0.5rem;
+    }
+
+    .info-section p {
+      color: #495057;
+      margin-bottom: 1rem;
+      line-height: 1.6;
+    }
+
+    .info-section ul {
+      padding-left: 1.5rem;
+      color: #495057;
+    }
+
+    .info-section li {
+      margin-bottom: 0.5rem;
+    }
+
+    /* Badges informativos */
     .recess-badge {
       background-color: var(--color-warning);
       color: #212529;
@@ -427,7 +435,7 @@
       display: inline-block;
     }
 
-    /* Estilos da tela flutuante */
+    /* ===== ESTILOS MELHORADOS PARA A TELA FLUTUANTE ===== */
     .floating-social-container {
       position: fixed;
       bottom: 30px;
@@ -556,12 +564,29 @@
       transform: scale(1.2);
     }
 
+    .social-icon-item.facebook:hover i {
+      color: #3b5998;
+    }
+
+    .social-icon-item.instagram:hover i {
+      color: #e1306c;
+    }
+
+    .social-icon-item.youtube:hover i {
+      color: #ff0000;
+    }
+
+    .social-icon-item.website:hover i {
+      color: var(--color-primary);
+    }
+
     .social-icon-label {
       font-size: 0.8rem;
       text-align: center;
       font-weight: 500;
     }
 
+    /* Indicador de notificação */
     .notification-badge {
       position: absolute;
       top: -5px;
@@ -597,12 +622,15 @@
       h2.subtitle { 
         font-size: 1.1rem; 
       }
+      .info-grid { 
+        grid-template-columns: 1fr; 
+      }
       .schedule-item { 
         flex-direction: column; 
       }
       .schedule-image {
         width: 100%;
-        height: 250px;
+        height: 325px;
         margin-right: 0;
         margin-bottom: 1rem;
       }
@@ -614,6 +642,12 @@
         align-items: flex-start;
         gap: 1rem;
       }
+      .navbar-brand {
+        font-size: 0.9rem;
+      }
+      .horizontal-info .info-card {
+        min-width: 100%;
+      }
       .material-buttons {
         flex-direction: column;
         width: 100%;
@@ -622,29 +656,100 @@
         width: 100%;
         margin-right: 0;
       }
+      
+      /* CORREÇÃO PARA A TELA FLUTUANTE EM DISPOSITIVOS MÓVEIS */
       .floating-social-container {
         bottom: 15px;
         right: 15px;
       }
+      
+
+      .hero-section { 
+        background-image:;
+            background: linear-gradient(135deg, #ffffff 0%, #9585a1 50%, #ebebeb 100%);
+            padding: 60px 20px; 
+            color: white;
+            text-align: center;
+            border-bottom-left-radius: 50px;
+            border-bottom-right-radius: 50px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: -40px;
+        }
+
       .social-panel {
         width: calc(100vw - 30px);
         max-width: 320px;
+        right: 0;
       }
-      .search-input {
-        font-size: 0.9rem;
-        padding: 0.8rem 0.8rem 0.8rem 2.5rem;
+      
+      .social-icons-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+      }
+      
+      .social-icon-item {
+        padding: 10px 5px;
+        min-height: 80px;
+        justify-content: center;
+      }
+      
+      .social-icon-label {
+        font-size: 0.75rem;
+        line-height: 1.2;
+      }
+    }
+
+    /* Ajustes para telas muito pequenas (menos de 400px) */
+    @media (max-width: 400px) {
+      .social-panel {
+        width: calc(100vw - 20px);
+        padding: 15px;
+      }
+      
+      .social-icons-grid {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+      
+      .social-icon-item {
+        flex-direction: row;
+        justify-content: flex-start;
+        padding: 10px 15px;
+        min-height: auto;
+      }
+      
+      .social-icon-item i {
+        margin-bottom: 0;
+        margin-right: 10px;
+        font-size: 1.5rem;
+      }
+      
+      .social-icon-label {
+        font-size: 0.8rem;
+        text-align: left;
+      }
+    }
+
+    /* Melhorias para impressão */
+    @media print {
+      .navbar, .btn-material, .btn-material-secondary, .social-media, footer, .floating-social-container {
+        display: none !important;
+      }
+      .confirmation-card {
+        box-shadow: none;
+        border: 1px solid #ddd;
       }
     }
   </style>
 </head>
+
 <body>
 
-<!-- NAVBAR CORRIGIDA -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
   <div class="container">
     <a class="navbar-brand" href="index.html">
-      <img src="https://gnosisbrasil.com/wp-content/uploads/2020/07/cropped-logo-sol-7.webp" alt="Logo Gnosis">
-      <span>Gnosis Jaraguá do Sul</span>
+      <img src="img/cropped-logo-sol-7.webp" alt="Logo Gnosis" class="me-2">
+      Gnosis Jaraguá do Sul
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
       <span class="navbar-toggler-icon"></span>
@@ -674,7 +779,7 @@
       <div class="col-lg-10">
         <div class="confirmation-card">
           <div class="mb-4">
-            <img src="https://gnosisbrasil.com/wp-content/uploads/2020/07/cropped-logo-sol-7.webp" alt="Logo Gnosis" style="height: 80px; width: auto;">
+            <img src="img/2343637.png" alt="Logo Gnosis" style="height: 80px;">
           </div>
           <h1 class="title-main">Cronograma Completo</h1>
           <div class="divider"></div>
@@ -690,18 +795,8 @@
               <div id="course-progress" class="progress-bar bg-success" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
             </div>
           </div>
-
-          <!-- BARRA DE BUSCA -->
-          <div class="search-container">
-            <i class="fas fa-search search-icon"></i>
-            <input type="text" id="searchInput" class="search-input" placeholder="Buscar lição por número, título ou descrição...">
-            <button id="clearSearchBtn" class="search-clear-btn">
-              <i class="fas fa-times"></i>
-            </button>
-            <div id="searchStats" class="search-stats"></div>
-          </div>
           
-          <!-- Seções informativas -->
+          <!-- Seções informativas reorganizadas -->
           <div class="info-section">
             <h3>CURSO DE GNOSIS – 1ª CÂMARA</h3>
             <p>Criado a fim de transmitir uma mensagem transformadora da vida prática e destinada a qualquer pessoa, o Curso de Gnosis (Autoconhecimento) é um verdadeiro chamado à consciência da humanidade. Também denominado de 1ª Câmara, consiste em 23 aulas teóricas e práticas introdutórias ao autêntico autoconhecimento.</p>
@@ -744,7 +839,7 @@
           </div>
         </div>
 
-        <!-- Cronograma com resultados da busca -->
+        <!-- Cronograma exibido diretamente na página -->
         <div class="confirmation-card">
           <div class="schedule-section">
             <div class="schedule-header">
@@ -757,21 +852,14 @@
               </div>
             </div>
 
-            <!-- Container para mensagem de nenhum resultado -->
-            <div id="noResultsMessage" class="no-results" style="display: none;">
-              <i class="fas fa-search"></i>
-              <h4>Nenhuma lição encontrada</h4>
-              <p>Tente buscar por outro termo ou número de lição.</p>
-            </div>
-
-            <div class="chamber-section" id="basicChamberSection">
+            <div class="chamber-section">
               <h5 class="chamber-title">Câmara Básica | 16 Lições</h5>
               <div id="basicChamberDates">
                 <!-- Conteúdo gerado dinamicamente -->
               </div>
             </div>
 
-            <div class="chamber-section" id="advancedChamberSection">
+            <div class="chamber-section">
               <h5 class="chamber-title">Câmara Avançada | 07 Lições</h5>
               <div id="advancedChamberDates">
                 <!-- Conteúdo gerado dinamicamente -->
@@ -786,6 +874,8 @@
             </div>
           </div>
         </div>
+
+        
       </div>
     </div>
   </div>
@@ -794,7 +884,7 @@
 <footer class="py-4 bg-dark text-white text-center">
   <div class="container">
     <div class="mb-3">
-      <img src="https://gnosisbrasil.com/wp-content/uploads/2020/07/cropped-logo-sol-7.webp" alt="Logo Gnosis" style="height: 60px; width: auto;">
+      <img src="img/cropped-logo-sol-7.webp" alt="Logo Gnosis" style="height: 60px;">
     </div>
     <p>&copy; 2025 Gnosis Brasil. Todos os direitos reservados.</p>
     <p class="mb-0">
@@ -804,7 +894,7 @@
   </div>
 </footer>
 
-<!-- Tela Flutuante -->
+<!-- Tela Flutuante Melhorada - NO LADO DIREITO -->
 <div class="floating-social-container">
   <div class="social-panel" id="socialPanel">
     <div class="social-panel-header">
@@ -847,60 +937,161 @@
 
 <script>
   // ============================================
-  // CONFIGURAÇÃO DOS DADOS DAS AULAS
+  // CONFIGURAÇÃO DOS DADOS DAS AULAS (FÁCIL DE EDITAR)
   // ============================================
   const lessons = [
     // Aulas 1 a 16 (Câmara Básica)
     { number: 1, title: "O que é Gnosis", chamber: "basic", 
       description: "Apresenta uma visão geral sobre as origens, bases e objetivos da Gnosis como conhecimento universal.",
-      image: "https://via.placeholder.com/125x160?text=Lição+1",
+      image: "img/Curso de Gnosis 04.jpg",
       linkPdf1: "https://drive.google.com/file/d/1CE-69pxxZUmYurqp6-C7KplNfW9ewtXP/view?usp=drive_link",
       linkPdf2: "https://drive.google.com/file/d/0ByuJiBLnCPXgX3R0SW15bGJUS1E/view?usp=drive_link&resourcekey=0-G43iiHrkTm22Lox8mPh49g" },
     { number: 2, title: "Personalidade, Essência e Ego", chamber: "basic",
       description: "Mostra os 3 principais componentes da psicologia humana, suas características e como trabalhá-los à nosso favor.",
-      image: "https://via.placeholder.com/125x160?text=Lição+2",
+      image: "img/Personalidade, Essência e Ego 03.jpg",
       linkPdf1: "https://drive.google.com/file/d/1CJ8LfneXsEO9tXS4wocR8JcyDUAI_E7B/view?usp=drive_link",
       linkPdf2: "https://drive.google.com/file/d/12jpkWf6m2ST069drWA86rpSrSO8f5Yuc/view?usp=drive_link" },
     { number: 3, title: "O Despertar da Consciência", chamber: "basic",
       description: "Estuda a consciência e inconsciência, causas do adormecimento da consciência no ser humano e como despertá-la.",
-      image: "https://via.placeholder.com/125x160?text=Lição+3",
+      image: "img/O Despertar da Consciência 02.jpg",
       linkPdf1: "https://drive.google.com/file/d/1CJKMYjjFpIe4VXnU_jlJ1M2ZcA2TMI1f/view?usp=drive_link",
       linkPdf2: "https://drive.google.com/file/d/0ByuJiBLnCPXgWWVlT3VNQm5kcVk/view?usp=drive_link&resourcekey=0-QjgW41nYsWeecFXhIAGCvA" },
-    // ... (continue com as outras aulas da mesma forma)
+    { number: 4, title: "O Eu Psicológico", chamber: "basic",
+      description: "Estudo sobre o ego, sua origem, formas de expressão e suas ramificações na mente, emoções, atitudes e na psique humana.",
+      image: "img/O Eu Psicológico 02.jpg",
+      linkPdf1: "https://drive.google.com/file/d/1CNH8lLVGkjri4ie0e-ha2qcupCD3DUy8/view?usp=drive_link",
+      linkPdf2: "https://drive.google.com/file/d/0ByuJiBLnCPXgUlMtcmtCZHdmNTg/view?usp=drive_link&resourcekey=0-8yYpe218jPZhG-buH6lFDA" },
+    { number: 5, title: "Luz, Calor e Som", chamber: "basic",
+      description: "As influências físicas e metafísicas desses três princípios universais, principalmente o som, dentro e fora do homem.",
+      image: "img/05. Luz, Calor e Som.jpg",
+      linkPdf1: "https://drive.google.com/file/d/1BrFB6brt1TLfBarYJptK1K9cE65xzRzR/view?usp=drive_link",
+      linkPdf2: "https://drive.google.com/file/d/0ByuJiBLnCPXgSm9OZlZMSlMzYTA/view?usp=drive_link&resourcekey=0-pXLDZW9_tRWPrlsBiWD-rQ" },
+    { number: 6, title: "A Máquina Humana", chamber: "basic",
+      description: "Os centros que governam nosso organismo: Intelectual, emocional, motor, instintivo e sexual, como utilizá-los de maneira sábia para uma melhor saúde e qualidade de vida.",
+      image: "img/shutterstock_1336371356.jpg",
+      linkPdf1: "https://drive.google.com/file/d/1BuDdQFoUPgOZFFf86l2CpB6XbbvqudVa/view?usp=drive_link",
+      linkPdf2: "https://drive.google.com/file/d/0ByuJiBLnCPXgeVdTblJKUFZkNW8/view?usp=drive_link&resourcekey=0-Sgq7TQ5NEqI1k4J0vDfrrA" },
+    { number: 7, title: "O Mundo das Relações", chamber: "basic",
+      description: "Reflexão sobre o ser humano e seus diversos mundos ou esferas de relacionamento, seja com a família, sociedade, com o planeta e consigo mesmo. Como o conhecimento de si mesmo nos ajuda a melhorar todo tipo de relações.",
+      image: "img/licao07.jpg",
+      linkPdf1: "https://drive.google.com/file/d/1Bua-5ii_1QgExJmkCdiXI708lkbFq3kV/view?usp=drive_link",
+      linkPdf2: "https://drive.google.com/file/d/12VR3p1VxgX-5szLdhSY5nDK9u-Uh03SO/view?usp=drive_link" },
+    { number: 8, title: "O Caminho e a Vida", chamber: "basic",
+      description: "Reflexões sobre a necessidade de se traçar metas e objetivos na vida, tanto materiais como espirituais.",
+      image: "img/licao8.jpg",
+      linkPdf1: "https://drive.google.com/file/d/1BxQDf8IYd9jtpuGi855XMZH3iZkCgYFd/view?usp=drive_link",
+      linkPdf2: "https://drive.google.com/file/d/0ByuJiBLnCPXgR0xpa0FqQmdhRHM/view?usp=drive_link&resourcekey=0-kypyl1Q6gy9eHA6th14oOQ" },
+    { number: 9, title: "O Nível de Ser", chamber: "basic",
+      description: "Reflexões sobre a necessidade de conhecer a si mesmo, como base ou fundamento para uma mudança interior e individual.",
+      image: "img/1f6dabc7e410fd988a3764d04f50aa8f.jpg",
+      linkPdf1: "https://drive.google.com/file/d/1ByKSJBr2ua9GUr7z7pgQmg17fAQSQbf5/view?usp=drive_link",
+      linkPdf2: "https://drive.google.com/file/d/0ByuJiBLnCPXga3ZZRkxBUDJXdXc/view?usp=drive_link&resourcekey=0-gKG35-riXKyXjJhUcb-LUg" },
+    { number: 10, title: "O Decálogo", chamber: "basic",
+      description: "Níveis de interpretação das sagradas escrituras: Letra Viva e Letra Morta. O esoterismo dos 10 Mandamentos.",
+      image: "img/moises_michelangelo 01.jpg",
+      linkPdf1: "https://drive.google.com/file/d/1ByStJutCRh_-sDPMc8kYNUJVmMd9gE1N/view?usp=drive_link",
+      linkPdf2: "https://drive.google.com/file/d/0ByuJiBLnCPXgc2FUTk1uTzNFMjg/view?usp=drive_link&resourcekey=0-trTrVjwS0DweKpRaTc4-0Q" },
+    { number: 11, title: "Educação Fundamental", chamber: "basic",
+      description: "As diferentes fases do desenvolvimento humano e como aproveitar ao máximo cada uma delas, extraindo saúde, sucesso e sabedoria. Mostra as bases da psicologia transformativa que começa por mudar a forma de pensar, de sentir e de atuar.",
+      image: "img/eea26514a339878a92c6b7f1cd789608.jpg",
+      linkPdf1: "https://drive.google.com/file/d/1C9RV1DOZQffwUyAYQNAm4RzJ1WAaiuEq/view?usp=drive_link",
+      linkPdf2: "https://drive.google.com/file/d/0ByuJiBLnCPXgdkhBcHk4M1JMclU/view?usp=drive_link&resourcekey=0-eQhKjBHstCLDUOuU65yj5w" },
+    { number: 12, title: "A Árvore Genealógica das Religiões", chamber: "basic",
+      description: "Estudo comparativo sobre várias das grandes religiões e culturas que passaram sobre a terra, mostrando uma visão de seu objetivo: a Revolução da Consciência.",
+      image: "img/jesus cristo.jpg",
+      linkPdf1: "https://drive.google.com/file/d/1CAUIQ-fYSmatzNIY5NXuBFSigvEQMBbd/view?usp=drive_link",
+      linkPdf2: "https://drive.google.com/file/d/0ByuJiBLnCPXgTDlRY0ZwRlp4QXM/view?usp=drive_link&resourcekey=0-iH_xNuiVemFplCA8qFw2KQ" },
+    { number: 13, title: "Evolução, Involução e Revolução", chamber: "basic",
+      description: "Estudo metafísico destas duas leis da natureza e a necessidade de uma revolução psicológica para chegarmos a uma verdadeira liberdade.",
+      image: "img/Representação budista da Roda do Samsara.jpg",
+      linkPdf1: "https://drive.google.com/file/d/1BEqmHasU_N6ZEXHcCksS8NmbOXK_ogoa/view?usp=drive_link",
+      linkPdf2: "https://drive.google.com/file/d/0ByuJiBLnCPXgS1JJWFY0cDBHdEE/view?usp=drive_link&resourcekey=0-9aNc3kOptmpJPmGdqFsN8Q" },
+    { number: 14, title: "O Raio da Morte", chamber: "basic",
+      description: "Estudo cultural, científico e metafísico sobre os processos post-mortem, baseados no Livro dos Mortos dos Egípcios e dos Tibetanos.",
+      image: "img/karma-saude.jpg",
+      linkPdf1: "https://drive.google.com/file/d/1BIOZ1U9H4nh60YdteM4XA0CfDATKpVEI/view?usp=drive_link",
+      linkPdf2: "https://drive.google.com/file/d/0ByuJiBLnCPXgVVNTdDFlNF9Nc0U/view?usp=drive_link&resourcekey=0-zZ7O10pmxChe6X-l4wgYAA" },
+    { number: 15, title: "Reencarnação, Retorno e Recorrência", chamber: "basic",
+      description: "Estudo científico e metafísico sobre essas 3 leis da Natureza.",
+      image: "img/retorno.jpg",
+      linkPdf1: "https://drive.google.com/file/d/1BQ6kxFBaMGFrfDMfNQuC1MTXPIcSU2kh/view?usp=drive_link",
+      linkPdf2: "https://drive.google.com/file/d/0ByuJiBLnCPXgZVliUjBVUjkxMlU/view?usp=drive_link&resourcekey=0-StxeibqRwyhrucOkORhwug" },
+    { number: 16, title: "A Balança da Justiça", chamber: "basic",
+      description: "Reflexões sobre questões como destino, Karma (castigo) e Dharma (recompensa).",
+      image: "img/libra_Johfra.jpg",
+      linkPdf1: "https://drive.google.com/file/d/1BYntAQG-_362gNoaRtNig2P8BlfJZ-nf/view?usp=drive_link",
+      linkPdf2: "https://drive.google.com/file/d/0ByuJiBLnCPXgTDd1S2s4aDNiaEU/view?usp=drive_link&resourcekey=0-IhRyZn4I1G2ElLG2An_dFw" },
+
+    // Aulas 17 a 23 (Câmara Avançada)
+    { number: 17, title: "Os Quatro Caminhos", chamber: "advanced",
+      description: "Reflexões sobre a busca do homem pelo equilíbrio interior, através dessa jornada que busca o domínio do corpo físico, das emoções e da mente.",
+      image: "img/faquir.jpg",
+      linkPdf1: "https://drive.google.com/file/d/1BaQvgQOzcw0gHtGx1oOFZYTK7slYEf2g/view?usp=drive_link",
+      linkPdf2: "https://drive.google.com/file/d/0ByuJiBLnCPXgLUNhVkZFdEVxYUk/view?usp=drive_link&resourcekey=0-ZXlj0x4u0SkfLTE7p20Lfw" },
+    { number: 18, title: "O Diagrama Interno do Homem", chamber: "advanced",
+      description: "A estrutura física e interna do ser humano, dimensões ou corpos: físico, vital, astral ou emocional, mental, vontade, consciência e íntimo.",
+      image: "img/Post para Instagram Limites Saudáveis.jpg",
+      linkPdf1: "https://drive.google.com/file/d/1BbqV5QIl7-cUDiiRh1kktV_h0RcvU9KZ/view?usp=drive_link",
+      linkPdf2: "https://drive.google.com/file/d/0ByuJiBLnCPXgSGRoV1FNcnlibXc/view?usp=drive_link&resourcekey=0-pb_KEwQAT0oJgweIW2tcoQ" },
+    { number: 19, title: "Transformação da Energia", chamber: "advanced",
+      description: "Tema sobre Alquimia, a Ciência das transmutações. Ensina os fundamentos da transmutação sexual, canalizando sabia e positivamente os diversos tipos de energia fabricados pelo nosso organismo para uma melhor saúde, vitalidade e para nosso desenvolvimento físico, anímico e espiritual.",
+      image: "img/transmutacao.jpg",
+      linkPdf1: "https://drive.google.com/file/d/1CVVLOPHf4fs63OI3_IfAoLohwSt9RkHL/view?usp=drive_link", // ATENÇÃO: Esse link parece ser o mesmo da aula 18. Verifique se é o correto.
+      linkPdf2: "https://drive.google.com/file/d/0ByuJiBLnCPXgZWo3eDhIY2VXRzQ/view?usp=drive_link&resourcekey=0-YvEuePHm8cZlJftnDtdLFw" },
+    // 👇 AULAS 20 a 23 ADICIONADAS (COLOQUE OS LINDS REAIS)
+    { number: 20, title: "Os Elementais", chamber: "advanced",
+      description: "Busca da saúde e da harmonia física, mental, emocional e psicológica através da integração com os elementos da Natureza (Fogo, Ar, Água e Terra).",
+      image: "img/196d8450312a3d74f29b654b60efaed5.jpg",
+      linkPdf1: "https://drive.google.com/file/d/1Bq1cClAaX2q4QEpr4iAcCg4vwWECOnKo/view?usp=drive_link", // SUBSTITUA
+      linkPdf2: "https://drive.google.com/file/d/0ByuJiBLnCPXgTWNlZFlLeUZPSzA/view?usp=drive_link&resourcekey=0-U-89ee79GB9tO_LvdHnOCQ" }, // SUBSTITUA (ou deixe vazio)
+    { number: 21, title: "Os Quatro Estados de Consciência", chamber: "advanced",
+      description: "Mostra os diversos estados psicológicos do ser humano (adormecimento profundo, conceitos e crenças, recordação de si e consciência desperta).",
+      image: "img/81ef50d66f9651d2112bb379e942fbda.jpg",
+      linkPdf1: "https://drive.google.com/file/d/SEU_LINK_PDF_AULA_21/view?usp=drive_link", // SUBSTITUA
+      linkPdf2: "https://drive.google.com/file/d/SEU_LINK_PDF2_AULA_21/view?usp=drive_link" }, // SUBSTITUA (ou deixe vazio)
+    { number: 22, title: "A Iniciação", chamber: "advanced",
+      description: "Ensina a importância de se iniciar verdadeiramente uma transformação interior, baseada no autoconhecimento e no trabalho psicológico individual sobre si mesmo. Busca que cada um desenvolva a filosofia, que faz ver a life como uma escola, onde independente das circunstâncias, sempre se tem algo a aprender. A Iniciação é a Gnosis aplicada à vida.",
+      image: "img/Post paraj Instagram Limites Saudáveis.jpg",
+      linkPdf1: "https://drive.google.com/file/d/SEU_LINK_PDF_AULA_22/view?usp=drive_link", // SUBSTITUA
+      linkPdf2: "https://drive.google.com/file/d/SEU_LINK_PDF2_AULA_22/view?usp=drive_link" }, // SUBSTITUA (ou deixe vazio)
+    { number: 23, title: "Apresentação da 2ª Câmara", chamber: "advanced",
+      description: "Explica o funcionamento da 2ª Câmara.",
+      image: "img/Post para Instagrammn Limites Saudáveis.jpg",
+      linkPdf1: "https://drive.google.com/file/d/SEU_LINK_PDF_AULA_23/view?usp=drive_link", // SUBSTITUA
+      linkPdf2: "https://drive.google.com/file/d/SEU_LINK_PDF2_AULA_23/view?usp=drive_link" } // SUBSTITUA (ou deixe vazio)
   ];
 
-  // Por questões de espaço, estou mostrando apenas 3 aulas como exemplo.
-  // Você deve manter todas as 23 aulas que já tinha no seu código anterior.
-
   // DATAS ATUALIZADAS - INÍCIO EM 26/11/2025
+  // Aulas às quartas e sextas, começando em 26/11/2025
   const scheduleDates = [
-    new Date('2025-11-26T19:30:00'), // 1
-    new Date('2025-11-28T19:30:00'), // 2
-    new Date('2025-12-03T19:30:00'), // 3
-    new Date('2025-12-05T19:30:00'), // 4
-    new Date('2025-12-10T19:30:00'), // 5
-    new Date('2025-12-12T19:30:00'), // 6
-    new Date('2025-12-17T19:30:00'), // 7
-    new Date('2025-12-19T19:30:00'), // 8
-    new Date('2026-01-07T19:30:00'), // 9
-    new Date('2026-01-09T19:30:00'), // 10
-    new Date('2026-01-14T19:30:00'), // 11
-    new Date('2026-01-16T19:30:00'), // 12
-    new Date('2026-01-21T19:30:00'), // 13
-    new Date('2026-01-23T19:30:00'), // 14
-    new Date('2026-01-28T19:30:00'), // 15
-    new Date('2026-01-30T19:30:00'), // 16
-    new Date('2026-02-04T19:30:00'), // 17
-    new Date('2026-02-06T19:30:00'), // 18
-    new Date('2026-02-11T19:30:00'), // 19
-    new Date('2026-02-13T19:30:00'), // 20
-    new Date('2026-02-18T19:30:00'), // 21
-    new Date('2026-02-20T19:30:00'), // 22
-    new Date('2026-02-25T19:30:00')  // 23
+    new Date('2025-11-26T19:30:00'), // 1 - qua
+    new Date('2025-11-28T19:30:00'), // 2 - sex
+    new Date('2025-12-03T19:30:00'), // 3 - qua
+    new Date('2025-12-05T19:30:00'), // 4 - sex
+    new Date('2025-12-10T19:30:00'), // 5 - qua
+    new Date('2025-12-12T19:30:00'), // 6 - sex
+    new Date('2025-12-17T19:30:00'), // 7 - qua
+    new Date('2025-12-19T19:30:00'), // 8 - sex (ÚLTIMA ANTES DO RECESSO)
+    // RECESSO DE FIM DE ANO
+    new Date('2026-01-07T19:30:00'), // 9 - qua (RETORNO APÓS RECESSO)
+    new Date('2026-01-09T19:30:00'), // 10 - sex
+    new Date('2026-01-14T19:30:00'), // 11 - qua
+    new Date('2026-01-16T19:30:00'), // 12 - sex
+    new Date('2026-01-21T19:30:00'), // 13 - qua
+    new Date('2026-01-23T19:30:00'), // 14 - sex
+    new Date('2026-01-28T19:30:00'), // 15 - qua
+    new Date('2026-01-30T19:30:00'), // 16 - sex
+    new Date('2026-02-04T19:30:00'), // 17 - qua
+    new Date('2026-02-06T19:30:00'), // 18 - sex
+    new Date('2026-02-11T19:30:00'), // 19 - qua
+    new Date('2026-02-13T19:30:00'), // 20 - sex
+    new Date('2026-02-18T19:30:00'), // 21 - qua
+    new Date('2026-02-20T19:30:00'), // 22 - sex
+    new Date('2026-02-25T19:30:00')  // 23 - qua
   ];
 
   // ============================================
-  // FUNÇÕES DE RENDERIZAÇÃO
+  // FUNÇÕES DE RENDERIZAÇÃO (LÓGICA OTIMIZADA)
   // ============================================
   function formatDateForDisplay(date) {
     const options = { weekday: 'short', day: '2-digit', month: '2-digit', year: 'numeric' };
@@ -925,63 +1116,58 @@
     document.getElementById('progress-percentage').textContent = `${Math.round(progressPercentage)}%`;
   }
 
-  function createLessonElement(lesson, index) {
-    const scheduleItem = document.createElement('div');
-    scheduleItem.className = 'schedule-item';
-    scheduleItem.setAttribute('data-lesson-number', lesson.number);
-    scheduleItem.setAttribute('data-lesson-title', lesson.title.toLowerCase());
-    scheduleItem.setAttribute('data-lesson-description', lesson.description.toLowerCase());
-    
-    if (lesson.number === 8) {
-      scheduleItem.classList.add('recess-highlight');
-    }
-    
-    let badges = '';
-    if (lesson.number === 8) badges = '<span class="recess-badge">Última antes do recesso</span>';
-    if (lesson.number === 9) badges = '<span class="return-badge">Retorno após recesso</span>';
-    
-    const pdf1Button = lesson.linkPdf1 
-      ? `<a href="${lesson.linkPdf1}" target="_blank" class="btn-material"><i class="fas fa-file-pdf me-1"></i>PDF 1</a>`
-      : '<button class="btn-material" disabled><i class="fas fa-clock me-1"></i>PDF 1 em breve</button>';
-    
-    const pdf2Button = lesson.linkPdf2 
-      ? `<a href="${lesson.linkPdf2}" target="_blank" class="btn-material-secondary"><i class="fas fa-file-pdf me-1"></i>PDF 2</a>`
-      : '<button class="btn-material-secondary" disabled><i class="fas fa-clock me-1"></i>PDF 2 em breve</button>';
-    
-    scheduleItem.innerHTML = `
-      <img src="${lesson.image}" alt="${lesson.title}" class="schedule-image" onerror="this.src='https://via.placeholder.com/125x160?text=Erro+Imagem';">
-      <div class="schedule-content">
-        <div class="schedule-header-row">
-          <div class="schedule-topic">
-            <span class="lesson-number-badge">Lição ${lesson.number}</span>
-            ${lesson.title}
-            ${badges}
-          </div>
-        </div>
-        <div class="schedule-description">${lesson.description}</div>
-        <div class="schedule-footer">
-          <div class="schedule-date">${formatDateForDisplay(scheduleDates[index])}</div>
-          <div class="material-buttons">
-            ${pdf1Button}
-            ${pdf2Button}
-          </div>
-        </div>
-      </div>
-    `;
-    
-    return scheduleItem;
-  }
-
   function renderSchedule() {
     const basicContainer = document.getElementById('basicChamberDates');
     const advancedContainer = document.getElementById('advancedChamberDates');
     
+    // Limpa os containers antes de renderizar
     basicContainer.innerHTML = '';
     advancedContainer.innerHTML = '';
 
     lessons.forEach((lesson, index) => {
-      const scheduleItem = createLessonElement(lesson, index);
+      const scheduleItem = document.createElement('div');
+      scheduleItem.className = 'schedule-item';
       
+      // Adiciona classe especial para a aula 8 (última antes do recesso)
+      if (lesson.number === 8) {
+        scheduleItem.classList.add('recess-highlight');
+      }
+      
+      // Define os badges de recesso e retorno
+      let badges = '';
+      if (lesson.number === 8) badges = '<span class="recess-badge">Última antes do recesso</span>';
+      if (lesson.number === 9) badges = '<span class="return-badge">Retorno após recesso</span>';
+      
+      // Constrói os botões de material (PDFs)
+      const pdf1Button = lesson.linkPdf1 
+        ? `<a href="${lesson.linkPdf1}" target="_blank" class="btn-material"><i class="fas fa-file-pdf me-1"></i>PDF 1</a>`
+        : '<button class="btn-material" disabled><i class="fas fa-clock me-1"></i>PDF 1 em breve</button>';
+      
+      const pdf2Button = lesson.linkPdf2 
+        ? `<a href="${lesson.linkPdf2}" target="_blank" class="btn-material-secondary"><i class="fas fa-file-pdf me-1"></i>PDF 2</a>`
+        : '<button class="btn-material-secondary" disabled><i class="fas fa-clock me-1"></i>PDF 2 em breve</button>';
+      
+      scheduleItem.innerHTML = `
+        <img src="${lesson.image}" alt="${lesson.title}" class="schedule-image" onerror="this.src='img/placeholder.jpg';">
+        <div class="schedule-content">
+          <div class="schedule-header-row">
+            <div class="schedule-topic">
+              ${lesson.title}
+              ${badges}
+            </div>
+          </div>
+          <div class="schedule-description">${lesson.description}</div>
+          <div class="schedule-footer">
+            <div class="schedule-date">${formatDateForDisplay(scheduleDates[index])}</div>
+            <div class="material-buttons">
+              ${pdf1Button}
+              ${pdf2Button}
+            </div>
+          </div>
+        </div>
+      `;
+      
+      // Adiciona ao container apropriado
       if (lesson.chamber === 'basic') {
         basicContainer.appendChild(scheduleItem);
       } else {
@@ -991,97 +1177,7 @@
   }
 
   // ============================================
-  // FUNÇÃO DE BUSCA
-  // ============================================
-  function initSearch() {
-    const searchInput = document.getElementById('searchInput');
-    const clearBtn = document.getElementById('clearSearchBtn');
-    const searchStats = document.getElementById('searchStats');
-    const noResultsMessage = document.getElementById('noResultsMessage');
-    const basicSection = document.getElementById('basicChamberSection');
-    const advancedSection = document.getElementById('advancedChamberSection');
-    
-    let searchTimeout;
-
-    function performSearch() {
-      const searchTerm = searchInput.value.toLowerCase().trim();
-      
-      if (searchTerm.length > 0) {
-        clearBtn.classList.add('visible');
-      } else {
-        clearBtn.classList.remove('visible');
-      }
-      
-      if (searchTerm === '') {
-        document.querySelectorAll('.schedule-item').forEach(item => {
-          item.style.display = 'flex';
-        });
-        searchStats.textContent = '';
-        noResultsMessage.style.display = 'none';
-        basicSection.style.display = 'block';
-        advancedSection.style.display = 'block';
-        return;
-      }
-      
-      let matchCount = 0;
-      const lessonItems = document.querySelectorAll('.schedule-item');
-      
-      lessonItems.forEach(item => {
-        const lessonNumber = item.getAttribute('data-lesson-number');
-        const lessonTitle = item.getAttribute('data-lesson-title');
-        const lessonDescription = item.getAttribute('data-lesson-description');
-        
-        const matches = lessonNumber.includes(searchTerm) || 
-                       lessonTitle.includes(searchTerm) || 
-                       lessonDescription.includes(searchTerm);
-        
-        if (matches) {
-          item.style.display = 'flex';
-          item.classList.add('search-match');
-          matchCount++;
-          
-          setTimeout(() => {
-            item.classList.remove('search-match');
-          }, 2000);
-        } else {
-          item.style.display = 'none';
-        }
-      });
-      
-      searchStats.textContent = `${matchCount} ${matchCount === 1 ? 'lição encontrada' : 'lições encontradas'}`;
-      
-      if (matchCount === 0) {
-        noResultsMessage.style.display = 'block';
-        basicSection.style.display = 'none';
-        advancedSection.style.display = 'none';
-      } else {
-        noResultsMessage.style.display = 'none';
-        basicSection.style.display = 'block';
-        advancedSection.style.display = 'block';
-      }
-    }
-
-    searchInput.addEventListener('input', function() {
-      clearTimeout(searchTimeout);
-      searchTimeout = setTimeout(performSearch, 300);
-    });
-
-    clearBtn.addEventListener('click', function() {
-      searchInput.value = '';
-      performSearch();
-      searchInput.focus();
-    });
-
-    searchInput.addEventListener('keypress', function(e) {
-      if (e.key === 'Enter') {
-        clearTimeout(searchTimeout);
-        performSearch();
-      }
-    });
-  }
-
-  // ============================================
-  // CONTROLE DA TELA FLUTUANTE
+  // CONTROLE DA TELA FLUTUANTE (INALTERADO)
   // ============================================
   function initFloatingPanel() {
     const floatingToggleBtn = document.getElementById('floatingToggleBtn');
@@ -1133,7 +1229,6 @@
   document.addEventListener('DOMContentLoaded', function() {
     renderSchedule();
     updateProgressBar();
-    initSearch();
     initFloatingPanel();
     setInterval(updateProgressBar, 60000);
   });
